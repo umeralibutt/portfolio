@@ -81,28 +81,26 @@ export default function AboutPage() {
 
       <Reveal className="about-exp">
         <div className="wrap exp-grid">
-          <div>
+          <div className="exp-head">
             <p className="hand-note kicker">where i’ve been</p>
             <h2 className="pixel about-h2">Experience</h2>
-            <div className="exp-rows">
-              {experience.map((e) => (
-                <div key={e.role} className="exp-row" style={rot(e.rot)}>
-                  <strong>{e.role}</strong>
-                  <span className="exp-where">{e.where}</span>
-                  <span className="exp-when">{e.when}</span>
-                </div>
-              ))}
-            </div>
           </div>
-          <div className="toolbox">
-            <p className="hand-note">my toolbox</p>
-            <div className="tool-tags">
-              {tools.map((t) => (
-                <span key={t.name} style={{ transform: `rotate(${t.rot}deg)` }}>
-                  <Torn color={t.color} text={t.text} edge="top">{t.name}</Torn>
-                </span>
-              ))}
-            </div>
+          <p className="hand-note toolbox-label">my toolbox</p>
+          <div className="exp-rows">
+            {experience.map((e) => (
+              <div key={e.role} className="exp-row" style={rot(e.rot)}>
+                <strong>{e.role}</strong>
+                <span className="exp-where">{e.where}</span>
+                <span className="exp-when">{e.when}</span>
+              </div>
+            ))}
+          </div>
+          <div className="tool-tags">
+            {tools.map((t) => (
+              <span key={t.name} style={{ transform: `rotate(${t.rot}deg)` }}>
+                <Torn color={t.color} text={t.text} edge="top">{t.name}</Torn>
+              </span>
+            ))}
           </div>
         </div>
       </Reveal>

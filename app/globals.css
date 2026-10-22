@@ -298,10 +298,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .torn {
   --z: 8px;
   display: inline-flex; align-items: center; padding: 10px 14px; font-family: var(--sans); font-weight: 600; font-size: 18px; letter-spacing: -.3px; line-height: 1.2;
-  -webkit-mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--z) 51% repeat-x,
-                conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--z) 51% repeat-x;
-          mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--z) 51% repeat-x,
-                conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--z) 51% repeat-x;
+  -webkit-mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--z) var(--z) repeat-x,
+                conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--z) var(--z) repeat-x,
+                linear-gradient(#000 0 0) center / 100% calc(100% - var(--z)) no-repeat;
+          mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--z) var(--z) repeat-x,
+                conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--z) var(--z) repeat-x,
+                linear-gradient(#000 0 0) center / 100% calc(100% - var(--z)) no-repeat;
   transition: transform .2s ease, filter .2s ease;
 }
 button.torn:hover { transform: translateY(-2px) rotate(-2deg); }
@@ -409,10 +411,10 @@ button.torn:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; 
 }
 
 .torn-top {
-  -webkit-mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--z) 51% repeat-x,
-                linear-gradient(#000 0 0) bottom / 100% 50% no-repeat;
-          mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--z) 51% repeat-x,
-                linear-gradient(#000 0 0) bottom / 100% 50% no-repeat;
+  -webkit-mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--z) var(--z) repeat-x,
+                linear-gradient(#000 0 0) bottom / 100% calc(100% - var(--z) / 2) no-repeat;
+          mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--z) var(--z) repeat-x,
+                linear-gradient(#000 0 0) bottom / 100% calc(100% - var(--z) / 2) no-repeat;
   padding: 12px 20px 10px; font-size: 20px; box-shadow: none;
 }
 
@@ -436,16 +438,16 @@ button.torn:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; 
 .step h3 { margin-top: 12px; font-weight: 700; font-size: 26px; letter-spacing: -.8px; line-height: 1.15; }
 .step p { margin-top: 12px; font-size: 16px; line-height: 1.5; }
 .about-exp { padding: 60px 0 80px; }
-.exp-grid { display: grid; grid-template-columns: minmax(0, 760px) minmax(0, 420px); justify-content: space-between; gap: 60px; align-items: start; }
-.exp-rows { display: flex; flex-direction: column; gap: 22px; margin-top: 40px; }
+.exp-grid { display: grid; grid-template-columns: minmax(0, 760px) minmax(0, 420px); grid-template-areas: "head label" "rows tags"; justify-content: space-between; column-gap: 60px; row-gap: 40px; }
+.exp-head { grid-area: head; }
+.toolbox-label { grid-area: label; align-self: end; margin-bottom: -24px; font-size: 26px; transform: rotate(3deg); transform-origin: left; }
+.exp-rows { grid-area: rows; display: flex; flex-direction: column; gap: 22px; }
 .exp-row { display: grid; grid-template-columns: 300px minmax(0, 1fr) max-content; gap: 24px; align-items: center; padding: 24px 30px; background: #fff; border: 1.5px solid var(--ink); transform: rotate(var(--rot)); transition: transform .2s ease, box-shadow .2s ease; }
 .exp-row:hover { transform: rotate(0) translateY(-3px); box-shadow: var(--shadow); }
 .exp-row strong { font-weight: 700; font-size: 22px; letter-spacing: -.5px; line-height: 1.25; }
 .exp-where { font-size: 16px; line-height: 1.4; color: #555; }
 .exp-when { font-family: var(--mono); font-weight: 500; font-size: 10px; letter-spacing: .8px; text-transform: uppercase; color: #555; }
-.toolbox { padding-top: 200px; }
-.toolbox .hand-note { font-size: 26px; transform: rotate(3deg); }
-.tool-tags { display: grid; grid-template-columns: repeat(3, max-content); gap: 26px 48px; margin-top: 20px; }
+.tool-tags { grid-area: tags; align-self: start; display: grid; grid-template-columns: repeat(3, max-content); gap: 26px 48px; }
 .tool-tags > span { display: inline-block; transition: transform .2s; }
 .about-facts { padding: 40px 0 110px; }
 .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin-top: 50px; }
@@ -456,8 +458,8 @@ button.torn:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; 
 @media (max-width: 1199px) {
   .about-intro-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 40px; }
   .steps, .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
-  .exp-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .toolbox { padding-top: 0; }
+  .exp-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "rows" "label" "tags"; row-gap: 32px; }
+  .toolbox-label { margin: 16px 0 -12px; }
 }
 @media (max-width: 899px) {
   .about-intro-grid { grid-template-columns: minmax(0, 1fr); }
