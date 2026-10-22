@@ -21,7 +21,7 @@ export default function TickerCard() {
             const top = bottom - b;
             const c = up ? 'var(--green)' : 'var(--orange)';
             return (
-              <g key={i}>
+              <g key={i} className="candle" style={{ '--i': i } as React.CSSProperties}>
                 <line x1={x} x2={x} y1={top - wt} y2={bottom + wb} stroke="var(--ink)" strokeWidth="1.5" />
                 <rect x={x - 3.5} y={top} width="7" height={b} fill={c} stroke="var(--ink)" strokeWidth="1" />
               </g>

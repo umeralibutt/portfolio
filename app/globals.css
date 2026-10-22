@@ -51,10 +51,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .nav { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid var(--line); }
 .nav-in { display: flex; align-items: stretch; height: 70px; max-width: calc(1280px + 80px); margin: 0 auto; padding: 0 40px; }
 .wordmark { font-family: 'Unbounded', var(--sans); font-weight: 700; font-size: 19px; letter-spacing: -.5px; display: flex; align-items: center; margin-right: 40px; white-space: nowrap; }
-.tabs { display: flex; }
+.tabs { display: flex; position: relative; }
+.tab-ink { position: absolute; top: 0; bottom: 0; background: var(--yellow); pointer-events: none; }
+.tab-ink.ready { transition: left .35s cubic-bezier(.5,1.6,.4,1), width .35s cubic-bezier(.5,1.6,.4,1), opacity .2s; }
+.tabs .tab { position: relative; }
 .tab { display: flex; align-items: center; gap: 8px; padding: 0 22px; font-family: var(--mono); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .8px; transition: background .15s; }
 .tab:hover { background: #f6f3ea; }
 .tab.on { background: var(--yellow); font-weight: 700; }
+.tabs .tab.on, .tabs .tab:hover { background: transparent; }
+.tabs .tab:hover { color: #000; }
 .nav-right { margin-left: auto; display: flex; align-items: center; gap: 22px; }
 .socials { display: flex; gap: 8px; align-items: center; }
 .socials a { display: block; border-radius: 50%; transition: transform .2s; }
@@ -200,7 +205,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .talk-title { font-size: 150px; margin-top: 80px; white-space: nowrap; }
 .talk-sub { font-size: 20px; color: #333; margin-top: 36px; }
 .talk-cta { display: flex; align-items: center; gap: 0; margin-top: 50px; }
-.mail-sticky { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; background: var(--yellow); padding: 16px 24px 18px; box-shadow: var(--shadow); transform: rotate(2deg); transition: transform .2s; text-align: left; }
+.mail-sticky { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; background: var(--yellow); padding: 16px 24px 18px; box-shadow: var(--shadow); --rot: 2deg; transform: rotate(var(--rot)); transition: transform .2s; text-align: left; }
 .mail-sticky:hover { transform: rotate(0) translateY(-3px); }
 .mail-sticky strong { font-size: 28px; font-weight: 700; letter-spacing: -.8px; }
 .mono-sm { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-weight: 700; font-size: 10px; letter-spacing: .8px; text-transform: uppercase; }
@@ -488,6 +493,7 @@ button.torn:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; 
 .play-sub { display: block; font-size: 30px; transform: rotate(1deg); }
 .play-title { font-size: clamp(44px, 7.5vw, 108px); margin-top: 14px; white-space: nowrap; }
 .collage { position: relative; max-width: 1440px; margin: -40px auto 0; aspect-ratio: 1440 / 1300; }
+.collage-inner { position: absolute; inset: 0; transform-origin: 50% 0; transition: transform .3s cubic-bezier(.3,1.3,.5,1); }
 .play-item, .play-label, .zoom-ctrl { position: absolute; }
 .play-item:hover { z-index: 5; }
 .play-label { z-index: 6; }
@@ -495,13 +501,18 @@ button.torn:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; 
 .play-pol img { aspect-ratio: 3 / 2; }
 .play-pol figcaption { font-size: clamp(20px, 2vw, 28px); padding: 10px 0 18px; }
 .zoom-ctrl { display: flex; flex-direction: column; background: #fff; border: 1.5px solid var(--ink); }
-.zoom-ctrl span { width: 30px; height: 29px; display: grid; place-items: center; font-weight: 600; font-size: 16px; }
-.zoom-ctrl span + span { border-top: 1.5px solid var(--ink); }
+.zoom-ctrl { z-index: 20; }
+.zoom-ctrl button { width: 30px; height: 29px; display: grid; place-items: center; font-weight: 600; font-size: 16px; transition: background .15s; }
+.zoom-ctrl button:hover:not(:disabled) { background: var(--yellow); }
+.zoom-ctrl button:disabled { color: #bbb; cursor: default; }
+.zoom-ctrl button + button { border-top: 1.5px solid var(--ink); }
 .play-head + .collage { margin-bottom: 90px; }
 
 @media (max-width: 899px) {
   .play-title { white-space: normal; }
-  .collage { aspect-ratio: auto; margin: 56px auto 80px; padding: 0 var(--pad); columns: 2; column-gap: 32px; }
+  .collage { aspect-ratio: auto; margin: 56px auto 80px; padding: 0 var(--pad); }
+  .collage-inner { position: static; transform: none !important; columns: 2; column-gap: 32px; }
+  .drag-hint { display: none; }
   .play-item { position: static; width: auto !important; break-inside: avoid; margin-bottom: 40px; }
   .play-item:nth-child(odd) .play-pol { --rot: -2deg !important; }
   .play-item:nth-child(even) .play-pol { --rot: 2deg !important; }
@@ -509,7 +520,7 @@ button.torn:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; 
 }
 @media (max-width: 559px) {
   .play-sub { font-size: 24px; }
-  .collage { columns: 1; }
+  .collage-inner { columns: 1; }
 }
 
 /* ---------- Contact ---------- */
@@ -576,4 +587,85 @@ button.torn:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; 
   .contact-card { padding: 26px 20px 30px; transform: none; }
   .promise { margin-right: 0; padding-left: 40px; }
   .promise .hand-note { font-size: 22px; }
+}
+
+/* ---------- Motion ----------
+   Hidden start states only apply under html.motion (set before paint unless reduced motion is on),
+   so without JS or with reduced motion everything is simply visible. */
+
+/* Hand-drawn lines ink themselves in. */
+html.motion [data-draw] { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .9s cubic-bezier(.6,.1,.3,1); }
+html.motion [data-draw="head"] { transition-duration: .25s; transition-delay: .8s; }
+html.motion [data-draw="slow"] { transition-duration: 2.2s; }
+html.motion svg.in [data-draw] { stroke-dashoffset: 0; }
+
+/* Stickies, notes, cards and polaroids slap onto the page, one after another. */
+html.motion :is(.sticky, .stat, .fact, .step, .big-note, .mail-sticky, .card, .polaroid):not(.landed) { opacity: 0; }
+html.motion .landed:not(.settled) { animation: slap .55s cubic-bezier(.3,1.5,.5,1) both; animation-delay: calc(var(--i, 0) * 90ms); }
+@keyframes slap {
+  0% { opacity: 0; transform: translateY(-18px) scale(1.12) rotate(calc(var(--rot, 0deg) + 7deg)); }
+  55% { opacity: 1; transform: translateY(2px) scale(.98) rotate(calc(var(--rot, 0deg) - 1.5deg)); }
+  100% { opacity: 1; transform: rotate(var(--rot, 0deg)); }
+}
+
+/* Pixel titles type themselves out, one block at a time. */
+html.motion :is(.section-title, .page-title, .about-title, .case-title, .talk-title, .cta-title, .play-title, .about-h2, .contact-title):not(.in) { clip-path: inset(-20% calc(100% - 2px) -20% -12px); }
+html.motion :is(.section-title, .page-title, .about-title, .case-title, .talk-title, .cta-title, .play-title, .about-h2, .contact-title).in {
+  animation: type calc(var(--n, 8) * 70ms) steps(var(--n, 8), end) both;
+}
+@keyframes type {
+  from { clip-path: inset(-20% calc(100% - 2px) -20% -12px); }
+  to { clip-path: inset(-20% -12px -20% -12px); }
+}
+
+/* Hero stickers drift against the pointer at different depths. */
+html.motion [data-parallax] :is(.deco, .avatar, .hand-arrow, .hello, .ticker-wrap) {
+  translate: calc(var(--mx, 0) * var(--d, 0) * 1px) calc(var(--my, 0) * var(--d, 0) * 1px);
+  transition: translate .5s cubic-bezier(.2,.7,.2,1);
+}
+.hello { --d: -6; }
+.ticker-wrap { --d: 4; }
+.st-dash { --d: -14; }
+.st-ships { --d: 12; }
+.st-role { --d: 18; }
+.st-city { --d: -16; }
+.av-l { --d: 22; }
+.av-r { --d: -20; }
+.hand-arrow { --d: 10; }
+
+/* The "YOU" cursor floats above everything in its section. */
+.you { z-index: 4; pointer-events: none; will-change: translate; }
+
+/* Candles on the name card keep trading. */
+html.motion .candle { transform-box: fill-box; transform-origin: 50% 100%; animation: candle 2.2s ease-in-out infinite alternate; animation-delay: calc(var(--i) * -.37s); }
+@keyframes candle { from { transform: scaleY(.82); } to { transform: scaleY(1.12); } }
+
+/* Buttons press like a stamp; the arrow nudges up-right. */
+.btn svg { transition: transform .2s ease; }
+.btn:hover svg { transform: translate(2px, -2px); }
+.btn:active { transform: translateY(2px) scale(.97); box-shadow: 0 2px 6px rgba(0, 0, 0, .25); transition-duration: .06s; }
+.talk-cta .btn:active { transform: rotate(-2deg) translateY(2px) scale(.97); }
+
+/* Skill icons come alive on hover. */
+.skill-ico svg { transition: transform .3s ease; }
+.ico-pop:hover svg { transform: scale(1.18) rotate(-6deg); }
+.ico-spin:hover svg { animation: spin 1.2s linear infinite; }
+.ico-blink:hover svg { animation: blink .9s ease-in-out infinite; }
+.ico-twinkle:hover svg { animation: twinkle .6s ease-in-out infinite alternate; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes blink { 0%, 40%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.1); } }
+@keyframes twinkle { from { transform: rotate(-12deg) scale(.92); } to { transform: rotate(12deg) scale(1.1); } }
+
+/* Draggable playground polaroids. */
+@media (min-width: 900px) {
+  .play-item { cursor: grab; touch-action: none; user-select: none; }
+  .play-item img { pointer-events: none; -webkit-user-drag: none; }
+  .play-item.dragging { cursor: grabbing; }
+  .play-item.dragging .polaroid { transform: rotate(0) scale(1.04); box-shadow: 0 24px 50px rgba(0, 0, 0, .28); transition-duration: .15s; }
+}
+.drag-hint { position: absolute; left: 50%; bottom: 2%; transform: translateX(-50%) rotate(-2deg); font-size: 24px; z-index: 20; white-space: nowrap; }
+.drag-hint button { font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html [data-draw] { stroke-dashoffset: 0 !important; }
 }

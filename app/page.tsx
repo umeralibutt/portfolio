@@ -5,6 +5,7 @@ import { Btn, HandArrow, Polaroid, Sticky, Tape } from '@/components/bits';
 import TickerCard from '@/components/TickerCard';
 import Folder from '@/components/Folder';
 import Reveal from '@/components/Reveal';
+import YouCursor from '@/components/YouCursor';
 
 const stats = [
   { n: '12', note: 'products designed & shipped', icon: 'coins', color: 'var(--yellow)', rot: 3 },
@@ -27,12 +28,12 @@ export default function Home() {
 
 function Hero() {
   return (
-    <section className="hero">
+    <section className="hero" data-parallax="">
       <div className="wrap hero-in">
         <p className="hello">
           hi, my name is
           <svg width="84" height="10" viewBox="0 0 84 10" fill="none" stroke="var(--ink)" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
-            <path d="M2 6c6-5 10 3 16 0s10-5 16 0 10 3 16 0 10-5 16 0 10 3 14 0" />
+            <path d="M2 6c6-5 10 3 16 0s10-5 16 0 10 3 16 0 10-5 16 0 10 3 14 0" pathLength={1} data-draw="" />
           </svg>
         </p>
 
@@ -64,7 +65,7 @@ function Hero() {
         </div>
       </div>
       <svg className="hero-curve" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0 58C360 2 1080 2 1440 58" fill="none" stroke="#9a9a9a" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        <path d="M0 58C360 2 1080 2 1440 58" fill="none" stroke="#9a9a9a" strokeWidth="1" pathLength={1} data-draw="slow" />
       </svg>
     </section>
   );
@@ -75,10 +76,7 @@ function About() {
     <Reveal className="about">
       <div className="wrap about-in">
         <p className="hand-note about-me">about me!</p>
-        <div className="you deco" aria-hidden="true">
-          <svg width="16" height="18" viewBox="0 0 16 18"><path d="M1 1l13 7-6 1.5L5 16z" fill="var(--ink)" /></svg>
-          <span>YOU</span>
-        </div>
+        <YouCursor />
 
         <span className="sel-box"><i /><i /><i /><i />what’s up</span>
 
@@ -97,21 +95,21 @@ function About() {
         <div className="skills">
           <div className="skill-row">
             <span className="skill" style={{ background: 'var(--yellow)' }}>Dashboard Design</span>
-            <span className="skill-ico" style={{ background: 'var(--yellow)', outline: '1.5px dashed var(--ink)', outlineOffset: -4 }}>
+            <span className="skill-ico ico-pop" style={{ background: 'var(--yellow)', outline: '1.5px dashed var(--ink)', outlineOffset: -4 }}>
               <svg viewBox="0 0 24 24"><g fill="var(--ink)"><rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="8" rx="1.5" /><rect x="3" y="13" width="8" height="8" rx="1.5" /><path d="M17 12.5l4.5 4.5-4.5 4.5-4.5-4.5z" /></g></svg>
             </span>
             <span className="skill" style={{ background: 'var(--green)' }}>Prototyping</span>
-            <span className="skill-ico" style={{ background: 'var(--green)' }}>
+            <span className="skill-ico ico-spin" style={{ background: 'var(--green)' }}>
               <svg viewBox="0 0 24 24"><g stroke="var(--ink)" strokeWidth="1.6" strokeLinecap="round"><path d="M12 1v4M12 19v4M1 12h4M19 12h4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M4.2 19.8 7 17M17 7l2.8-2.8" /></g><circle cx="12" cy="12" r="4.5" fill="#E5306B" /></svg>
             </span>
           </div>
           <div className="skill-row">
             <span className="skill light" style={{ background: '#E5306B' }}>UX Audits</span>
-            <span className="skill-ico" style={{ background: '#E5306B' }}>
+            <span className="skill-ico ico-blink" style={{ background: '#E5306B' }}>
               <svg viewBox="0 0 24 24"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z" fill="#fff" /><circle cx="12" cy="12" r="4" fill="var(--orange)" /><circle cx="12" cy="12" r="1.6" fill="var(--yellow)" /></svg>
             </span>
             <span className="skill" style={{ background: '#3CC8F0' }}>Design Systems</span>
-            <span className="skill-ico" style={{ background: '#3CC8F0' }}>
+            <span className="skill-ico ico-twinkle" style={{ background: '#3CC8F0' }}>
               <svg viewBox="0 0 24 24"><g fill="var(--ink)"><circle cx="8" cy="9" r="1.5" /><circle cx="16" cy="13" r="1.5" /><circle cx="11" cy="17" r="1.5" /></g><g fill="#E5306B"><circle cx="4" cy="3" r="1.6" /><circle cx="18" cy="6" r="1.6" /><circle cx="20" cy="20" r="1.6" /></g></svg>
             </span>
           </div>

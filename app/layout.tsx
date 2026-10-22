@@ -8,6 +8,7 @@ import '@fontsource/unbounded/700.css';
 import './globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import Motion from '@/components/Motion';
 
 export const metadata: Metadata = {
   title: 'Umar Ali Butt — Product Designer for dashboards, fintech & Web3',
@@ -21,8 +22,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={GeistSans.variable}>
+    <html lang="en" className={GeistSans.variable} suppressHydrationWarning>
+      <head>
+        {/* Turn on entrance animations before first paint, unless the visitor prefers reduced motion. */}
+        <script dangerouslySetInnerHTML={{ __html: "if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion')" }} />
+      </head>
       <body>
+        <Motion />
         <Nav />
         <main>{children}</main>
         <Footer />

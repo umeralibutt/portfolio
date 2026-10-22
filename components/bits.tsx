@@ -47,8 +47,8 @@ export function HandArrow({ d, end, head, w, h, style }: { d: string; end: [numb
   const [x, y] = end;
   return (
     <svg className="hand-arrow" width={w} height={h} viewBox={`0 0 ${w} ${h}`} fill="none" stroke="var(--ink)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={style} aria-hidden="true">
-      <path d={d} />
-      <path d={`M${x - 8} ${y - 5} L${x} ${y} L${x - 8} ${y + 5}`} transform={`rotate(${head} ${x} ${y})`} />
+      <path d={d} pathLength={1} data-draw="" />
+      <path d={`M${x - 8} ${y - 5} L${x} ${y} L${x - 8} ${y + 5}`} transform={`rotate(${head} ${x} ${y})`} pathLength={1} data-draw="head" />
     </svg>
   );
 }
