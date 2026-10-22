@@ -73,7 +73,7 @@ Warm notebook paper, pixel display type, handwriting, washi tape, polaroids, tor
 5. Let’s talk: pixel bar-chart icon (black squares, lime tops) + Caveat "psst — still here?"; Silkscreen "LET’S TALK" 150px; 20px sub "Got a messy dashboard, a half-baked idea, or just want to say hi? Send it over — I reply within 24 hours."; yellow sticky with mail icon "Drop a line" + `ub1894497@gmail.com`; Btn "START A PROJECT".
 6. Footer.
 
-**Work (`/work`)** — Caveat "everything i’ve shipped (and a few i dreamt up) ↓", Silkscreen "ALL WORK"; torn filter tags (All 17 yellow, Fintech mint, Web3 blue/white, Trading pink, AI tape1, Concepts tape2) — make them real client-side filters; yellow sticky "pick one, any one →". 3-column grid of `projects` (10). Then section Caveat "side quests, dribbble shots & concepts ↓" + Silkscreen "CONCEPTS & SHOTS" with the 7 `concepts`. CTA: Silkscreen "GOT A MESSY DASHBOARD?", Caveat "Send it over — I’ll tell you what I’d fix first.", Btn. Only Youngs Capital has a case study (link `/work/youngs-capital`); other cards aren’t links yet.
+**Work (`/work`)** — Caveat "everything i’ve shipped (and a few i dreamt up) ↓", Silkscreen "ALL WORK"; torn filter tags (All 17 yellow, Fintech mint, Web3 blue/white, Trading pink, AI tape1, Concepts tape2) — make them real client-side filters; yellow sticky "pick one, any one →". 3-column grid of `projects` (10). Then section Caveat "side quests, dribbble shots & concepts ↓" + Silkscreen "CONCEPTS & SHOTS" with the 7 `concepts`. CTA: Silkscreen "GOT A MESSY DASHBOARD?", Caveat "Send it over — I’ll tell you what I’d fix first.", Btn. Every card links to its case study at `/work/[slug]`.
 
 **Case study (`/work/youngs-capital`)** — template for future ones:
 - Caveat "← back to all work"; mono "PROJECT 01 · LIVE"; Silkscreen "YOUNGS / CAPITAL" (2 lines, ~130px); Geist 600 36px tagline "Pakistan’s first profit-and-loss sharing brokerage — invest, trade and grow on the PSX, with a partner that stands beside you."; meta stickies (Industry FinTech yellow · Platform iOS & Android mint · Timeline 8 Weeks pink · My role Product Designer tape1); Caveat "↓ the receipts".
@@ -88,6 +88,14 @@ Warm notebook paper, pixel display type, handwriting, washi tape, polaroids, tor
 **Playground (`/playground`)** — Silkscreen "JUST FOR FUN" centred, Caveat sub "concepts, experiments & dribbble shots — the stuff i make when nobody’s asking"; free-form collage of `playShots` as tilted polaroids with Caveat captions + small coloured label stickies ("first try!", "hello world", "practice", "what is this"); tiny +/– zoom control decoration bottom-right. On mobile, collapse to a 1–2 column masonry.
 
 **Contact (`/contact`)** — Caveat "say hi"; "CONTACT" Silkscreen inside a blue Figma-style selection box (2px #2F5BEA border + corner handles); yellow (tape2) card form, 612px: intro "Got a project, a messy dashboard, or just want to say hi? I read every message and reply within 24 hours."; fields with icons (user / mail / message), 1.5px ink borders, white; "What’s it about?" with chips (Dashboard ●selected-ink, Web app, Mobile app, UX audit, Full-time role — each with an icon; they wrap); Btn "SEND IT". Polaroid me.jpg "hi, it’s me" left (-6°), polaroid pulse cover "recent work" right (5°); Caveat "(the form works, promise)" with an SVG hand-drawn arrow; availability line; email with mail icon; social circles.
+
+## Case studies for every project (designed in Figma)
+Every Work card links to its own page at `/work/[slug]` (use one dynamic route + a `caseStudies` data map). All follow the Youngs Capital template; concepts use a lighter "shot page" (header, hero, gallery, next-up — no problem/fix).
+Figma frames (page "Umar's Website") — use `get_screenshot` for layout and export images from the `Image — …` layers:
+- Full case studies: Youngs Capital `148:363` · Prime Traders `164:62` · Traqstock `164:330` · VEYRO `164:616` · Legion `164:921` · Pace Wallet `164:1189` · Pulse Pair `165:62` · Ember `165:406` · VION `165:674` · ZKOP `165:942`
+- Concept shot pages: Crypto Wallet `166:62` · Crypto Swap `166:259` · NFT Crypto App `166:613` · Trading Dashboard `166:1705` · Wright AI `166:2082` · Crypto Vaults `166:2401` · Metaverse Social `166:2868`
+- Copy (problem/fix, stats, meta) is in those frames — copy it verbatim. Each page ends with a "next up" folder linking to the next project in Work order (ZKOP → Youngs Capital; concepts loop among themselves).
+- Source design sections live on the "Archive" page.
 
 ## Motion (subtle & smooth)
 - Respect `prefers-reduced-motion`.
