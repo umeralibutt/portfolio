@@ -343,3 +343,67 @@ button.torn:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; 
   .work-cta { padding: 90px 0 80px; }
   .cta-title { white-space: normal; font-size: clamp(36px, 11vw, 56px); }
 }
+
+/* ---------- Case study ---------- */
+.case-head { padding: 60px 0 0; }
+.back { font-size: 24px; color: #333; transform: rotate(-2deg); transition: transform .2s; }
+.back:hover { transform: rotate(-2deg) translateX(-4px); }
+.case-kicker { margin-top: 26px; font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .8px; text-transform: uppercase; color: #888; }
+.case-head-grid { display: grid; grid-template-columns: minmax(0, 1fr) 400px; column-gap: 40px; align-items: start; }
+.case-title { font-size: clamp(56px, 9vw, 130px); margin-top: 20px; }
+.case-title span { display: block; }
+.case-meta { display: grid; grid-template-columns: repeat(2, max-content); justify-content: space-between; gap: 40px 50px; padding-top: 4px; }
+.meta-note { flex-direction: column; align-items: flex-start; gap: 4px; padding: 12px 18px 14px; }
+.meta-note small { font-family: var(--mono); font-weight: 500; font-size: 9px; letter-spacing: .8px; color: #444; }
+.meta-note strong { font-family: var(--sans); font-weight: 700; font-size: 20px; letter-spacing: -.4px; text-transform: none; }
+.case-tagline { grid-column: 1; margin-top: 44px; max-width: 830px; font-weight: 600; font-size: clamp(24px, 2.6vw, 36px); line-height: 1.25; letter-spacing: -1px; }
+.receipts { grid-column: 2; align-self: start; margin-top: 52px; font-size: 22px; transform: rotate(4deg); }
+.case-cover { padding: 130px 0 0; }
+.shot { position: relative; background: #fff; padding: 10px; box-shadow: 0 14px 30px rgba(0, 0, 0, .18); transform: rotate(var(--rot, 0deg)); transition: transform .2s ease, box-shadow .2s ease; }
+.shot:hover { transform: rotate(0) translateY(-4px); box-shadow: 0 20px 40px rgba(0, 0, 0, .22); }
+.shot img { width: 100%; height: auto; }
+.case-notes { padding: 110px 0 0; }
+.notes-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 580px)); justify-content: space-between; gap: 40px; margin-top: 26px; }
+.big-note { padding: 40px 40px 44px; box-shadow: var(--shadow); transform: rotate(var(--rot, 0deg)); transition: transform .2s ease; }
+.big-note:hover { transform: rotate(0) translateY(-4px); }
+.big-note h2 { font-size: 40px; }
+.big-note p { margin-top: 18px; font-size: 18px; line-height: 1.45; }
+.case-screens { padding: 150px 0 0; }
+.shots-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 20px; }
+.case-stats { padding: 110px 0 0; }
+.case-stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 380px)); justify-content: space-between; gap: 40px; margin-top: 36px; }
+.case-stat { width: auto; height: 230px; }
+.case-stat strong { font-size: 44px; }
+.case-stat p { max-width: 240px; }
+.case-next { padding: 130px 0 120px; }
+.case-next .kicker { margin-bottom: 20px; }
+.folder-next { position: relative; top: 0; }
+.folder-next .folder-body { min-height: 420px; padding-top: 60px; align-items: center; }
+.folder-next .folder-text { padding-left: 44px; }
+.folder-next h3 { margin-top: 0; }
+
+@media (max-width: 1199px) {
+  .case-head-grid { grid-template-columns: minmax(0, 1fr); }
+  .case-meta { grid-template-columns: repeat(4, max-content); justify-content: start; gap: 20px; margin-top: 36px; }
+  .receipts { grid-column: 1; margin-top: 30px; }
+  .case-stat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; }
+  .folder-next .folder-text { padding-left: 0; }
+}
+@media (max-width: 899px) {
+  .case-meta { grid-template-columns: repeat(2, max-content); }
+  .notes-grid, .shots-row, .case-stat-grid { grid-template-columns: minmax(0, 1fr); }
+  .case-stat { height: auto; min-height: 180px; }
+}
+@media (max-width: 767px) {
+  .case-head { padding-top: 40px; }
+  .case-cover { padding-top: 70px; }
+  .case-meta { gap: 16px; }
+  .meta-note strong { font-size: 17px; }
+  .big-note { padding: 28px 24px 30px; }
+  .big-note h2 { font-size: 30px; }
+  .big-note p { font-size: 17px; }
+  .case-screens { padding-top: 100px; }
+  .shot { padding: 6px; }
+  .case-notes, .case-stats { padding-top: 80px; }
+  .case-next { padding: 90px 0 80px; }
+}
