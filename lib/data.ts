@@ -18,7 +18,6 @@ export type Project = {
   desc: string;
   platform?: string;
   timeline?: string;
-  caseStudy?: boolean;
   folder?: { label: string; tagline: string; stats: [string, string]; color: 'ink' | 'blue' | 'mint' | 'yellow' };
 };
 
@@ -26,7 +25,7 @@ export const projects: Project[] = [
   {
     slug: 'youngs-capital', name: 'Youngs Capital', img: '/work/youngs-capital.jpg', meta: 'Fintech · Live',
     desc: 'Invest, trade and grow in Pakistan’s stock market — one profit-sharing brokerage built for every investor.',
-    platform: 'iOS & Android', timeline: '8 Weeks', caseStudy: true,
+    platform: 'iOS & Android', timeline: '8 Weeks',
     folder: { label: 'Fintech · iOS + Android', tagline: 'Pakistan’s first profit-and-loss sharing brokerage — invest, trade and grow on the PSX.', stats: ['Top-10 broker', '4.8★ App Store'], color: 'ink' },
   },
   {
@@ -73,3 +72,26 @@ export const playShots = [
   { src: '/play/market-cards.jpg', cap: 'market cards' },
   { src: '/work/pulse-pair.jpg', cap: 'pulse cover' },
 ];
+
+export type Tag = 'Fintech' | 'Web3' | 'Trading' | 'AI' | 'Concepts';
+
+/** Filter tags for the Work page, keyed by project/concept slug. */
+export const workTags: Record<string, Tag[]> = {
+  'youngs-capital': ['Fintech', 'Trading'],
+  'prime-traders': ['Fintech', 'Web3', 'Trading'],
+  traqstock: ['Fintech', 'Trading'],
+  veyro: ['Fintech', 'Web3'],
+  legion: ['Fintech', 'Web3'],
+  'pace-wallet': ['Fintech', 'Web3', 'Concepts'],
+  'pulse-pair': ['Trading', 'Concepts'],
+  ember: ['Concepts'],
+  vion: ['Web3'],
+  zkop: ['Web3'],
+  'crypto-wallet': ['Web3', 'Concepts'],
+  'crypto-swap': ['Web3', 'Concepts'],
+  'nft-crypto-app': ['Web3', 'Concepts'],
+  'trading-dashboard': ['Trading', 'Concepts'],
+  'wright-ai': ['AI', 'Concepts'],
+  'crypto-vaults': ['Web3', 'Concepts'],
+  'metaverse-social': ['Web3', 'Concepts'],
+};
