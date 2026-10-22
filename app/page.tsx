@@ -82,10 +82,9 @@ function About() {
 
         <span className="sel-box"><i /><i /><i /><i />what’s up</span>
 
+        <div className="about-mid">
         <Polaroid src="/me.jpg" alt={site.name} caption="2026" rot={-9} className="pol-l" />
-        <Polaroid caption="my desk" rot={-8} className="pol-r">
-          <div className="desk-ph"><span>your desk</span></div>
-        </Polaroid>
+        <Polaroid src="/desk.jpg" alt="Umar’s desk" caption="my desk" rot={-8} className="pol-r" />
 
         <p className="big-line">
           I’m Umar <img src="/me.jpg" alt="" className="inline-me" /> a product designer in Islamabad who turns messy data{' '}
@@ -93,6 +92,7 @@ function About() {
           into screens that feel obvious{' '}
           <svg className="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z" fill="#E5306B" /></svg>
         </p>
+        </div>
 
         <div className="skills">
           <div className="skill-row">

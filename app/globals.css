@@ -84,7 +84,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .polaroid { position: relative; background: #fff; padding: 12px 12px 0; box-shadow: var(--shadow); transform: rotate(var(--rot, 0deg)); transition: transform .2s ease, box-shadow .2s ease; }
 .polaroid:hover { transform: rotate(0) translateY(-4px); box-shadow: 0 16px 30px rgba(0, 0, 0, .2); }
-.polaroid img, .polaroid .desk-ph { width: 100%; aspect-ratio: 1 / 1.05; object-fit: cover; }
+.polaroid img { width: 100%; aspect-ratio: 1 / 1.05; object-fit: cover; }
 .polaroid figcaption { font-family: var(--hand); font-size: 20px; text-align: center; padding: 8px 0 12px; color: #333; }
 
 .btn { display: inline-flex; align-items: center; gap: 12px; background: var(--ink); color: #fff; padding: 9px 16px 9px 9px; font-family: var(--mono); font-weight: 700; font-size: 12px; letter-spacing: .8px; text-transform: uppercase; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
@@ -139,13 +139,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .sel-box i:nth-child(2) { right: -5px; top: -5px; }
 .sel-box i:nth-child(3) { left: -5px; bottom: -5px; }
 .sel-box i:nth-child(4) { right: -5px; bottom: -5px; }
-.big-line { max-width: 780px; margin-top: 56px; text-align: center; font-weight: 500; font-size: 70px; line-height: 1.3; letter-spacing: -3.2px; }
+.about-mid { width: 100%; margin-top: 56px; display: grid; grid-template-columns: minmax(170px, 1fr) minmax(0, 780px) minmax(170px, 1fr); column-gap: 40px; align-items: start; }
+.big-line { grid-column: 2; grid-row: 1; text-align: center; font-weight: 500; font-size: clamp(40px, 5vw, 70px); line-height: 1.3; letter-spacing: -3.2px; }
 .inline-me { display: inline-block; width: 64px; height: 64px; object-fit: cover; border-radius: 14px; vertical-align: -10px; }
 .glyph { display: inline-block; width: 48px; height: 48px; vertical-align: -4px; }
-.pol-l { position: absolute; left: 0; top: 232px; width: 250px; }
-.pol-r { position: absolute; right: -50px; top: 220px; width: 270px; }
-.desk-ph { background: linear-gradient(160deg, #2c4a44, #12201d 55%, #6b4a2b); display: grid; align-items: end; padding: 14px; }
-.desk-ph span { font-family: var(--mono); font-weight: 700; font-size: 10px; letter-spacing: .8px; color: #fff; text-transform: uppercase; }
+.pol-l, .pol-r { grid-row: 1; width: min(100%, 260px); }
+.pol-l { grid-column: 1; justify-self: start; margin-top: 60px; }
+.pol-r { grid-column: 3; justify-self: end; margin-top: 40px; }
+.pol-r img { aspect-ratio: 250 / 264; }
 .skills { position: relative; margin-top: 70px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .skill-row { display: flex; gap: 8px; }
 .skill { display: flex; align-items: center; padding: 0 20px; height: 62px; font-size: 32px; font-weight: 500; letter-spacing: -1px; transition: transform .2s; }
@@ -219,9 +220,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .av-l { left: 0; }
   .av-r { right: 0; }
   .headline { font-size: 50px; }
-  .big-line { font-size: 56px; max-width: 640px; }
-  .pol-l, .pol-r { width: 190px; }
-  .pol-r { right: 0; }
   .love { position: static; margin-top: 12px; }
   .folder-body { grid-template-columns: 1fr 1fr; padding: 44px 40px 36px; }
   .folder h3 { font-size: 52px; }
@@ -236,6 +234,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .sheet .tab { padding: 14px 24px; }
   .sheet .socials { padding: 12px 24px 0; }
   .pol-l, .pol-r, .you { display: none; }
+  .about-mid { grid-template-columns: 1fr; }
+  .big-line { grid-column: 1; }
   .folder-body { grid-template-columns: 1fr; }
   .folder-shot { order: -1; }
 }
