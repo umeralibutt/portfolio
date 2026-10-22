@@ -29,7 +29,7 @@ export default function WorkPage() {
 
       <Reveal className="work-cta">
         <div className="wrap">
-          <h2 className="pixel cta-title">Got a messy dashboard?</h2>
+          <h2 className="pixel cta-title">Got something to design?</h2>
           <p className="hand-note cta-sub">Send it over — I’ll tell you what I’d fix first.</p>
           <Btn href="/contact">Start a project</Btn>
         </div>

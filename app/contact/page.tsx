@@ -7,7 +7,7 @@ import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Contact — Umar Ali Butt',
-  description: 'Got a project, a messy dashboard, or just want to say hi? Umar replies within 24 hours.',
+  description: 'Got a project, a product idea, or just want to say hi? Umar replies within 24 hours.',
 };
 
 export default function ContactPage() {

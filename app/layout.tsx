@@ -16,11 +16,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Umar Ali Butt — Product Designer for dashboards, fintech & Web3',
-  description: 'I design dashboards that don’t need a manual. Product designer in Islamabad for fintech, Web3 and SaaS.',
+  title: 'Umar Ali Butt — Product Designer for apps, web & brands',
+  description: 'I design (almost) everything — apps, platforms, dashboards & brands. Product designer in Islamabad for fintech, Web3 and AI.',
   openGraph: {
-    title: 'Umar Ali Butt — Product Designer for dashboards, fintech & Web3',
-    description: 'I design dashboards that don’t need a manual.',
+    title: 'Umar Ali Butt — Product Designer for apps, web & brands',
+    description: 'I design (almost) everything — apps, platforms, dashboards & brands.',
   },
 };
 

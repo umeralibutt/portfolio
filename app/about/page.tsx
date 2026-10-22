@@ -7,7 +7,7 @@ import Reveal from '@/components/Reveal';
 
 export const metadata: Metadata = {
   title: 'About — Umar Ali Butt',
-  description: 'Product designer in Islamabad who turns messy data into calm, clear screens — 5+ years across trading, fintech, Web3 and AI.',
+  description: 'Product designer in Islamabad who designs apps, platforms, dashboards and brands — 5+ years across fintech, Web3 and AI.',
 };
 
 const steps = [
@@ -50,7 +50,7 @@ export default function AboutPage() {
             <p className="hand-note kicker">the long version ↓</p>
             <h1 className="pixel about-title">About</h1>
             <p className="about-lead">
-              I’m a product designer who gets a little too excited about turning messy data into calm, clear screens.{' '}
+              I’m a product designer who gets a little too excited about turning complex ideas into calm, clear products.{' '}
               <svg className="lead-spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z" fill="var(--ink)" /></svg>
             </p>
             <div className="about-body">

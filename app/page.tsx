@@ -39,7 +39,7 @@ function Hero() {
 
         <div className="ticker-wrap">
           <TickerCard />
-          <Sticky color="var(--mint)" rot={4} className="deco st-dash">Dashboards &amp; data</Sticky>
+          <Sticky color="var(--mint)" rot={4} className="deco st-dash">Fintech · Web3 · AI</Sticky>
           <Sticky color="var(--tape2)" rot={-4} className="deco st-ships">Ships, not just shots</Sticky>
           <Sticky color="var(--yellow)" rot={5} hand className="deco st-role">Product Designer</Sticky>
           <HandArrow w={50} h={56} d="M40 4c5 20 0 36-30 44" end={[10, 48]} head={165} style={{ left: -100, top: 136 }} />
@@ -47,15 +47,15 @@ function Hero() {
           <HandArrow w={60} h={30} d="M2 12c14 14 34 12 52-2" end={[54, 10]} head={-25} style={{ left: 'calc(100% - 4px)', top: 186 }} />
         </div>
 
-        <p className="open"><span className="dot blue" />Open to new work &amp; messy dashboards</p>
+        <p className="open"><span className="dot blue" />Open to new work &amp; good problems</p>
 
         <div className="headline-wrap">
           <img src="/me.jpg" alt="" className="avatar av-l" />
           <img src="/me.jpg" alt="" className="avatar av-r" />
           <h1 className="headline">
-            I design dashboards <span className="h-ico green"><Icon name="trend" size={22} stroke="#fff" width={2.4} /></span>
+            I design (almost) everything <span className="h-ico green"><Icon name="trend" size={22} stroke="#fff" width={2.4} /></span>
             <br />
-            that don’t need a manual. <span className="h-ico pink"><Icon name="spark" size={20} stroke="#fff" width={2.4} /></span>
+            apps, platforms, dashboards &amp; brands. <span className="h-ico pink"><Icon name="spark" size={20} stroke="#fff" width={2.4} /></span>
           </h1>
         </div>
 
@@ -85,30 +85,30 @@ function About() {
         <Polaroid src="/desk.jpg" alt="Umar’s desk" caption="my desk" rot={-8} className="pol-r" />
 
         <p className="big-line">
-          I’m Umar <img src="/me.jpg" alt="" className="inline-me" /> a product designer in Islamabad who turns messy data{' '}
+          I’m Umar <img src="/me.jpg" alt="" className="inline-me" /> a product designer in Islamabad who turns complex ideas{' '}
           <svg className="glyph" viewBox="0 0 24 24" aria-hidden="true"><g fill="var(--yellow)"><rect x="1" y="1" width="10" height="22" rx="2" /><rect x="13" y="1" width="10" height="10" rx="2" /><rect x="13" y="13" width="10" height="10" rx="2" /></g></svg>{' '}
-          into screens that feel obvious{' '}
+          into products that feel obvious{' '}
           <svg className="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z" fill="#E5306B" /></svg>
         </p>
         </div>
 
         <div className="skills">
           <div className="skill-row">
-            <span className="skill" style={{ background: 'var(--yellow)' }}>Dashboard Design</span>
+            <span className="skill" style={{ background: 'var(--yellow)' }}>Product Design</span>
             <span className="skill-ico ico-pop" style={{ background: 'var(--yellow)', outline: '1.5px dashed var(--ink)', outlineOffset: -4 }}>
               <svg viewBox="0 0 24 24"><g fill="var(--ink)"><rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="8" rx="1.5" /><rect x="3" y="13" width="8" height="8" rx="1.5" /><path d="M17 12.5l4.5 4.5-4.5 4.5-4.5-4.5z" /></g></svg>
             </span>
-            <span className="skill" style={{ background: 'var(--green)' }}>Prototyping</span>
+            <span className="skill" style={{ background: 'var(--green)' }}>Mobile &amp; Web Apps</span>
             <span className="skill-ico ico-spin" style={{ background: 'var(--green)' }}>
               <svg viewBox="0 0 24 24"><g stroke="var(--ink)" strokeWidth="1.6" strokeLinecap="round"><path d="M12 1v4M12 19v4M1 12h4M19 12h4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M4.2 19.8 7 17M17 7l2.8-2.8" /></g><circle cx="12" cy="12" r="4.5" fill="#E5306B" /></svg>
             </span>
           </div>
           <div className="skill-row">
-            <span className="skill light" style={{ background: '#E5306B' }}>UX Audits</span>
+            <span className="skill light" style={{ background: '#E5306B' }}>Dashboards</span>
             <span className="skill-ico ico-blink" style={{ background: '#E5306B' }}>
               <svg viewBox="0 0 24 24"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z" fill="#fff" /><circle cx="12" cy="12" r="4" fill="var(--orange)" /><circle cx="12" cy="12" r="1.6" fill="var(--yellow)" /></svg>
             </span>
-            <span className="skill" style={{ background: '#3CC8F0' }}>Design Systems</span>
+            <span className="skill" style={{ background: '#3CC8F0' }}>Branding &amp; Websites</span>
             <span className="skill-ico ico-twinkle" style={{ background: '#3CC8F0' }}>
               <svg viewBox="0 0 24 24"><g fill="var(--ink)"><circle cx="8" cy="9" r="1.5" /><circle cx="16" cy="13" r="1.5" /><circle cx="11" cy="17" r="1.5" /></g><g fill="#E5306B"><circle cx="4" cy="3" r="1.6" /><circle cx="18" cy="6" r="1.6" /><circle cx="20" cy="20" r="1.6" /></g></svg>
             </span>
@@ -182,7 +182,7 @@ function LetsTalk() {
           <span className="hand-note psst">psst — still here?</span>
         </div>
         <h2 className="pixel talk-title">Let’s talk</h2>
-        <p className="talk-sub">Got a messy dashboard, a half-baked idea, or just want to say hi?<br />Send it over — I reply within 24 hours.</p>
+        <p className="talk-sub">Got a product idea, a messy app, or just want to say hi?<br />Send it over — I reply within 24 hours.</p>
         <div className="talk-cta">
           <a href={`mailto:${site.email}`} className="mail-sticky">
             <span className="mono-sm"><Icon name="mail" size={13} />Drop a line</span>

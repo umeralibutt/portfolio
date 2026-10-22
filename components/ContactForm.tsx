@@ -57,7 +57,7 @@ export default function ContactForm() {
 
   return (
     <form className="contact-card" onSubmit={onSubmit}>
-      <p className="contact-intro">Got a project, a messy dashboard, or just want to say hi? I read every message and reply within 24 hours.</p>
+      <p className="contact-intro">Got a project, a product idea, or just want to say hi? I read every message and reply within 24 hours.</p>
 
       <label className="field" style={{ '--rot': '0.4deg' } as React.CSSProperties}>
         <Icon name="user" size={18} />
