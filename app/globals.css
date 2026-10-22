@@ -167,6 +167,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .folder-blue { --bg: var(--blue); --fg: #fff; }
 .folder-mint { --bg: var(--mint); --fg: var(--ink); }
 .folder-yellow { --bg: var(--yellow); --fg: var(--ink); }
+.folder-pink { --bg: var(--pink); --fg: var(--ink); }
 .folder-tab { position: absolute; top: 0; left: var(--tab-x); width: 147px; height: 42px; background: var(--bg); color: var(--fg); border-radius: 10px 10px 0 0; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 700; font-size: 11px; letter-spacing: .8px; text-transform: uppercase; }
 .folder-body { background: var(--bg); color: var(--fg); min-height: 470px; border-radius: 0 10px 10px 10px; display: grid; grid-template-columns: 1fr 600px; gap: 40px; padding: 56px 53px 40px 56px; box-shadow: 0 -6px 24px rgba(0, 0, 0, .1); }
 .folder-label { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-weight: 700; font-size: 11px; letter-spacing: .8px; text-transform: uppercase; }
@@ -380,7 +381,9 @@ button.torn:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; 
 .case-stat p { max-width: 240px; }
 .case-next { padding: 130px 0 120px; }
 .case-next .kicker { margin-bottom: 20px; }
-.folder-next { position: relative; top: 0; }
+.folder-next { position: relative; top: 0; --tab-x: 0%; }
+.folder-next .folder-tab { width: 163px; }
+.folder-next .folder-shot { display: block; }
 .folder-next .folder-body { min-height: 420px; padding-top: 60px; align-items: center; }
 .folder-next .folder-text { padding-left: 44px; }
 .folder-next h3 { margin-top: 0; }

@@ -18,7 +18,6 @@ export type Project = {
   desc: string;
   platform?: string;
   timeline?: string;
-  caseStudy?: boolean;
   folder?: { label: string; tagline: string; stats: [string, string]; color: 'ink' | 'blue' | 'mint' | 'yellow' };
 };
 
@@ -26,7 +25,7 @@ export const projects: Project[] = [
   {
     slug: 'youngs-capital', name: 'Youngs Capital', img: '/work/youngs-capital.jpg', meta: 'Fintech · Live',
     desc: 'Invest, trade and grow in Pakistan’s stock market — one profit-sharing brokerage built for every investor.',
-    platform: 'iOS & Android', timeline: '8 Weeks', caseStudy: true,
+    platform: 'iOS & Android', timeline: '8 Weeks',
     folder: { label: 'Fintech · iOS + Android', tagline: 'Pakistan’s first profit-and-loss sharing brokerage — invest, trade and grow on the PSX.', stats: ['Top-10 broker', '4.8★ App Store'], color: 'ink' },
   },
   {

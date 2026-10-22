@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
 import type { Project } from '@/lib/data';
+import { hasCase } from '@/lib/cases';
 import { Icon } from './icons';
 import { Tape } from './bits';
 
@@ -22,7 +23,7 @@ export default function ProjectCard({ project, n }: { project: Project; n: numbe
     </>
   );
   const style = { '--rot': `${tilts[(n - 1) % 3]}deg` } as CSSProperties;
-  return project.caseStudy
+  return hasCase(project.slug)
     ? <Link href={`/work/${project.slug}`} className="card" style={style}>{body}</Link>
     : <article className="card" style={style}>{body}</article>;
 }
