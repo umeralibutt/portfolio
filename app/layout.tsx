@@ -21,7 +21,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Umar Ali Butt — Product Designer for dashboards, fintech & Web3',
     description: 'I design dashboards that don’t need a manual.',
-    images: ['/work/youngs-capital.jpg'],
   },
 };
 
