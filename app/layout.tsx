@@ -10,7 +10,12 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Motion from '@/components/Motion';
 
+// Absolute base for Open Graph image URLs: an explicit site URL, else the Vercel deployment, else local dev.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  ?? (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'http://localhost:3000');
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Umar Ali Butt — Product Designer for dashboards, fintech & Web3',
   description: 'I design dashboards that don’t need a manual. Product designer in Islamabad for fintech, Web3 and SaaS.',
   openGraph: {
