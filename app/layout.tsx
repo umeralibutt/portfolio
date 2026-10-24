@@ -1,14 +1,16 @@
 import type { Metadata } from 'next';
-import { GeistSans } from 'geist/font/sans';
-import '@fontsource/silkscreen/700.css';
-import '@fontsource/caveat/400.css';
-import '@fontsource/jetbrains-mono/500.css';
-import '@fontsource/jetbrains-mono/700.css';
-import '@fontsource/unbounded/700.css';
+import { Anton, IBM_Plex_Mono, Inter, Instrument_Serif } from 'next/font/google';
 import './globals.css';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
-import Motion from '@/components/Motion';
+import Nav from '@/components/site/Nav';
+import Footer from '@/components/site/Footer';
+import Effects from '@/components/site/Effects';
+import Cursor from '@/components/site/Cursor';
+import Preloader from '@/components/site/Preloader';
+
+const anton = Anton({ subsets: ['latin'], weight: '400', variable: '--font-anton', display: 'swap' });
+const instrument = Instrument_Serif({ subsets: ['latin'], weight: '400', style: ['normal', 'italic'], variable: '--font-instrument', display: 'swap' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const plex = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-plex', display: 'swap' });
 
 // Absolute base for Open Graph image URLs: an explicit site URL, else the Vercel deployment, else local dev.
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
@@ -24,18 +26,25 @@ export const metadata: Metadata = {
   },
 };
 
+// Runs before first paint: marks JS as available, and shows the preloader on the first visit of a session
+// (never with reduced motion). Everything still renders and reads fine if this never runs.
+const boot = `(function(d){var h=d.documentElement;h.classList.add('js');
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;if(rm)h.classList.add('rm');
+try{if(!rm&&!sessionStorage.getItem('seen'))h.classList.add('preload');}catch(e){}})(document)`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={GeistSans.variable} suppressHydrationWarning>
+    <html lang="en" className={`${anton.variable} ${instrument.variable} ${inter.variable} ${plex.variable}`} suppressHydrationWarning>
       <head>
-        {/* Turn on entrance animations before first paint, unless the visitor prefers reduced motion. */}
-        <script dangerouslySetInnerHTML={{ __html: "if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion')" }} />
+        <script dangerouslySetInnerHTML={{ __html: boot }} />
       </head>
       <body>
-        <Motion />
+        <Preloader />
         <Nav />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
+        <Cursor />
+        <Effects />
       </body>
     </html>
   );
