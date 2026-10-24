@@ -14,6 +14,7 @@
   --font-serif: var(--font-instrument), Georgia, serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-plex), ui-monospace, monospace;
+  --font-wordmark: var(--font-unbounded), var(--font-inter), sans-serif;
 
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -61,10 +62,11 @@
   @media (min-width: 1024px) { padding-block: 140px; }
 }
 
-/* ---------- Section colour shift ----------
-   Without JS every section paints its own background. With JS the sections go transparent
-   and the body colour tweens between them as they enter (see components/site/Effects.tsx). */
-html.js [data-bg] { background-color: transparent !important; }
+/* ---------- Headline line reveals ----------
+   Each line sits in a mask padded for italic overhangs and descenders. With JS (and motion allowed)
+   hero lines start below their mask before first paint, so they never flash before sliding up. */
+.line-mask { overflow: clip; padding: 0 0.14em 0.1em 0; margin: 0 -0.14em -0.1em 0; }
+html.js:not(.rm) [data-hero] [data-line] { transform: translateY(110%); }
 
 /* ---------- Preloader (first visit only, set by the inline script in layout.tsx) ---------- */
 .preloader { display: none; }
@@ -79,7 +81,6 @@ html.preload body { overflow: hidden; }
 /* ---------- Marquee / text helpers ---------- */
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
-.line-mask { overflow: clip; padding-bottom: 0.06em; margin-bottom: -0.06em; }
 
 /* Torn receipt edges. */
 .torn-y {

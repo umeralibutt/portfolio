@@ -3,11 +3,14 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Sparkle } from '../site/icons';
+import { fluid } from '../site/type';
 
 const items = ['Product design', 'Web3', 'Fintech', 'AI products', 'Dashboards', 'Design systems', 'Brands', 'Prototypes'];
 
-/** Infinite band whose speed and direction follow the scroll: scroll down → left, up → right, faster with velocity. */
+/**
+ * Figma "Marquee" 213:68 — ink band, Anton 52 with orange sparkles, 36px apart, 30px tall padding.
+ * Speed and direction follow the scroll: down → left, up → right, faster with velocity.
+ */
 export default function Marquee() {
   const track = useRef<HTMLDivElement>(null);
 
@@ -23,32 +26,34 @@ export default function Marquee() {
       end: 'max',
       onUpdate: (self) => {
         dir = self.direction === 1 ? -1 : 1;
-        boost = Math.min(Math.abs(self.getVelocity()) / 220, 14);
+        boost = Math.min(Math.abs(self.getVelocity()) / 260, 10);
       },
     });
     const tick = (_t: number, dt: number) => {
-      const half = el.scrollWidth / 2;
-      x += dir * (0.6 + boost) * (dt / 16.67);
-      boost *= 0.92;
+      const half = (el.firstElementChild as HTMLElement).offsetWidth;
+      x += dir * (0.7 + boost) * (dt / 16.67);
+      boost *= 0.93;
       if (x <= -half) x += half;
       if (x > 0) x -= half;
-      el.style.transform = `translate3d(${x}px,0,0)`;
+      el.style.transform = `translate3d(${x.toFixed(2)}px,0,0)`;
     };
     gsap.ticker.add(tick);
     return () => { gsap.ticker.remove(tick); st.kill(); };
   }, []);
 
+  // Each copy carries its own trailing gap so the two halves are identical and the loop is seamless.
   const row = items.map((t) => (
-    <span key={t} className="flex shrink-0 items-center gap-[clamp(20px,2.5vw,36px)] pr-[clamp(20px,2.5vw,36px)]">
-      <span className="display whitespace-nowrap text-[clamp(44px,5.4vw,78px)] leading-none">{t}</span>
-      <Sparkle className="size-[clamp(22px,2.6vw,37px)] text-orange" />
+    <span key={t} className="flex shrink-0 items-center gap-9 pr-9">
+      <span className="font-display uppercase leading-[1.5] tracking-[0.01em] whitespace-nowrap" style={{ fontSize: fluid(52, 36) }}>{t}</span>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/home/sparkle.svg" alt="" width={37} height={37} className="size-[clamp(26px,2.6vw,37.33px)]" />
     </span>
   ));
 
   return (
-    <section data-bg="ink" aria-label="What I design" className="overflow-hidden bg-ink py-[clamp(20px,2vw,30px)] text-bone">
+    <section aria-label="What I design" className="overflow-hidden bg-ink py-[30px] text-bone">
       <p className="sr-only">{items.join(', ')}</p>
-      <div ref={track} className="flex w-max will-change-transform" aria-hidden="true">
+      <div ref={track} className="flex w-max pl-5 will-change-transform md:pl-12" aria-hidden="true">
         <div className="flex">{row}</div>
         <div className="flex">{row}</div>
       </div>

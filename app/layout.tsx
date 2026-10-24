@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Anton, IBM_Plex_Mono, Inter, Instrument_Serif } from 'next/font/google';
+import { Anton, IBM_Plex_Mono, Inter, Instrument_Serif, Unbounded } from 'next/font/google';
 import './globals.css';
 import Nav from '@/components/site/Nav';
 import Footer from '@/components/site/Footer';
@@ -10,6 +10,7 @@ import Preloader from '@/components/site/Preloader';
 const anton = Anton({ subsets: ['latin'], weight: '400', variable: '--font-anton', display: 'swap' });
 const instrument = Instrument_Serif({ subsets: ['latin'], weight: '400', style: ['normal', 'italic'], variable: '--font-instrument', display: 'swap' });
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const unbounded = Unbounded({ subsets: ['latin'], weight: '700', variable: '--font-unbounded', display: 'swap' });
 const plex = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-plex', display: 'swap' });
 
 // Absolute base for Open Graph image URLs: an explicit site URL, else the Vercel deployment, else local dev.
@@ -34,7 +35,7 @@ try{if(!rm&&!sessionStorage.getItem('seen'))h.classList.add('preload');}catch(e)
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${anton.variable} ${instrument.variable} ${inter.variable} ${plex.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${anton.variable} ${instrument.variable} ${inter.variable} ${plex.variable} ${unbounded.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: boot }} />
       </head>

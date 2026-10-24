@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { fluid } from '../site/type';
 
 const words = ['Apps.', 'Platforms.', 'Dashboards.', 'Brands.'];
 
-/** All four words stay on screen; the highlight hops to the next one every 2.2s and its letters slide up. */
+/** All four words stay put; the orange underline hops to the next one every 2.2s and its letters slide up. */
 export default function RotatingWords() {
   const [active, setActive] = useState(2);
 
@@ -15,17 +16,22 @@ export default function RotatingWords() {
   }, []);
 
   return (
-    <p className="flex flex-wrap gap-x-[0.5em] gap-y-1 text-[clamp(26px,3vw,44px)] font-normal tracking-[-0.03em]" aria-label={words.join(' ')}>
+    <p className="flex flex-wrap gap-x-5 gap-y-1 font-medium leading-tight tracking-[-0.03em]" style={{ fontSize: fluid(34, 24) }} aria-label={words.join(' ')}>
       {words.map((w, i) => (
-        <span key={w} aria-hidden="true" className={`relative inline-flex transition-colors duration-500 ease-brand ${i === active ? 'text-orange' : 'text-[#ABA59B]'}`}>
+        <span
+          key={w}
+          aria-hidden="true"
+          className={`relative inline-flex transition-colors duration-500 ease-brand ${i === active ? 'text-orange' : 'text-ink/30'}`}
+        >
           {i === active
             ? w.split('').map((ch, j) => (
-                <span key={`${active}-${j}`} className="inline-block overflow-clip">
+                <span key={`${active}-${j}`} className="inline-block overflow-clip pb-[0.06em]">
                   <span className="inline-block animate-[letter-up_0.6s_var(--ease-brand)_both]" style={{ animationDelay: `${j * 28}ms` }}>{ch}</span>
                 </span>
               ))
             : w}
-          <span className={`absolute inset-x-0 -bottom-1 h-[3px] origin-left bg-orange transition-transform duration-500 ease-brand ${i === active ? 'scale-x-100' : 'scale-x-0'}`} />
+          {/* Underline as a bar: text-decoration doesn't reach the inline-block letters. */}
+          <span className={`absolute inset-x-0 bottom-[0.02em] h-[0.07em] origin-left bg-orange transition-transform duration-500 ease-brand ${i === active ? 'scale-x-100' : 'scale-x-0'}`} />
         </span>
       ))}
     </p>

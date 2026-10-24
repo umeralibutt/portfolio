@@ -1,3 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
+import { Line, fluid } from '../site/type';
+
 const items: [string, string, string][] = [
   ['1', 'Self-taught designer', '1'],
   ['5', 'Years shipping product', '5 yrs'],
@@ -7,64 +10,69 @@ const items: [string, string, string][] = [
   ['4', 'Cups of chai, daily', '4'],
 ];
 
-// Bar widths for a believable barcode.
-const bars = [4, 4, 6, 6, 4, 4, 6, 4, 4, 4, 6, 4, 4, 6, 4, 6, 4, 6, 4, 4, 6, 6, 4, 4, 6, 4, 4, 6, 4, 4, 4, 6, 6, 4, 4, 6, 4, 6, 6, 4, 4, 4, 6, 4, 6, 4, 4, 6];
+// Bar widths from the Figma barcode (1.5px / 3px, 2px apart).
+const bars = [1, 1, 2, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1, 1, 2, 1, 2, 2, 1, 1, 1, 2, 1, 2, 1, 1, 2];
 
+const Dashed = () => <span className="block h-px w-full bg-[repeating-linear-gradient(90deg,#B9B3A8_0_4px,transparent_4px_8px)]" aria-hidden="true" />;
+
+/** Figma "The Receipt" 232:24 — ink with a dot grid, 140 / 96 padding; the receipt is 470px wide at −3°. */
 export default function Receipt() {
   return (
-    <section data-bg="ink" className="relative overflow-hidden bg-ink text-bone">
+    <section className="relative overflow-hidden bg-ink text-bone">
       <div className="dot-grid absolute inset-0" aria-hidden="true" />
-      <div className="gutter section-pad relative grid items-center gap-16 lg:grid-cols-[minmax(0,1fr)_509px] lg:pl-[88px]">
-        <div>
-          <p className="font-serif text-[clamp(30px,3vw,44px)] italic leading-none text-orange">receipts, not vibes</p>
-          <h2 data-reveal className="display mt-5 text-[clamp(84px,9.2vw,132px)]">
-            The<br />Receipt<span className="text-orange">.</span>
+      <div className="relative flex flex-col items-center gap-16 px-5 py-20 md:px-12 lg:flex-row lg:justify-between lg:px-24 lg:py-[140px]">
+        <div className="flex flex-col items-start gap-7 self-start lg:self-center">
+          <p className="font-serif italic leading-none text-orange" style={{ fontSize: fluid(34, 26) }}>receipts, not vibes</p>
+          <h2 data-lines className="font-display leading-[0.88] whitespace-nowrap" style={{ fontSize: fluid(150, 84) }}>
+            <Line>THE</Line>
+            <Line>RECEIPT<span className="text-orange">.</span></Line>
           </h2>
-          <p className="mt-8 max-w-[460px] text-[19px] leading-[1.55] text-bone/65">Five years of shipping, itemised. Keep it for your records — or your hiring manager’s.</p>
-          <p className="mt-10 flex items-center gap-3 font-serif text-[22px] italic text-bone/80">
+          <p className="max-w-[460px] leading-[1.5] text-[#a8a399]" style={{ fontSize: fluid(20, 17) }}>Five years of shipping, itemised. Keep it for your records — or your hiring manager’s.</p>
+          <p className="flex items-center gap-2.5 pt-3 font-serif text-[22px] italic leading-none text-bone/75">
             No refunds on good taste.
-            <svg width="54" height="16" viewBox="0 0 54 16" fill="none" stroke="var(--color-orange)" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <path d="M2 10c14-6 30-7 48-2" /><path d="M44 3l7 5-7 5" />
-            </svg>
+            <img src="/home/receipt-arrow.svg" alt="" width={60} height={20} />
           </p>
         </div>
 
         {/* Prints in from the top on scroll; tilts back on hover; the stamp lands last. */}
-        <div data-receipt className="group relative mx-auto w-full max-w-[470px] [perspective:1200px]">
-          <div data-paper className="torn-y relative rotate-[3deg] bg-paper px-[clamp(20px,4vw,40px)] pt-12 pb-14 font-mono text-[15px] text-ink shadow-2xl transition-transform duration-700 ease-brand group-hover:rotate-[-1deg]">
-            <p className="display text-center text-[clamp(44px,4.6vw,66px)] leading-none">Umar Ali Butt</p>
-            <p className="mt-4 text-center text-[13px] font-semibold tracking-[0.1em]">— ORDER RECEIPT —</p>
-            <p className="mt-3 text-center text-[12px] text-ink/55">PRODUCT DESIGN · ISLAMABAD, PK</p>
-            <div className="mt-6 flex justify-between border-b border-dashed border-ink/40 pb-3 text-[12px] text-ink/60">
-              <span>ORDER #2021</span><span>SEP 2021 — NOW</span>
-            </div>
-            <div className="mt-4 flex justify-between text-[12px] font-semibold"><span>QTY&nbsp;&nbsp;ITEM</span><span>AMOUNT</span></div>
-            <ul className="mt-2 space-y-2.5">
-              {items.map(([q, label, amt]) => (
-                <li key={label} className="flex items-baseline gap-3">
-                  <span className="w-10 shrink-0 text-[13px] text-ink/55">{q}</span>
-                  <span className="shrink-0">{label}</span>
-                  <span className="mb-1 flex-1 border-b border-dotted border-ink/30" />
-                  <span className="shrink-0 font-semibold">{amt}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-5 border-t border-dashed border-ink/40 pt-4 text-[13px]">
-              <div className="flex justify-between"><span className="text-ink/55">SUBTOTAL</span><span>products people enjoy</span></div>
-              <div className="mt-3 flex items-center justify-between">
-                <span className="font-semibold">TOTAL</span>
-                <span className="bg-orange px-3 py-1.5 font-sans text-[clamp(18px,1.7vw,22px)] font-semibold">worth the hire</span>
+        <div data-receipt className="group relative w-full max-w-[470px] shrink-0 lg:mr-5">
+          <div className="-rotate-3 [filter:drop-shadow(0_40px_40px_rgb(0_0_0/0.5))] transition-[rotate] duration-700 ease-brand group-hover:rotate-0">
+            <div data-paper className="relative">
+              <img src="/home/receipt-tear-top.svg" alt="" width={470} height={12} className="block h-3 w-full" />
+              <div className="flex flex-col items-center gap-4 bg-[#f7f4ec] px-[clamp(20px,7.6%,36px)] pb-8 pt-7 font-mono text-ink">
+                <p className="font-display text-[clamp(34px,9.4vw,44px)] leading-tight tracking-[0.01em]">UMAR ALI BUTT</p>
+                <p className="text-[14px] font-semibold tracking-[0.02em]">— ORDER RECEIPT —</p>
+                <p className="text-[12px] tracking-[0.02em] text-[#736e66]">PRODUCT DESIGN · ISLAMABAD, PK</p>
+                <div className="flex w-full justify-between text-[12px] tracking-[0.02em] text-[#736e66]"><span>ORDER #2021</span><span>SEP 2021 — NOW</span></div>
+                <Dashed />
+                <div className="flex w-full justify-between text-[12px] font-semibold tracking-[0.02em]"><span className="whitespace-pre">QTY  ITEM</span><span>AMOUNT</span></div>
+                {items.map(([q, label, amt]) => (
+                  <div key={label} className="flex w-full items-end gap-2.5">
+                    <span className="w-11 shrink-0 text-[14px] tracking-[0.02em] text-[#736e66]">{q}</span>
+                    <span className="shrink-0 text-[clamp(13px,3.6vw,15px)] tracking-[0.02em]">{label}</span>
+                    <span className="mb-[5px] h-px min-w-2 flex-1 bg-[repeating-linear-gradient(90deg,#B9B3A8_0_2px,transparent_2px_5px)]" />
+                    <span className="shrink-0 text-[15px] font-semibold tracking-[0.02em]">{amt}</span>
+                  </div>
+                ))}
+                <Dashed />
+                <div className="flex w-full justify-between text-[13px] tracking-[0.02em]"><span className="text-[#736e66]">SUBTOTAL</span><span>products people enjoy</span></div>
+                <div className="flex w-full items-center justify-between">
+                  <span className="text-[16px] font-semibold tracking-[0.02em]">TOTAL</span>
+                  <span className="bg-orange px-3 py-1.5 font-sans text-[22px] font-semibold leading-none tracking-[-0.02em]">worth the hire</span>
+                </div>
+                <div className="flex w-full justify-between text-[13px] tracking-[0.02em]"><span className="text-[#736e66]">PAID IN</span><span>pixels &amp; patience</span></div>
+                <Dashed />
+                <div className="flex items-end gap-0.5" aria-hidden="true">
+                  {bars.map((w, i) => <span key={i} className="h-[52px] bg-ink" style={{ width: w * 1.5 }} />)}
+                </div>
+                <p className="text-[12px] tracking-[0.02em] text-[#736e66]">NO REFUNDS ON GOOD TASTE</p>
               </div>
-              <div className="mt-3 flex justify-between border-b border-dashed border-ink/40 pb-4"><span className="text-ink/55">PAID IN</span><span>pixels &amp; patience</span></div>
-            </div>
-            <div className="mt-6 flex justify-center gap-px" aria-hidden="true">
-              {bars.map((w, i) => <span key={i} className="h-[52px] bg-ink" style={{ width: w / 1.6, marginRight: i % 3 ? 1 : 2 }} />)}
-            </div>
-            <p className="mt-3 text-center text-[11px] text-ink/55">NO REFUNDS ON GOOD TASTE</p>
+              <img src="/home/receipt-tear-bottom.svg" alt="" width={470} height={12} className="block h-3 w-full" />
 
-            <div data-stamp className="absolute bottom-16 right-[6%] -rotate-[8deg] rounded-[50%] border-[2.5px] border-orange px-4 py-2 text-center text-orange">
-              <span className="block font-sans text-[18px] font-bold tracking-[0.08em]">APPROVED</span>
-              <span className="block text-[8px] tracking-[0.18em]">BY ACTUAL USERS</span>
+              <div data-stamp className="absolute left-[73%] top-[82%] rotate-[14deg] rounded-[28px] border-[2px] border-orange px-3 py-[7px] text-center font-mono leading-none text-orange opacity-90">
+                <span className="block text-[15.3px] font-semibold tracking-[0.1em]">APPROVED</span>
+                <span className="mt-0.5 block text-[7px] font-medium tracking-[0.12em]">BY ACTUAL USERS</span>
+              </div>
             </div>
           </div>
         </div>
