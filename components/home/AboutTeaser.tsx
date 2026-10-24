@@ -3,10 +3,10 @@ import LayersPanel from './LayersPanel';
 import { Line, fluid } from '../site/type';
 import { ArrowUp } from '../site/icons';
 
-/** Figma "About — Layers of Umar" 216:34 — beige, 140 / 48 padding, text column + layers panel 72px apart. */
+/** Figma "About — Layers of Umar" 216:34 — beige, 140px top/bottom; 110px sides on desktop (Umar's call, Figma has 48). */
 export default function AboutTeaser() {
   return (
-    <section className="relative bg-beige px-5 py-20 md:px-12 lg:py-[140px]">
+    <section className="relative bg-beige px-5 py-20 md:px-12 lg:py-[140px] xl:px-[110px]">
       <div className="flex flex-col gap-16 xl:flex-row xl:items-center xl:gap-[72px]">
         <div className="relative flex min-w-0 flex-1 flex-col items-start gap-8">
           <p className="text-[14px] font-semibold uppercase leading-[1.21] tracking-[0.12em] text-orange">About</p>
