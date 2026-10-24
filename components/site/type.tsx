@@ -11,9 +11,10 @@ export const fluid = (px: number, min = Math.round(px * 0.42)) => `clamp(${min}p
  * The mask is padded so italic overhangs and descenders aren't clipped at rest.
  */
 export function Line({ children, className = '', style }: { children: ReactNode; className?: string; style?: CSSProperties }) {
+  // The style (usually the font size) sits on the mask so its em-based padding scales with the type.
   return (
-    <span className="line-mask block">
-      <span data-line className={`block ${className}`} style={style}>{children}</span>
+    <span className="line-mask block" style={style}>
+      <span data-line className={`block ${className}`}>{children}</span>
     </span>
   );
 }

@@ -52,12 +52,13 @@ export default function Effects() {
         }
         if (hero) {
           // CSS already holds hero lines below their masks, so there's no flash before this runs.
-          const tween = gsap.to(lines, { yPercent: 0, y: 0, duration: 1.1, stagger: 0.06, ease, paused: true });
+          const tween = gsap.to(lines, { yPercent: 0, y: 0, opacity: 1, duration: 1.1, stagger: 0.06, ease, paused: true });
           cleanups.push(whenPreloaded(() => tween.play()));
           return;
         }
+        // The fade keeps tall glyphs (which overhang the mask) from peeking out before they slide up.
         gsap.from(lines, {
-          yPercent: 110, duration: 0.9, stagger: 0.06, ease,
+          yPercent: 110, opacity: 0, duration: 0.9, stagger: 0.06, ease,
           scrollTrigger: { trigger: group, start: 'top 88%', once: true },
         });
       });

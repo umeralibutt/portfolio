@@ -65,8 +65,12 @@
 /* ---------- Headline line reveals ----------
    Each line sits in a mask padded for italic overhangs and descenders. With JS (and motion allowed)
    hero lines start below their mask before first paint, so they never flash before sliding up. */
-.line-mask { overflow: clip; padding: 0 0.14em 0.1em 0; margin: 0 -0.14em -0.1em 0; }
-html.js:not(.rm) [data-hero] [data-line] { transform: translateY(110%); }
+/* Padding (cancelled by equal negative margins) lets tall glyphs overlap the line above, as in Figma
+   (e.g. “Umar.” rising into “HI, I’M”), without changing any line position. */
+.line-mask { overflow: clip; padding: 0.3em 0.14em 0.2em 0; margin: -0.3em -0.14em -0.2em 0; }
+/* Stack lines in a flex column so their negative margins don't collapse into each other. */
+:has(> .line-mask) { display: flex; flex-direction: column; }
+html.js:not(.rm) [data-hero] [data-line] { transform: translateY(110%); opacity: 0; }
 
 /* ---------- Preloader (first visit only, set by the inline script in layout.tsx) ---------- */
 .preloader { display: none; }
