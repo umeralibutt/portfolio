@@ -127,7 +127,7 @@ function ContactForm() {
 
         <Step n="02" title="WHO’S ASKING?">
           <div className="flex flex-col gap-5 sm:flex-row">
-            <Field label="Your name" name="name" placeholder="Ayesha" autoComplete="name" />
+            <Field label="Your name" name="name" placeholder="What should I call you?" autoComplete="name" />
             <Field label="Email" name="email" type="email" placeholder="you@company.com" autoComplete="email" />
           </div>
         </Step>
