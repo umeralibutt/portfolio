@@ -9,7 +9,7 @@ export default function AboutTeaser() {
     <section className="relative bg-beige gutter py-20 lg:py-[140px]">
       <div className="flex flex-col gap-16 xl:flex-row xl:items-center xl:gap-[72px]">
         <div className="relative flex min-w-0 flex-1 flex-col items-start gap-8">
-          <p className="text-[14px] font-semibold uppercase leading-[1.21] tracking-[0.12em] text-orange">About</p>
+          <p className="text-[14px] font-semibold uppercase leading-[1.21] tracking-[0.12em] text-orange-deep">About</p>
           <h2 data-lines className="whitespace-nowrap">
             <Line className="font-display leading-[0.88]" style={{ fontSize: fluid(150, 72) }}>HI, I’M</Line>
             <Line className="font-serif italic leading-[0.8] text-orange" style={{ fontSize: fluid(170, 82) }}>Umar.</Line>

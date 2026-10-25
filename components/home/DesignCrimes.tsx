@@ -46,7 +46,7 @@ export default function DesignCrimes() {
                 </span>
               </span>
             </span>
-            <span className="shrink-0 text-[15px] font-medium text-ink/75 md:text-[16px]">{penalty}</span>
+            <span className="shrink-0 text-[15px] font-medium text-ink/85 md:text-[16px]">{penalty}</span>
           </li>
         ))}
       </ol>

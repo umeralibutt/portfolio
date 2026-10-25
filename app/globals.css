@@ -5,6 +5,8 @@
   --color-ink: #0E0D0C;
   --color-ink-2: #1C1B19;
   --color-orange: #FF4D00;
+  /* Small orange text (under ~18px) on bone, beige or white: #FF4D00 is too light to read there (WCAG AA 4.5:1). */
+  --color-orange-deep: #BB3800;
   --color-mute: #6B665E;
   --color-beige: #ECE7DE;
   --color-paper: #F8F4EC;

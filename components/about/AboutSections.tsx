@@ -71,7 +71,7 @@ export function GoodAt() {
           >
             <span aria-hidden="true" className="absolute inset-0 origin-left scale-x-0 bg-orange transition-transform duration-500 ease-brand group-hover:scale-x-100 group-focus-visible:scale-x-100" />
             <span className="relative flex items-center gap-7">
-              <span className="text-[14px] font-semibold leading-[1.21] text-orange transition-colors duration-300 group-hover:text-ink group-focus-visible:text-ink">{String(i + 1).padStart(2, '0')}</span>
+              <span className="text-[14px] font-semibold leading-[1.21] text-orange-deep transition-colors duration-300 group-hover:text-ink group-focus-visible:text-ink">{String(i + 1).padStart(2, '0')}</span>
               <span className="font-display leading-none" style={{ fontSize: fluid(72, 40) }}>{s.name}</span>
             </span>
             <span className="relative flex items-center gap-6">

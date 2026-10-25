@@ -36,7 +36,7 @@ function Step({ n, title, hint, children }: { n: string; title: string; hint?: s
     <fieldset className="flex min-w-0 flex-col gap-[18px]">
       <legend className="contents">
         <span className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <span className="text-[13px] font-semibold leading-[1.21] tracking-[0.1em] text-orange">{n}</span>
+          <span className="text-[13px] font-semibold leading-[1.21] tracking-[0.1em] text-orange-deep">{n}</span>
           <span className="font-display leading-none" style={{ fontSize: fluid(36, 30) }}>{title}</span>
           {hint && <span className="font-serif text-[22px] italic leading-[1.21] text-mute">{hint}</span>}
         </span>
@@ -51,7 +51,7 @@ function Field({ label, name, type = 'text', placeholder, area, autoComplete }: 
   const input = 'peer block w-full bg-transparent px-[18px] pb-4 pt-[36px] text-[20px] font-medium leading-[1.21] tracking-[-0.01em] outline-none placeholder:text-mute/55';
   return (
     <label className={`group relative block min-w-0 flex-1 rounded-[16px] border border-ink/[0.08] bg-[#f6f4ee] transition-[background-color,border-color,box-shadow,translate] duration-300 ease-brand focus-within:-translate-y-0.5 focus-within:border-orange focus-within:bg-white focus-within:shadow-[0_0_0_1px_var(--color-orange),0_0_0_5px_rgb(255_77_0/0.15)] ${area ? 'h-[150px] flex-none' : 'h-20'}`}>
-      <span className="absolute left-[18px] top-[14px] text-[12px] font-semibold uppercase leading-[1.21] tracking-[0.08em] text-mute transition-colors group-focus-within:text-orange">{label}</span>
+      <span className="absolute left-[18px] top-[14px] text-[12px] font-semibold uppercase leading-[1.21] tracking-[0.08em] text-mute transition-colors group-focus-within:text-orange-deep">{label}</span>
       {area ? (
         <textarea name={name} required placeholder={placeholder} className={`${input} h-full resize-none`} />
       ) : (

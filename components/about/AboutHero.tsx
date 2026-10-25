@@ -23,7 +23,7 @@ export default function AboutHero() {
   return (
     <section className="gutter flex flex-col gap-16 pb-20 pt-[124px] lg:flex-row lg:items-center lg:justify-between lg:pb-[120px] lg:pt-[193px]">
       <div className="flex flex-col items-start gap-8">
-        <p className="text-[14px] font-semibold uppercase leading-[1.21] tracking-[0.12em] text-orange">About</p>
+        <p className="text-[14px] font-semibold uppercase leading-[1.21] tracking-[0.12em] text-orange-deep">About</p>
         <h1 data-lines data-hero className="whitespace-nowrap">
           <Line className="font-display leading-[0.86]" style={{ fontSize: fluid(200, 96) }}>I’M</Line>
           <Line className="font-serif italic leading-[0.8] text-orange" style={{ fontSize: fluid(211, 100) }}>Umar.</Line>

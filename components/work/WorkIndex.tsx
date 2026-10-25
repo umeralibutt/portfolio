@@ -112,7 +112,7 @@ export default function WorkIndex() {
                   </span>
                   <span className="flex items-center justify-between gap-4">
                     <span className="flex min-w-0 items-baseline gap-4 transition-colors duration-300 group-hover:text-orange">
-                      <span className="text-[14px] font-semibold leading-[1.21] text-mute transition-colors duration-300 group-hover:text-orange">{n}</span>
+                      <span className="text-[14px] font-semibold leading-[1.21] text-mute transition-colors duration-300 group-hover:text-orange-deep">{n}</span>
                       <span className="truncate font-display leading-none" style={{ fontSize: fluid(48, 34) }}>{p.name}</span>
                     </span>
                     <span className="relative size-[26px] shrink-0 text-ink">

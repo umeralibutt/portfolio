@@ -28,7 +28,7 @@ export default function HowIWork() {
                 <span data-draw-line className="absolute inset-0 origin-left bg-orange" />
               </span>
             </div>
-            <p className="text-[14px] font-semibold leading-[1.21] tracking-[0.1em] text-orange">{s.n}</p>
+            <p className="text-[14px] font-semibold leading-[1.21] tracking-[0.1em] text-orange-deep">{s.n}</p>
             <h3 className="font-display uppercase leading-[0.95] whitespace-nowrap" style={{ fontSize: fluid(56, 40) }}>{s.title}</h3>
             <p className="text-[17px] leading-[1.55] tracking-[-0.006em] text-mute lg:text-[18px]">{s.body}</p>
           </li>

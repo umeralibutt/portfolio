@@ -61,7 +61,7 @@ export default function Nav() {
                 <Link
                   href={l.href}
                   aria-current={active(l.href) ? 'page' : undefined}
-                  className={`transition-colors duration-300 hover:text-orange ${active(l.href) ? 'text-orange underline decoration-[1.5px] underline-offset-[6px]' : 'text-ink'}`}
+                  className={`transition-colors duration-300 hover:text-orange-deep ${active(l.href) ? 'text-orange-deep underline decoration-[1.5px] underline-offset-[6px]' : 'text-ink'}`}
                 >
                   {l.label}
                 </Link>
