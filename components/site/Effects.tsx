@@ -19,6 +19,9 @@ const ease = 'expo.out';
  * - data-magnetic             pill CTAs pull up to 12px toward the pointer
  * - data-draw-line            a rule that draws across as you scroll
  * - data-receipt / data-stamp the receipt prints in, then the stamp slams down
+ * - data-scale-in             grows from 92% to full size as it scrolls in (case study covers)
+ * - data-rows                 its children tick in one by one
+ * - data-slide-over           slides in from the right while scrolling (the case study "fix" panel)
  * Reduced motion: no smooth scroll or pointer effects, and reveals become short fades.
  */
 export default function Effects() {
@@ -70,6 +73,28 @@ export default function Effects() {
           scrollTrigger: { trigger: el, start: 'top 85%', end: 'top 50%', scrub: reduced ? false : 0.6 },
         });
       });
+
+      // Case study cover grows from 92% to full width as it scrolls in.
+      if (!reduced) {
+        gsap.utils.toArray<HTMLElement>('[data-scale-in]').forEach((el) => {
+          gsap.fromTo(el, { scale: 0.92 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 30%', scrub: 0.6 } });
+        });
+      }
+
+      // List rows tick in one by one.
+      gsap.utils.toArray<HTMLElement>('[data-rows]').forEach((list) => {
+        gsap.from(list.children, {
+          opacity: 0, y: reduced ? 0 : 24, duration: reduced ? 0.4 : 0.7, stagger: 0.12, ease,
+          scrollTrigger: { trigger: list, start: 'top 85%', once: true },
+        });
+      });
+
+      // The fix panel slides over toward the problem panel.
+      if (!reduced) {
+        gsap.utils.toArray<HTMLElement>('[data-slide-over]').forEach((el) => {
+          gsap.fromTo(el, { xPercent: 12, rotate: 2 }, { xPercent: 0, rotate: 0, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 45%', scrub: 0.6 } });
+        });
+      }
 
       // The receipt prints top-down, then the stamp lands.
       gsap.utils.toArray<HTMLElement>('[data-receipt]').forEach((el) => {
