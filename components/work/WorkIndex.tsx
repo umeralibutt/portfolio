@@ -108,7 +108,7 @@ export default function WorkIndex() {
               <motion.li key={p.slug} {...card} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -10% 0px' }} transition={{ ...card.transition, delay: (i % 2) * 0.08 }}>
                 <Link href={`/work/${p.slug}`} data-cursor="View" className="group flex flex-col gap-[18px]">
                   <span className="relative block aspect-[584/438] overflow-hidden rounded-[22px]">
-                    <Image src={p.cover} alt="" fill sizes="(min-width: 768px) 584px, 100vw" className="object-cover transition-[scale] duration-700 ease-brand group-hover:scale-[1.04]" />
+                    <Image src={p.cover} alt="" fill priority={n === '01' || n === '02'} sizes="(min-width: 768px) 584px, 100vw" className="object-cover transition-[scale] duration-700 ease-brand group-hover:scale-[1.04]" />
                   </span>
                   <span className="flex items-center justify-between gap-4">
                     <span className="flex min-w-0 items-baseline gap-4 transition-colors duration-300 group-hover:text-orange">

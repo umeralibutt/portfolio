@@ -104,7 +104,7 @@ function Panel({ tone, kicker, tag, title, text, slide }: { tone: 'ink' | 'orang
     <div data-slide-over={slide ? '' : undefined} className={`flex flex-col gap-6 rounded-[clamp(20px,2.2vw,32px)] px-[clamp(24px,3.9vw,56px)] pb-16 pt-14 ${ink ? 'bg-ink text-bone' : 'bg-orange text-ink'}`}>
       <div className="flex items-center justify-between gap-4 leading-[1.21]">
         <p className={`font-serif italic ${ink ? 'text-[#a8a399]' : 'text-ink/75'}`} style={{ fontSize: fluid(30, 24) }}>{kicker}</p>
-        <p className={`text-[12px] font-semibold tracking-[0.14em] ${ink ? 'text-bone/60' : 'text-ink/60'}`}>{tag}</p>
+        <p className={`text-[12px] font-semibold tracking-[0.14em] ${ink ? 'text-bone/60' : 'text-ink/80'}`}>{tag}</p>
       </div>
       <h2 className="font-display leading-[0.92] whitespace-nowrap" style={{ fontSize: fluid(96, 52) }}>{title}</h2>
       <p className={`leading-[1.5] tracking-[-0.01em] ${ink ? 'text-bone/85' : ''}`} style={{ fontSize: fluid(24, 18) }}>{text}</p>

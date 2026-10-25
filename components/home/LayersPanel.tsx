@@ -97,15 +97,17 @@ export default function LayersPanel() {
         })}
       </ul>
 
-      <dl className="flex flex-col gap-2.5 bg-[#f7f7f7] px-5 pb-5 pt-4 text-[12px] leading-none">
-        <dt className="font-semibold">Properties</dt>
-        {props.map(([k, v]) => (
-          <div key={k} className="flex justify-between font-medium">
-            <dt className="text-mute">{k}</dt>
-            <dd>{v}</dd>
-          </div>
-        ))}
-      </dl>
+      <div className="flex flex-col gap-2.5 bg-[#f7f7f7] px-5 pb-5 pt-4 text-[12px] leading-none">
+        <p className="font-semibold">Properties</p>
+        <dl className="contents">
+          {props.map(([k, v]) => (
+            <div key={k} className="flex justify-between font-medium">
+              <dt className="text-mute">{k}</dt>
+              <dd>{v}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </div>
   );
 }

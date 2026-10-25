@@ -16,7 +16,8 @@ export default function RotatingWords() {
   }, []);
 
   return (
-    <p className="flex flex-wrap gap-x-5 gap-y-1 font-medium leading-tight tracking-[-0.03em]" style={{ fontSize: fluid(34, 24) }} aria-label={words.join(' ')}>
+    <p className="flex flex-wrap gap-x-5 gap-y-1 font-medium leading-tight tracking-[-0.03em]" style={{ fontSize: fluid(34, 24) }}>
+      <span className="sr-only">{words.join(' ')}</span>
       {words.map((w, i) => (
         <span
           key={w}

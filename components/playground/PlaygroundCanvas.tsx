@@ -121,7 +121,7 @@ function Print({ slug, name, cx, cy, w, rot, index, shuffle, canDrag, bounds, ra
           className="flex flex-col gap-2.5"
         >
           <span className="relative block aspect-[4/3] overflow-hidden rounded-[4px]">
-            <Image src={`/case/${slug}/cover.jpg`} alt="" fill draggable={false} sizes="(min-width: 1024px) 460px, 90vw" className="pointer-events-none select-none object-cover" />
+            <Image src={`/case/${slug}/cover.jpg`} alt="" fill priority={index < 2} draggable={false} sizes="(min-width: 1024px) 460px, 90vw" className="pointer-events-none select-none object-cover" />
           </span>
           <span className="font-serif text-[22px] italic leading-[1.21]">{name}</span>
         </Link>
