@@ -68,7 +68,7 @@ export default function PlaygroundCanvas() {
             {prints.map((p, i) => (
               <Print key={p.slug} {...p} index={i} shuffle={shuffle} canDrag={canDrag} bounds={canvas} raise={() => ++top.current} />
             ))}
-            <p className="hidden rotate-3 font-serif text-[24px] italic leading-[1.21] text-mute lg:absolute lg:left-[70.1%] lg:top-[91.5%] lg:block">psst — throw one off the edge</p>
+            <p className="hidden rotate-3 font-serif text-[24px] italic leading-[1.21] text-mute lg:absolute lg:left-[70.1%] lg:top-[91.5%] lg:block">psst, throw one off the edge</p>
           </div>
         </div>
       </div>

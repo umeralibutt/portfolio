@@ -27,7 +27,7 @@ export default function Receipt() {
             <Line drift={-1}>THE</Line>
             <Line drift={1}>RECEIPT<span className="text-orange">.</span></Line>
           </h2>
-          <p className="max-w-[460px] leading-[1.5] text-[#a8a399]" style={{ fontSize: fluid(20, 17) }}>Five years of shipping, itemised. Keep it for your records — or your hiring manager’s.</p>
+          <p className="max-w-[460px] leading-[1.5] text-[#a8a399]" style={{ fontSize: fluid(20, 17) }}>Five years of shipping, itemised. Keep it for your records, or your hiring manager’s.</p>
           <p className="flex items-center gap-2.5 pt-3 font-serif text-[22px] italic leading-none text-bone/75">
             No refunds on good taste.
             <img src="/home/receipt-arrow.svg" alt="" width={60} height={20} />
@@ -41,9 +41,9 @@ export default function Receipt() {
               <img src="/home/receipt-tear-top.svg" alt="" width={470} height={12} className="block h-3 w-full" />
               <div className="flex flex-col items-center gap-4 bg-[#f7f4ec] px-[clamp(20px,7.6%,36px)] pb-8 pt-7 font-mono text-ink">
                 <p className="font-display text-[clamp(34px,9.4vw,44px)] leading-tight tracking-[0.01em]">UMAR ALI BUTT</p>
-                <p className="text-[14px] font-semibold tracking-[0.02em]">— ORDER RECEIPT —</p>
+                <p className="text-[14px] font-semibold tracking-[0.02em]">- ORDER RECEIPT -</p>
                 <p className="text-[12px] tracking-[0.02em] text-[#736e66]">PRODUCT DESIGN · ISLAMABAD, PK</p>
-                <div className="flex w-full justify-between text-[12px] tracking-[0.02em] text-[#736e66]"><span>ORDER #2021</span><span>SEP 2021 — NOW</span></div>
+                <div className="flex w-full justify-between text-[12px] tracking-[0.02em] text-[#736e66]"><span>ORDER #2021</span><span>SEP 2021 - NOW</span></div>
                 <Dashed />
                 <div className="flex w-full justify-between text-[12px] font-semibold tracking-[0.02em]"><span className="whitespace-pre">QTY  ITEM</span><span>AMOUNT</span></div>
                 {items.map(([q, label, amt]) => (
