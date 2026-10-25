@@ -6,9 +6,10 @@ export const site = {
     dribbble: 'https://dribbble.com/umar__ali__butt',
     linkedin: 'https://www.linkedin.com/in/umar-ali-butt-7213a7224/',
     upwork: 'https://www.upwork.com/freelancers/~01fbaab0f0eb29dd61',
-    // TODO: add Umar's Behance profile URL; the link is hidden while this is empty.
-    behance: '',
+    behance: 'https://www.behance.net/s325',
   },
+  // Linked from the About page's "Download my CV" button (Figma 235:82).
+  cv: '/umar-ali-butt-cv.pdf',
   formspreeId: process.env.NEXT_PUBLIC_FORMSPREE_ID || '',
 };
 
