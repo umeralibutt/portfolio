@@ -42,7 +42,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Preloader />
         <Nav />
-        <main id="main">{children}</main>
+        {/* overflow-x-clip: scroll effects slide things in from past the edges; that must never become sideways scroll. */}
+        <main id="main" className="overflow-x-clip">{children}</main>
         <Footer />
         <Cursor />
         <Effects />

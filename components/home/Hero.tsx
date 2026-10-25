@@ -15,11 +15,11 @@ export default function Hero() {
       </ul>
 
       <h1 data-lines data-hero className="whitespace-nowrap leading-[0.88]">
-        <Line className="flex flex-wrap items-baseline gap-x-[0.14em]" style={{ fontSize: fluid(200, 60) }}>
+        <Line driftOut={-1} className="flex flex-wrap items-baseline gap-x-[0.14em]" style={{ fontSize: fluid(200, 60) }}>
           <span className="font-display tracking-[-0.01em]">I DESIGN</span>
           <span className="font-serif italic tracking-[-0.02em] text-orange" style={{ fontSize: '0.68em' }}>(almost)</span>
         </Line>
-        <Line className="font-display tracking-[-0.01em]" style={{ fontSize: fluid(200, 60) }}>EVERYTHING.</Line>
+        <Line driftOut={1} className="font-display tracking-[-0.01em]" style={{ fontSize: fluid(200, 60) }}>EVERYTHING.</Line>
       </h1>
 
       <div className="pb-12 pt-6 lg:pb-[72px] lg:pt-9">

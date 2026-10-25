@@ -66,7 +66,7 @@ export default function WorkIndex() {
     <div className="bg-bone">
       <header className="gutter flex flex-col gap-6 pb-12 pt-[124px] lg:flex-row lg:items-end lg:justify-between lg:pt-[193px]">
         <h1 data-lines data-hero>
-          <Line className="flex items-baseline gap-x-5 whitespace-nowrap leading-[0.88]">
+          <Line driftOut={-1} className="flex items-baseline gap-x-5 whitespace-nowrap leading-[0.88]">
             <span className="font-display" style={{ fontSize: fluid(200, 88) }}>ALL</span>
             <span className="font-serif italic text-orange" style={{ fontSize: fluid(176, 78) }}>work</span>
             <span className="self-baseline text-[clamp(16px,1.67vw,24px)] font-medium leading-[1.21] text-mute" aria-label={`${a.length + b.length} projects`}>({a.length + b.length})</span>
@@ -107,7 +107,7 @@ export default function WorkIndex() {
             {a.map(({ p, line, n }, i) => (
               <motion.li key={p.slug} {...card} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -10% 0px' }} transition={{ ...card.transition, delay: (i % 2) * 0.08 }}>
                 <Link href={`/work/${p.slug}`} data-cursor="View" className="group flex flex-col gap-[18px]">
-                  <span className="relative block aspect-[584/438] overflow-hidden rounded-[22px]">
+                  <span data-img-reveal data-img-parallax className="relative block aspect-[584/438] overflow-hidden rounded-[22px]">
                     <Image src={p.cover} alt="" fill priority={n === '01' || n === '02'} sizes="(min-width: 768px) 584px, 100vw" className="object-cover transition-[scale] duration-700 ease-brand group-hover:scale-[1.04]" />
                   </span>
                   <span className="flex items-center justify-between gap-4">
@@ -132,7 +132,7 @@ export default function WorkIndex() {
         <>
           <div className="gutter flex flex-col gap-4 pb-12 lg:flex-row lg:items-end lg:justify-between">
             <h2 data-lines>
-              <Line className="flex flex-wrap items-baseline gap-x-4 leading-[0.9]">
+              <Line drift={1} className="flex flex-wrap items-baseline gap-x-4 leading-[0.9]">
                 <span className="font-display" style={{ fontSize: fluid(110, 60) }}>CONCEPTS</span>
                 <span className="font-serif italic text-orange" style={{ fontSize: fluid(90, 48) }}>&amp; side quests</span>
               </Line>
@@ -146,7 +146,7 @@ export default function WorkIndex() {
               {b.map(({ p }, i) => (
                 <motion.li key={p.slug} {...card} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -10% 0px' }} transition={{ ...card.transition, delay: (i % 3) * 0.08 }}>
                   <Link href={`/work/${p.slug}`} data-cursor="View" className="group flex flex-col gap-3.5">
-                    <span className="relative block aspect-[381/286] overflow-hidden rounded-[18px]">
+                    <span data-img-reveal className="relative block aspect-[381/286] overflow-hidden rounded-[18px]">
                       <Image src={p.cover} alt="" fill sizes="(min-width: 1024px) 381px, (min-width: 640px) 50vw, 100vw" className="object-cover transition-[scale] duration-700 ease-brand group-hover:scale-[1.04]" />
                     </span>
                     <span className="flex items-center gap-2.5">
@@ -163,8 +163,8 @@ export default function WorkIndex() {
 
       <section className="flex flex-col gap-10 bg-beige gutter py-20 lg:flex-row lg:items-center lg:justify-between lg:py-[100px]">
         <h2 data-lines>
-          <Line className="font-display leading-[0.92]" style={{ fontSize: fluid(84, 48) }}>DIDN’T SEE YOUR INDUSTRY?</Line>
-          <Line className="font-serif italic leading-none text-orange" style={{ fontSize: fluid(72, 42) }}>Good. I learn fast.</Line>
+          <Line drift={-1} className="font-display leading-[0.92]" style={{ fontSize: fluid(84, 48) }}>DIDN’T SEE YOUR INDUSTRY?</Line>
+          <Line drift={1} className="font-serif italic leading-none text-orange" style={{ fontSize: fluid(72, 42) }}>Good. I learn fast.</Line>
         </h2>
         <Link href="/contact" data-magnetic className="group inline-flex shrink-0 items-center gap-2.5 self-start rounded-full bg-ink py-3.5 pl-6 pr-[22px] text-[16px] font-semibold leading-none text-bone transition-colors duration-300 hover:bg-ink-2 lg:self-auto">
           Start a project <Arrow className="size-4 transition-transform duration-300 ease-brand group-hover:translate-x-1" />

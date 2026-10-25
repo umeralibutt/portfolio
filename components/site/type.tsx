@@ -10,10 +10,14 @@ export const fluid = (px: number, min = Math.round(px * 0.42)) => `clamp(${min}p
  * One headline line that slides up out of its own mask (see Effects: data-lines / data-line).
  * The mask is padded so italic overhangs and descenders aren't clipped at rest.
  */
-export function Line({ children, className = '', style }: { children: ReactNode; className?: string; style?: CSSProperties }) {
+export function Line({ children, className = '', style, drift, driftOut }: {
+  children: ReactNode; className?: string; style?: CSSProperties;
+  /** Slide sideways while scrolling past (see Effects: data-drift / data-drift-out). */
+  drift?: number; driftOut?: number;
+}) {
   // The style (usually the font size) sits on the mask so its em-based padding scales with the type.
   return (
-    <span className="line-mask block" style={style}>
+    <span className="line-mask block" style={style} data-drift={drift} data-drift-out={driftOut}>
       <span data-line className={`block ${className}`}>{children}</span>
     </span>
   );

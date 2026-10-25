@@ -7,7 +7,7 @@ export function SectionHead({ bold, italic, aside, className = '' }: { bold: str
   return (
     <div className={`flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between ${className}`}>
       <h2 data-lines>
-        <Line className="flex items-baseline gap-x-[18px] whitespace-nowrap leading-[0.88]">
+        <Line drift={1} className="flex items-baseline gap-x-[18px] whitespace-nowrap leading-[0.88]">
           <span className="font-display" style={{ fontSize: fluid(120, 64) }}>{bold}</span>
           <span className="font-serif italic text-orange" style={{ fontSize: fluid(108, 58) }}>{italic}</span>
         </Line>
@@ -32,7 +32,7 @@ export function Plot() {
         {plot.map((p, i) => {
           const now = i === plot.length - 1;
           return (
-            <li key={p.when} className={`relative flex flex-col gap-3 py-9 md:flex-row md:items-center md:gap-12 ${now ? 'border-b border-ink/15' : ''}`}>
+            <li key={p.when} data-slide-in={i % 2 ? 'right' : 'left'} className={`relative flex flex-col gap-3 py-9 md:flex-row md:items-center md:gap-12 ${now ? 'border-b border-ink/15' : ''}`}>
               <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-ink/15" />
               <span aria-hidden="true" data-draw-line className="absolute inset-x-0 top-0 h-px origin-left bg-ink/40" />
               <p className={`font-display leading-none md:w-[240px] md:shrink-0 ${now ? 'text-orange' : ''}`} style={{ fontSize: fluid(72, 48) }}>{p.when}</p>
@@ -67,6 +67,7 @@ export function GoodAt() {
           <li
             key={s.name}
             tabIndex={0}
+            data-slide-in={i % 2 ? 'right' : 'left'}
             className={`group relative flex flex-col gap-3 overflow-hidden border-t border-ink/15 py-[26px] outline-none transition-[padding] duration-500 ease-brand hover:px-7 focus-visible:px-7 md:flex-row md:items-center md:justify-between ${i === skills.length - 1 ? 'border-b' : ''}`}
           >
             <span aria-hidden="true" className="absolute inset-0 origin-left scale-x-0 bg-orange transition-transform duration-500 ease-brand group-hover:scale-x-100 group-focus-visible:scale-x-100" />

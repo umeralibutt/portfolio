@@ -15,7 +15,7 @@ export default function ContactPage() {
     <div className="bg-bone">
       <header className="gutter flex flex-col items-start gap-3 pb-12 pt-[124px] lg:pb-[72px] lg:pt-[193px]">
         <h1 data-lines data-hero>
-          <Line className="flex items-baseline gap-x-6 whitespace-nowrap">
+          <Line driftOut={-1} className="flex items-baseline gap-x-6 whitespace-nowrap">
             <span className="font-display leading-[0.86]" style={{ fontSize: fluid(200, 96) }}>SAY</span>
             <span className="font-serif italic leading-[0.8] text-orange" style={{ fontSize: fluid(229, 110) }}>hi.</span>
           </Line>
@@ -180,7 +180,7 @@ function Info() {
   const links = [...socialLinks].sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
 
   return (
-    <aside className="flex w-full shrink-0 flex-col gap-10 pt-2 lg:w-[400px]">
+    <aside data-rows className="flex w-full shrink-0 flex-col gap-10 pt-2 lg:w-[400px]">
       <InfoBlock label="Email">
         <div className="flex flex-wrap items-center gap-3">
           <a href={`mailto:${site.email}`} className="text-[22px] font-medium leading-[1.21] tracking-[-0.02em] transition-colors hover:text-orange">{site.email}</a>

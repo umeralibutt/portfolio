@@ -26,7 +26,7 @@ export default function CaseStudy({ project: p }: { project: Project }) {
           {p.label}
         </p>
         <h1 data-lines data-hero>
-          <Line className="font-display leading-[0.88] tracking-[-0.01em] lg:whitespace-nowrap" style={{ fontSize: fluid(156, 56) }}>{p.name}</Line>
+          <Line driftOut={-1} className="font-display leading-[0.88] tracking-[-0.01em] lg:whitespace-nowrap" style={{ fontSize: fluid(156, 56) }}>{p.name}</Line>
         </h1>
         <p className="max-w-[980px] font-serif italic leading-[1.18]" style={{ fontSize: fluid(40, 26) }}>{p.tagline}</p>
       </header>
@@ -41,7 +41,7 @@ export default function CaseStudy({ project: p }: { project: Project }) {
       </dl>
 
       <div className="gutter">
-        <div data-scale-in className="relative aspect-[1200/893] overflow-hidden rounded-[clamp(16px,1.95vw,28px)]">
+        <div data-scale-in data-img-parallax className="relative aspect-[1200/893] overflow-hidden rounded-[clamp(16px,1.95vw,28px)]">
           <Image src={p.cover} alt={`${p.name.toLowerCase()} — cover`} fill priority sizes="(min-width: 1440px) 1200px, 100vw" className="object-cover" />
         </div>
       </div>
@@ -50,13 +50,13 @@ export default function CaseStudy({ project: p }: { project: Project }) {
 
       <section className="gutter flex flex-col gap-10 pb-20 lg:pb-[140px]">
         <h2 data-lines>
-          <Line className="flex items-baseline gap-x-4 whitespace-nowrap leading-[0.9]">
+          <Line drift={1} className="flex items-baseline gap-x-4 whitespace-nowrap leading-[0.9]">
             <span className="font-display" style={{ fontSize: fluid(96, 52) }}>THE GOOD</span>
             <span className="font-serif italic text-orange" style={{ fontSize: fluid(90, 48) }}>stuff</span>
           </Line>
         </h2>
         {p.screens.map((src, i) => (
-          <div key={src} className="relative aspect-[1200/723] overflow-hidden rounded-[clamp(16px,1.95vw,28px)]">
+          <div key={src} data-img-reveal data-img-parallax className="relative aspect-[1200/723] overflow-hidden rounded-[clamp(16px,1.95vw,28px)]">
             <Image src={src} alt={`${p.name.toLowerCase()} — screens ${i + 1}`} fill sizes="(min-width: 1440px) 1200px, 100vw" className="object-cover" />
           </div>
         ))}
@@ -74,8 +74,8 @@ function CaseBody({ p }: { p: Case }) {
       <section className="bg-beige gutter flex flex-col gap-12 py-20 lg:flex-row lg:gap-20 lg:py-[120px]">
         <div className="flex shrink-0 flex-col items-start gap-5 lg:w-[420px]">
           <h2 data-lines className="whitespace-nowrap leading-[0.88]">
-            <Line className="font-display leading-[0.88]" style={{ fontSize: fluid(120, 72) }}>THE</Line>
-            <Line className="font-serif italic leading-[0.88] text-orange" style={{ fontSize: fluid(110, 66) }}>receipts</Line>
+            <Line drift={-1} className="font-display leading-[0.88]" style={{ fontSize: fluid(120, 72) }}>THE</Line>
+            <Line drift={1} className="font-serif italic leading-[0.88] text-orange" style={{ fontSize: fluid(110, 66) }}>receipts</Line>
           </h2>
           <p className="text-[18px] font-medium leading-[1.21] text-mute">{p.receipts.sub}</p>
         </div>
@@ -136,14 +136,14 @@ function NextUp({ from }: { from: Project }) {
           <p className="text-[14px] font-semibold uppercase leading-[1.21] tracking-[0.12em]">
             {concept ? `Next concept — ${projectNumber(n)}` : `Next up — Project ${projectNumber(n)}`}
           </p>
-          <p className="font-display leading-[0.9]" style={{ fontSize: fluid(110, 56) }}>{n.name}</p>
+          <p data-drift="-1" className="font-display leading-[0.9]" style={{ fontSize: fluid(110, 56) }}>{n.name}</p>
           <p className="max-w-[620px] font-serif italic leading-[1.2]" style={{ fontSize: fluid(30, 22) }}>{n.teaser ?? n.tagline}</p>
           <span data-magnetic className="inline-flex items-center gap-2.5 rounded-full bg-ink py-3.5 pl-6 pr-[22px] text-[16px] font-semibold leading-none text-bone transition-colors duration-300 group-hover:bg-ink-2">
             {concept ? 'View concept' : 'View case study'}
             <Arrow className="size-4 transition-transform duration-300 ease-brand group-hover:translate-x-1" />
           </span>
         </div>
-        <div className="relative aspect-[460/345] w-full max-w-[460px] shrink-0 -rotate-5 overflow-hidden rounded-[18px] border-[6px] border-white shadow-[0_30px_60px_rgb(0_0_0/0.3)] transition-[rotate,translate] duration-700 ease-brand group-hover:-translate-y-2 group-hover:rotate-0 lg:mx-[14px] lg:my-[19px]">
+        <div data-parallax="-0.15" className="relative aspect-[460/345] w-full max-w-[460px] shrink-0 -rotate-5 overflow-hidden rounded-[18px] border-[6px] border-white shadow-[0_30px_60px_rgb(0_0_0/0.3)] transition-[rotate,translate] duration-700 ease-brand group-hover:-translate-y-2 group-hover:rotate-0 lg:mx-[14px] lg:my-[19px]">
           <Image src={n.cover} alt="" fill sizes="460px" className="object-cover" />
         </div>
       </Link>

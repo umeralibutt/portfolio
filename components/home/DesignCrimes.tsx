@@ -19,15 +19,15 @@ export default function DesignCrimes() {
     <section className="bg-orange gutter py-20 text-ink lg:py-[140px]">
       <div className="flex flex-col gap-6 pb-10 lg:flex-row lg:items-end lg:justify-between lg:pb-14">
         <h2 data-lines className="whitespace-nowrap">
-          <Line className="font-display leading-[0.88]" style={{ fontSize: fluid(150, 62) }}>DESIGN CRIMES</Line>
-          <Line className="font-serif italic leading-[0.9]" style={{ fontSize: fluid(120, 50) }}>I won’t commit.</Line>
+          <Line drift={-1} className="font-display leading-[0.88]" style={{ fontSize: fluid(150, 62) }}>DESIGN CRIMES</Line>
+          <Line drift={1} className="font-serif italic leading-[0.9]" style={{ fontSize: fluid(120, 50) }}>I won’t commit.</Line>
         </h2>
         <p className="text-[16px] font-semibold leading-[1.4] lg:text-right lg:text-[17px]">Design lint report:<br /> 6 warnings, 0 excuses.</p>
       </div>
 
       <ol className="border-b border-ink/25">
         {crimes.map(([crime, penalty], i) => (
-          <li key={crime} tabIndex={0} className="group flex flex-col gap-2 border-t border-ink/25 py-[22px] outline-none focus-visible:bg-ink/5 md:flex-row md:items-center">
+          <li key={crime} tabIndex={0} data-slide-in={i % 2 ? 'right' : 'left'} className="group flex flex-col gap-2 border-t border-ink/25 py-[22px] outline-none focus-visible:bg-ink/5 md:flex-row md:items-center">
             <span className="flex shrink-0 items-center gap-[5px] text-[14px] font-semibold leading-none">
               <img src="/home/alert.svg" alt="" width={18} height={18} />
               <span className="w-10">0{i + 1}</span>

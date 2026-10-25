@@ -39,7 +39,7 @@ export default function SelectedWork() {
     <section id="work" className="scroll-mt-24 bg-bone gutter py-20 lg:py-[120px]">
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <h2 data-lines className="leading-[0.9]">
-          <Line className="flex items-baseline gap-x-5 whitespace-nowrap">
+          <Line drift={1} className="flex items-baseline gap-x-5 whitespace-nowrap">
             <span className="font-display" style={{ fontSize: fluid(120, 60) }}>SELECTED</span>
             <span className="font-serif italic text-orange" style={{ fontSize: fluid(105, 52) }}>work</span>
           </Line>
@@ -47,7 +47,7 @@ export default function SelectedWork() {
         <p className="text-[16px] font-medium leading-[1.4] text-mute lg:text-right lg:text-[18px]">Three I’d frame and hang<br className="hidden lg:block" /> in my living room.</p>
       </div>
 
-      <div className="mt-10 flex flex-col gap-4 lg:mt-14 lg:h-[640px] lg:flex-row">
+      <div data-tilt-in className="mt-10 flex flex-col gap-4 lg:mt-14 lg:h-[640px] lg:flex-row">
         {panels.map((p, i) => {
           const isOpen = open === i;
           const onOrange = p.tone === 'orange';

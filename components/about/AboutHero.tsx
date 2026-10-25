@@ -25,8 +25,8 @@ export default function AboutHero() {
       <div className="flex flex-col items-start gap-8">
         <p className="text-[14px] font-semibold uppercase leading-[1.21] tracking-[0.12em] text-orange-deep">About</p>
         <h1 data-lines data-hero className="whitespace-nowrap">
-          <Line className="font-display leading-[0.86]" style={{ fontSize: fluid(200, 96) }}>I’M</Line>
-          <Line className="font-serif italic leading-[0.8] text-orange" style={{ fontSize: fluid(211, 100) }}>Umar.</Line>
+          <Line driftOut={-1} className="font-display leading-[0.86]" style={{ fontSize: fluid(200, 96) }}>I’M</Line>
+          <Line driftOut={1} className="font-serif italic leading-[0.8] text-orange" style={{ fontSize: fluid(211, 100) }}>Umar.</Line>
         </h1>
         <p className="max-w-[600px] leading-[1.5] tracking-[-0.01em]" style={{ fontSize: fluid(22, 18) }}>
           Self-taught product designer from Islamabad. No design degree - just a high-school diploma, a lot of YouTube, and a mildly concerning relationship with Figma.

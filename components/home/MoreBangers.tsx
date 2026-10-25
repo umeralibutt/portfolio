@@ -71,7 +71,7 @@ export default function MoreBangers() {
     <section className="overflow-hidden bg-ink py-20 text-bone lg:py-[140px]">
       <div className="flex flex-col gap-6 gutter sm:flex-row lg:!pr-12 sm:items-end sm:justify-between">
         <h2 data-lines className="leading-[0.9]">
-          <Line className="flex items-baseline gap-x-5 whitespace-nowrap">
+          <Line drift={1} className="flex items-baseline gap-x-5 whitespace-nowrap">
             <span className="font-display" style={{ fontSize: fluid(140, 64) }}>MORE</span>
             <span className="font-serif italic text-orange" style={{ fontSize: fluid(120, 56) }}>bangers</span>
           </Line>
@@ -93,7 +93,7 @@ export default function MoreBangers() {
         onDragStart={(e) => e.preventDefault()}
       >
         {cards.map((c) => (
-          <Link key={c.slug} href={`/work/${c.slug}`} className="group flex w-[min(440px,80vw)] shrink-0 flex-col gap-5" draggable={false}>
+          <Link key={c.slug} href={`/work/${c.slug}`} data-skew className="group flex w-[min(440px,80vw)] shrink-0 flex-col gap-5" draggable={false}>
             <div className="relative aspect-[440/330] overflow-hidden rounded-[20px] transition-[rotate] duration-500 ease-brand group-hover:rotate-3 group-focus-visible:rotate-3">
               <Image src={`/home/bangers-${c.slug}.jpg`} alt={`${c.name} cover`} fill sizes="(min-width:768px) 440px, 80vw" className="pointer-events-none object-cover" draggable={false} />
             </div>

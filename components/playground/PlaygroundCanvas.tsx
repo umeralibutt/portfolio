@@ -41,7 +41,7 @@ export default function PlaygroundCanvas() {
     <>
       <header className="gutter flex flex-col gap-6 pb-10 pt-[124px] lg:flex-row lg:items-end lg:justify-between lg:pt-[193px]">
         <h1 data-lines data-hero>
-          <Line className="flex flex-wrap items-baseline gap-x-[18px] leading-[0.88] sm:flex-nowrap sm:whitespace-nowrap">
+          <Line driftOut={-1} className="flex flex-wrap items-baseline gap-x-[18px] leading-[0.88] sm:flex-nowrap sm:whitespace-nowrap">
             <span className="font-display" style={{ fontSize: fluid(200, 76) }}>PLAY</span>
             <span className="font-serif italic text-orange" style={{ fontSize: fluid(198, 76) }}>ground</span>
           </Line>
@@ -62,6 +62,7 @@ export default function PlaygroundCanvas() {
         <div className="gutter">
           <div
             ref={canvas}
+            data-deal
             className="dot-grid-ink relative flex flex-col gap-10 rounded-[32px] bg-beige p-6 sm:p-10 lg:block lg:aspect-[1344/1180] lg:w-[calc(100%+clamp(48px,8.333vw,120px)+24px)] lg:overflow-hidden lg:p-0"
           >
             {prints.map((p, i) => (

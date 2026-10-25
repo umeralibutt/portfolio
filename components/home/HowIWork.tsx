@@ -12,14 +12,14 @@ export default function HowIWork() {
     <section className="bg-beige gutter py-20 lg:py-[120px]">
       <div className="flex flex-col gap-6 pb-12 sm:flex-row sm:items-end sm:justify-between lg:pb-[72px]">
         <h2 data-lines className="leading-[0.9]">
-          <Line className="flex items-baseline gap-x-[18px] whitespace-nowrap">
+          <Line drift={-1} className="flex items-baseline gap-x-[18px] whitespace-nowrap">
             <span className="font-display" style={{ fontSize: fluid(120, 60) }}>HOW I</span>
             <span className="font-serif italic text-orange" style={{ fontSize: fluid(110, 56) }}>work</span>
           </Line>
         </h2>
         <p className="text-[16px] font-medium leading-[1.4] text-mute sm:text-right lg:text-[18px]">Three rules.<br /> No 47-step framework.</p>
       </div>
-      <ol className="grid gap-12 lg:grid-cols-3">
+      <ol data-rows className="grid gap-12 lg:grid-cols-3">
         {steps.map((s, i) => (
           <li key={s.n} className="flex flex-col gap-5">
             <div className="flex items-center gap-3">

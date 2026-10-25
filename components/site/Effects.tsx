@@ -22,6 +22,10 @@ const ease = 'expo.out';
  * - data-scale-in             grows from 92% to full size as it scrolls in (case study covers)
  * - data-rows                 its children tick in one by one
  * - data-slide-over           slides in from the right while scrolling (the case study "fix" panel)
+ * - data-parallax / data-drift / data-drift-out   scrubbed vertical drift / sideways drift / hero pull-apart
+ * - data-tilt-in / data-slide-in / data-scale-up  scrubbed entrances (3D tilt, from the side, grow)
+ * - data-img-reveal / data-img-parallax          image wipe-in, and the image drifting inside its frame
+ * - data-deal / data-curtain / data-skew         dealt cards, footer rising from under the page, speed lean
  * Reduced motion: no smooth scroll or pointer effects, and reveals become short fades.
  */
 export default function Effects() {
@@ -94,6 +98,116 @@ export default function Effects() {
         gsap.utils.toArray<HTMLElement>('[data-slide-over]').forEach((el) => {
           gsap.fromTo(el, { xPercent: 12, rotate: 2 }, { xPercent: 0, rotate: 0, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 45%', scrub: 0.6 } });
         });
+      }
+
+      // ---------- Scroll choreography. All of it is skipped with reduced motion. ----------
+      if (!reduced) {
+        const vw = () => innerWidth / 100;
+        const vh = () => innerHeight / 100;
+
+        // Drifts against the scroll; data-parallax is the speed (negative = rises faster than the page).
+        gsap.utils.toArray<HTMLElement>('[data-parallax]').forEach((el) => {
+          const s = parseFloat(el.dataset.parallax || '0.15');
+          gsap.fromTo(el, { y: () => -s * 30 * vh() }, {
+            y: () => s * 30 * vh(), ease: 'none',
+            scrollTrigger: { trigger: el, start: 'clamp(top bottom)', end: 'clamp(bottom top)', scrub: true, invalidateOnRefresh: true },
+          });
+        });
+
+        // Big lines slide sideways as they pass; data-drift is the direction (1 = right, -1 = left).
+        // They sit exactly where Figma has them when the line is mid-screen.
+        gsap.utils.toArray<HTMLElement>('[data-drift]').forEach((el) => {
+          const d = parseFloat(el.dataset.drift || '1');
+          gsap.fromTo(el, { x: () => -d * 6 * vw() }, {
+            x: () => d * 6 * vw(), ease: 'none',
+            scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 0.4, invalidateOnRefresh: true },
+          });
+        });
+
+        // Hero lines: start in place, then pull apart as you scroll away.
+        gsap.utils.toArray<HTMLElement>('[data-drift-out]').forEach((el) => {
+          const d = parseFloat(el.dataset.driftOut || '1');
+          gsap.to(el, {
+            x: () => d * 18 * vw(), opacity: 0.15, ease: 'none',
+            scrollTrigger: { trigger: el, start: 'clamp(top 40%)', end: 'clamp(bottom top)', scrub: 0.4, invalidateOnRefresh: true },
+          });
+        });
+
+        // Rises out of a 3D tilt as it scrolls in.
+        gsap.utils.toArray<HTMLElement>('[data-tilt-in]').forEach((el) => {
+          gsap.fromTo(el, { rotationX: 22, y: 140, opacity: 0.35, transformPerspective: 1400, transformOrigin: '50% 0%' }, {
+            rotationX: 0, y: 0, opacity: 1, ease: 'none',
+            scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 50%', scrub: 0.6 },
+          });
+        });
+
+        // Slides in from the side while scrolling; data-slide-in="left" | "right".
+        gsap.utils.toArray<HTMLElement>('[data-slide-in]').forEach((el) => {
+          const from = el.dataset.slideIn === 'right' ? 1 : -1;
+          gsap.fromTo(el, { x: () => from * 22 * vw(), opacity: 0 }, {
+            x: 0, opacity: 1, ease: 'none',
+            scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 62%', scrub: 0.5, invalidateOnRefresh: true },
+          });
+        });
+
+        // Big type grows into place.
+        gsap.utils.toArray<HTMLElement>('[data-scale-up]').forEach((el) => {
+          gsap.fromTo(el, { scale: 0.78, transformOrigin: el.dataset.scaleUp || '0% 100%' }, {
+            scale: 1, ease: 'none',
+            scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 55%', scrub: 0.5 },
+          });
+        });
+
+        // Images wipe up out of their frame and settle from a zoom (once). The frame must clip.
+        gsap.utils.toArray<HTMLElement>('[data-img-reveal]').forEach((el) => {
+          const img = el.querySelector('img');
+          const base = el.hasAttribute('data-img-parallax') ? 1.15 : 1;
+          const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+          tl.fromTo(el, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'expo.inOut', clearProps: 'clipPath' });
+          if (img) tl.fromTo(img, { scale: base + 0.3 }, { scale: base, duration: 1.6, ease }, 0);
+        });
+
+        // The image drifts inside its frame as the page scrolls (the frame must clip).
+        gsap.utils.toArray<HTMLElement>('[data-img-parallax]').forEach((el) => {
+          const img = el.querySelector('img');
+          if (!img) return;
+          gsap.set(img, { scale: 1.15 });
+          gsap.fromTo(img, { yPercent: -6 }, {
+            yPercent: 6, ease: 'none',
+            scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
+          });
+        });
+
+        // Children land like dealt cards when the container scrolls in.
+        gsap.utils.toArray<HTMLElement>('[data-deal]').forEach((el) => {
+          gsap.from(el.children, {
+            y: () => -40 * vh(), rotation: () => gsap.utils.random(-28, 28), opacity: 0, scale: 1.1,
+            duration: 1, stagger: 0.09, ease: 'back.out(1.3)',
+            scrollTrigger: { trigger: el, start: 'top 75%', once: true },
+          });
+        });
+
+        // The footer rises out from under the page.
+        gsap.utils.toArray<HTMLElement>('[data-curtain]').forEach((el) => {
+          gsap.fromTo(el, { yPercent: -35, opacity: 0.4 }, {
+            yPercent: 0, opacity: 1, ease: 'none',
+            scrollTrigger: { trigger: el.parentElement ?? el, start: 'top bottom', end: 'top 15%', scrub: true },
+          });
+        });
+
+        // Cards lean with scroll speed and spring upright when the page stops.
+        const skews = gsap.utils.toArray<HTMLElement>('[data-skew]').map((el) => gsap.quickTo(el, 'skewY', { duration: 0.6, ease: 'power3.out' }));
+        if (skews.length) {
+          const clamp = gsap.utils.clamp(-7, 7);
+          const settle = gsap.delayedCall(0.12, () => skews.forEach((s) => s(0))).pause();
+          ScrollTrigger.create({
+            onUpdate: (self) => {
+              const v = clamp(self.getVelocity() / -320);
+              skews.forEach((s) => s(v));
+              settle.restart(true);
+            },
+          });
+        }
       }
 
       // The receipt prints top-down, then the stamp lands.

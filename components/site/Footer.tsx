@@ -55,9 +55,11 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-ink gutter py-20 text-bone lg:py-[140px]">
+    <footer className="overflow-x-clip bg-ink gutter py-20 text-bone lg:py-[140px]">
+      {/* The whole block rises out from under the page as the footer scrolls in. */}
+      <div data-curtain>
       <p className="text-[13px] font-semibold uppercase leading-[1.21] tracking-[0.12em] text-orange lg:text-[14px]">Got a product that needs fixing?</p>
-      <Link href="/contact" data-cursor="Open" aria-label="Let’s talk — go to the contact page" className="group flex flex-wrap items-baseline gap-x-[clamp(16px,2.8vw,40px)] pb-10 pt-6">
+      <Link href="/contact" data-cursor="Open" data-scale-up aria-label="Let’s talk — go to the contact page" className="group flex flex-wrap items-baseline gap-x-[clamp(16px,2.8vw,40px)] pb-10 pt-6">
         <span className="font-display leading-[0.88]" style={{ fontSize: fluid(200, 80) }}>LET’S</span>
         <span
           className="bg-[linear-gradient(90deg,var(--color-orange)_50%,var(--color-bone)_50%)] bg-[length:200%_100%] bg-[position:100%_0] bg-clip-text font-display leading-[0.88] text-transparent transition-[background-position] duration-700 ease-brand group-hover:bg-[position:0_0] group-focus-visible:bg-[position:0_0]"
@@ -96,6 +98,7 @@ export default function Footer() {
 
       <div className="flex flex-col gap-3 border-t border-bone/15 pt-7 text-[14px] leading-[1.21] text-bone/55 md:flex-row md:items-start md:justify-between">
         {base}
+      </div>
       </div>
     </footer>
   );

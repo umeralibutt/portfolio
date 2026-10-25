@@ -24,8 +24,8 @@ export default function Receipt() {
         <div className="flex flex-col items-start gap-7 self-start lg:self-center">
           <p className="font-serif italic leading-none text-orange" style={{ fontSize: fluid(34, 26) }}>receipts, not vibes</p>
           <h2 data-lines className="font-display leading-[0.88] whitespace-nowrap" style={{ fontSize: fluid(150, 84) }}>
-            <Line>THE</Line>
-            <Line>RECEIPT<span className="text-orange">.</span></Line>
+            <Line drift={-1}>THE</Line>
+            <Line drift={1}>RECEIPT<span className="text-orange">.</span></Line>
           </h2>
           <p className="max-w-[460px] leading-[1.5] text-[#a8a399]" style={{ fontSize: fluid(20, 17) }}>Five years of shipping, itemised. Keep it for your records — or your hiring manager’s.</p>
           <p className="flex items-center gap-2.5 pt-3 font-serif text-[22px] italic leading-none text-bone/75">
@@ -35,7 +35,7 @@ export default function Receipt() {
         </div>
 
         {/* Prints in from the top on scroll; tilts back on hover; the stamp lands last. */}
-        <div data-receipt className="group relative w-full max-w-[470px] shrink-0 lg:mr-5">
+        <div data-receipt data-parallax="-0.12" className="group relative w-full max-w-[470px] shrink-0 lg:mr-5">
           <div className="-rotate-3 [filter:drop-shadow(0_40px_40px_rgb(0_0_0/0.5))] transition-[rotate] duration-700 ease-brand group-hover:rotate-0">
             <div data-paper className="relative">
               <img src="/home/receipt-tear-top.svg" alt="" width={470} height={12} className="block h-3 w-full" />
