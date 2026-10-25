@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useRef, useState } from 'react';
 import { site } from '@/lib/data';
 import { socialLinks } from './Socials';
@@ -9,6 +10,7 @@ import { ArrowUp, ArrowUpRight } from './icons';
 
 /** Figma "Footer — Let’s talk" 213:191 — ink, 140 / 48 padding. TALK fills orange left → right on hover. */
 export default function Footer() {
+  const path = usePathname();
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -32,6 +34,25 @@ export default function Footer() {
   // Footer links follow Figma's order: LinkedIn, Dribbble, Upwork, Behance.
   const order = ['linkedin', 'dribbble', 'upwork', 'behance'];
   const links = [...socialLinks].sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
+
+  const base = (
+    <>
+      <p>© 2026 {site.name}</p>
+      <p>Designed &amp; built in Islamabad, fuelled by chai.</p>
+      <button type="button" onClick={toTop} className="inline-flex items-center gap-[5px] self-start transition-colors hover:text-bone md:self-auto">
+        Back to top <ArrowUp className="size-[13px]" />
+      </button>
+    </>
+  );
+
+  // Contact already is the "let's talk" page, so it only gets the slim bar (Figma 235:606).
+  if (path === '/contact') {
+    return (
+      <footer className="flex flex-col gap-3 bg-ink gutter py-7 text-[14px] leading-[1.21] text-bone/55 md:flex-row md:items-start md:justify-between">
+        {base}
+      </footer>
+    );
+  }
 
   return (
     <footer className="bg-ink gutter py-20 text-bone lg:py-[140px]">
@@ -74,11 +95,7 @@ export default function Footer() {
       </div>
 
       <div className="flex flex-col gap-3 border-t border-bone/15 pt-7 text-[14px] leading-[1.21] text-bone/55 md:flex-row md:items-start md:justify-between">
-        <p>© 2026 {site.name}</p>
-        <p>Designed &amp; built in Islamabad, fuelled by chai.</p>
-        <button type="button" onClick={toTop} className="inline-flex items-center gap-[5px] self-start transition-colors hover:text-bone md:self-auto">
-          Back to top <ArrowUp className="size-[13px]" />
-        </button>
+        {base}
       </div>
     </footer>
   );

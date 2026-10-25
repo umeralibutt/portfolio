@@ -19,7 +19,10 @@ export const Stack = (p: P) => <svg {...base} {...p}><rect x="4" y="4" width="16
 export const Diamond = (p: P) => <svg {...base} {...p}><path d="m12 3 9 9-9 9-9-9z" /></svg>;
 export const TextT = (p: P) => <svg {...base} {...p}><path d="M5 6V5h14v1M12 5v14M9 19h6" /></svg>;
 export const ImageIcon = (p: P) => <svg {...base} {...p}><rect x="4" y="4" width="16" height="16" rx="2" /><circle cx="9" cy="9" r="1.6" /><path d="m20 15-4-4-8 8" /></svg>;
-export const Dashed = (p: P) => <svg {...base} {...p}><circle cx="12" cy="12" r="8" strokeDasharray="3 3" /></svg>;
+export const Check = (p: P) => <svg {...base} {...p}><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>;
+export const Copy = (p: P) => <svg {...base} {...p}><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" /></svg>;
+export const Shuffle = (p: P) => <svg {...base} {...p}><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5" /></svg>;
+export const Dashed =(p: P) => <svg {...base} {...p}><circle cx="12" cy="12" r="8" strokeDasharray="3 3" /></svg>;
 
 /** The four-point star used between marquee words. */
 export const Sparkle = (p: P) => (
