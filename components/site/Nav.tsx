@@ -46,7 +46,7 @@ export default function Nav() {
     >
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-bone">Skip to content</a>
       <div className="flex h-[76px] items-center justify-between gutter lg:h-[97px]">
-        <Link href="/" className="group flex items-center gap-4" aria-label="Umar Ali Butt — home">
+        <Link href="/" className="group flex items-center gap-4" aria-label="Umar Ali Butt, home">
           <span className="relative block size-9 shrink-0 lg:size-11">
             {/* The Figma photo carries its own orange ring and overhangs the 44px box by 2px. */}
             <Image src="/home/nav-photo.png" alt="" width={48} height={48} priority className="absolute -inset-[4.55%] size-[109.1%] max-w-none origin-[50%_85%] group-hover:animate-[wave_0.9s_var(--ease-brand)]" />

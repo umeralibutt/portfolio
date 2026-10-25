@@ -16,7 +16,7 @@ const panels = [
   },
   {
     slug: 'veyro', name: 'VEYRO', shot: '/home/shot-veyro.jpg', tilt: -3,
-    line: 'A smarter crypto wallet — track, send, swap and pay with full control.',
+    line: 'A smarter crypto wallet: track, send, swap and pay with full control.',
     tags: ['Crypto', 'Web3', 'Mobile'], meta: 'Crypto · Web3 · Mobile', tone: 'ink2',
   },
   {

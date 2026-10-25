@@ -22,18 +22,18 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   // Tab title and link-preview copy from Figma "Brand — Favicon & URL preview" (264:24).
-  title: 'Umar Ali Butt — Product Designer',
-  description: 'I design (almost) everything — apps, platforms, dashboards & brands for Web3, fintech & AI.',
+  title: 'Umar Ali Butt | Product Designer',
+  description: 'I design (almost) everything: apps, platforms, dashboards & brands for Web3, fintech & AI.',
   openGraph: {
-    title: 'Umar Ali Butt — Senior Product Designer',
-    description: 'I design (almost) everything — apps, platforms, dashboards & brands for Web3, fintech & AI.',
+    title: 'Umar Ali Butt | Senior Product Designer',
+    description: 'I design (almost) everything: apps, platforms, dashboards & brands for Web3, fintech & AI.',
     siteName: 'Umar Ali Butt',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Umar Ali Butt — Senior Product Designer',
-    description: 'I design (almost) everything — apps, platforms, dashboards & brands for Web3, fintech & AI.',
+    title: 'Umar Ali Butt | Senior Product Designer',
+    description: 'I design (almost) everything: apps, platforms, dashboards & brands for Web3, fintech & AI.',
   },
 };
 

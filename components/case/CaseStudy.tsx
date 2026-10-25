@@ -42,7 +42,7 @@ export default function CaseStudy({ project: p }: { project: Project }) {
 
       <div className="gutter">
         <div data-scale-in data-img-parallax className="relative aspect-[1200/893] overflow-hidden rounded-[clamp(16px,1.95vw,28px)]">
-          <Image src={p.cover} alt={`${p.name.toLowerCase()} — cover`} fill priority sizes="(min-width: 1440px) 1200px, 100vw" className="object-cover" />
+          <Image src={p.cover} alt={`${p.name.toLowerCase()} cover`} fill priority sizes="(min-width: 1440px) 1200px, 100vw" className="object-cover" />
         </div>
       </div>
 
@@ -57,7 +57,7 @@ export default function CaseStudy({ project: p }: { project: Project }) {
         </h2>
         {p.screens.map((src, i) => (
           <div key={src} data-img-reveal data-img-parallax className="relative aspect-[1200/723] overflow-hidden rounded-[clamp(16px,1.95vw,28px)]">
-            <Image src={src} alt={`${p.name.toLowerCase()} — screens ${i + 1}`} fill sizes="(min-width: 1440px) 1200px, 100vw" className="object-cover" />
+            <Image src={src} alt={`${p.name.toLowerCase()} screens ${i + 1}`} fill sizes="(min-width: 1440px) 1200px, 100vw" className="object-cover" />
           </div>
         ))}
       </section>
@@ -118,7 +118,7 @@ function SideQuest() {
     <section className="gutter flex flex-col gap-4 pb-20 pt-20 sm:flex-row sm:items-end sm:justify-between lg:pt-[110px]">
       <p className="font-serif italic leading-[1.21]" style={{ fontSize: fluid(64, 36) }}>a side quest, not a client brief.</p>
       <p className="text-[18px] font-medium leading-[1.4] text-mute sm:text-right">
-        No client, no deadline —<br />just me exploring how this could feel.
+        No client, no deadline.<br />Just me exploring how this could feel.
       </p>
     </section>
   );
@@ -134,7 +134,7 @@ function NextUp({ from }: { from: Project }) {
       <Link href={href} data-cursor="Next" className="group flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex flex-col items-start gap-4 lg:w-[760px]">
           <p className="text-[14px] font-semibold uppercase leading-[1.21] tracking-[0.12em]">
-            {concept ? `Next concept — ${projectNumber(n)}` : `Next up — Project ${projectNumber(n)}`}
+            {concept ? `Next concept · ${projectNumber(n)}` : `Next up · Project ${projectNumber(n)}`}
           </p>
           <p data-drift="-1" className="font-display leading-[0.9]" style={{ fontSize: fluid(110, 56) }}>{n.name}</p>
           <p className="max-w-[620px] font-serif italic leading-[1.2]" style={{ fontSize: fluid(30, 22) }}>{n.teaser ?? n.tagline}</p>

@@ -77,7 +77,7 @@ function ContactForm() {
 
     // No Formspree ID configured yet: fall back to the visitor's mail app.
     if (!site.formspreeId) {
-      const body = `${message}\n\nWhat we're making: ${about}\n\n— ${name} (${email})`;
+      const body = `${message}\n\nWhat we're making: ${about}\n\nFrom: ${name} (${email})`;
       window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(`Hi from ${name}`)}&body=${encodeURIComponent(body)}`;
       return;
     }

@@ -15,7 +15,7 @@ const rows: Row[] = [
   { id: 'chai', depth: 2, icon: <ImageIcon />, name: 'chai.png', meta: '×4 daily', parent: 'fuel' },
   { id: 'pixel', depth: 1, icon: <Diamond />, name: 'Pixel-perfectionism', meta: 'Main component', parent: 'root' },
   { id: 'imposter', depth: 1, icon: <Dashed />, name: 'Imposter syndrome', parent: 'root' },
-  { id: 'balance', depth: 1, icon: <Stack />, name: 'Work–life balance', parent: 'root' },
+  { id: 'balance', depth: 1, icon: <Stack />, name: 'Work-life balance', parent: 'root' },
 ];
 
 const props = [

@@ -3,7 +3,7 @@ import { Line, fluid } from '../site/type';
 const steps = [
   { n: '01', title: 'Listen first', body: 'I ask the annoying question before anyone opens Figma. Users, numbers, the real problem.' },
   { n: '02', title: 'Sketch ugly', body: 'Flows and rough wireframes before a single pretty pixel. Ugly is fast, fast is cheap.' },
-  { n: '03', title: 'Ship pretty', body: 'Then I sweat the 2% nobody notices — spacing, states, motion — until it feels inevitable.' },
+  { n: '03', title: 'Ship pretty', body: 'Then I sweat the 2% nobody notices (spacing, states, motion) until it feels inevitable.' },
 ];
 
 /** Figma "How I work" 223:74 — beige, 120 / 48 padding; three steps 48px apart, each rule draws on scroll. */

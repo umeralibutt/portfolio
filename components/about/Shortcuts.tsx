@@ -47,7 +47,7 @@ export default function Shortcuts() {
           <Line drift={-1} className="font-display leading-[0.88]" style={{ fontSize: fluid(130, 72) }}>MY</Line>
           <Line drift={1} className="font-serif italic leading-[0.85] text-orange" style={{ fontSize: fluid(120, 66) }}>shortcuts</Line>
         </h2>
-        <p className="max-w-[400px] text-[20px] leading-[1.5] text-mute">How I actually work, in keyboard shortcuts. Press a key — seriously, try it.</p>
+        <p className="max-w-[400px] text-[20px] leading-[1.5] text-mute">How I actually work, in keyboard shortcuts. Press a key. Seriously, try it.</p>
       </div>
 
       <ul data-rows className="flex min-w-0 flex-1 flex-col">
