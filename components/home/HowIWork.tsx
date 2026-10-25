@@ -9,7 +9,7 @@ const steps = [
 /** Figma "How I work" 223:74 — beige, 120 / 48 padding; three steps 48px apart, each rule draws on scroll. */
 export default function HowIWork() {
   return (
-    <section className="bg-beige px-5 py-20 md:px-12 lg:py-[120px]">
+    <section className="bg-beige gutter py-20 lg:py-[120px]">
       <div className="flex flex-col gap-6 pb-12 sm:flex-row sm:items-end sm:justify-between lg:pb-[72px]">
         <h2 data-lines className="leading-[0.9]">
           <Line className="flex items-baseline gap-x-[18px] whitespace-nowrap">

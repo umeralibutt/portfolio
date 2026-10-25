@@ -16,7 +16,7 @@ const crimes = [
  */
 export default function DesignCrimes() {
   return (
-    <section className="bg-orange px-5 py-20 text-ink md:px-12 lg:py-[140px]">
+    <section className="bg-orange gutter py-20 text-ink lg:py-[140px]">
       <div className="flex flex-col gap-6 pb-10 lg:flex-row lg:items-end lg:justify-between lg:pb-14">
         <h2 data-lines className="whitespace-nowrap">
           <Line className="font-display leading-[0.88]" style={{ fontSize: fluid(150, 62) }}>DESIGN CRIMES</Line>

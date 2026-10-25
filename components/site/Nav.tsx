@@ -45,7 +45,7 @@ export default function Nav() {
       className={`fixed inset-x-0 top-0 z-50 transition-[translate,background-color,box-shadow] duration-500 ease-brand ${hidden && !open ? '-translate-y-full' : ''} ${solid || open ? 'bg-bone shadow-[0_1px_0_rgb(14_13_12/0.08)]' : 'bg-bone/0'}`}
     >
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-bone">Skip to content</a>
-      <div className="flex h-[76px] items-center justify-between px-5 md:px-12 lg:h-[97px]">
+      <div className="flex h-[76px] items-center justify-between gutter lg:h-[97px]">
         <Link href="/" className="group flex items-center gap-4" aria-label="Umar Ali Butt — home">
           <span className="relative block size-9 shrink-0 lg:size-11">
             {/* The Figma photo carries its own orange ring and overhangs the 44px box by 2px. */}
@@ -92,7 +92,7 @@ export default function Nav() {
         </button>
       </div>
 
-      <div id="mobile-menu" hidden={!open} className="h-[calc(100dvh-76px)] overflow-y-auto bg-bone px-5 pb-10 md:px-12 lg:hidden">
+      <div id="mobile-menu" hidden={!open} className="h-[calc(100dvh-76px)] overflow-y-auto bg-bone gutter pb-10 lg:hidden">
         <ul className="pt-4">
           {links.map((l) => (
             <li key={l.href} className="border-b border-ink/10">

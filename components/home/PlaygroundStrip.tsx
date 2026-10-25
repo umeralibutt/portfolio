@@ -42,7 +42,7 @@ export default function PlaygroundStrip() {
 
   return (
     <section className="overflow-hidden bg-bone py-20 lg:py-[120px]">
-      <div className="flex flex-col gap-8 px-5 sm:flex-row sm:items-end sm:justify-between md:px-12">
+      <div className="flex flex-col gap-8 gutter sm:flex-row sm:items-end sm:justify-between">
         <h2 data-lines className="leading-[0.9]">
           <Line className="flex items-baseline gap-x-3.5 whitespace-nowrap">
             <span className="font-display" style={{ fontSize: fluid(120, 60) }}>PLAY</span>

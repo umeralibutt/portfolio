@@ -3,10 +3,10 @@ import RotatingWords from './RotatingWords';
 import { Line, fluid } from '../site/type';
 import { Arrow, ArrowDown } from '../site/icons';
 
-/** Figma "Hero" 221:24 — sits under the 97px nav; 72 top / 120 bottom padding, 48px sides. */
+/** Figma "Hero" 221:24 — sits under the 97px nav; 72 top / 120 bottom padding, 120px sides. */
 export default function Hero() {
   return (
-    <section className="bg-bone px-5 pb-20 pt-[116px] md:px-12 lg:pb-[120px] lg:pt-[169px]">
+    <section className="bg-bone gutter pb-20 pt-[116px] lg:pb-[120px] lg:pt-[169px]">
       <ul className="flex justify-between gap-4 pb-8 text-[11px] font-medium uppercase leading-none tracking-[0.12em] text-mute md:text-[12px] lg:pb-10">
         <li>Senior Product Designer</li>
         <li className="hidden md:block">Web3 · Fintech · AI</li>
@@ -15,11 +15,11 @@ export default function Hero() {
       </ul>
 
       <h1 data-lines data-hero className="whitespace-nowrap leading-[0.88]">
-        <Line className="flex flex-wrap items-baseline gap-x-[0.112em]" style={{ fontSize: fluid(250, 60) }}>
+        <Line className="flex flex-wrap items-baseline gap-x-[0.14em]" style={{ fontSize: fluid(200, 60) }}>
           <span className="font-display tracking-[-0.01em]">I DESIGN</span>
-          <span className="font-serif italic tracking-[-0.02em] text-orange" style={{ fontSize: '0.6em' }}>(almost)</span>
+          <span className="font-serif italic tracking-[-0.02em] text-orange" style={{ fontSize: '0.68em' }}>(almost)</span>
         </Line>
-        <Line className="font-display tracking-[-0.01em]" style={{ fontSize: fluid(250, 60) }}>EVERYTHING.</Line>
+        <Line className="font-display tracking-[-0.01em]" style={{ fontSize: fluid(200, 60) }}>EVERYTHING.</Line>
       </h1>
 
       <div className="pb-12 pt-6 lg:pb-[72px] lg:pt-9">

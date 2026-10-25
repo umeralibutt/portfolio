@@ -53,7 +53,7 @@ export default function Marquee() {
   return (
     <section aria-label="What I design" className="overflow-hidden bg-ink py-[30px] text-bone">
       <p className="sr-only">{items.join(', ')}</p>
-      <div ref={track} className="flex w-max pl-5 will-change-transform md:pl-12" aria-hidden="true">
+      <div ref={track} className="flex w-max will-change-transform pl-5 md:pl-12 lg:pl-[clamp(48px,8.333vw,120px)]" aria-hidden="true">
         <div className="flex">{row}</div>
         <div className="flex">{row}</div>
       </div>

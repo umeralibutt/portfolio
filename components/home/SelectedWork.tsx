@@ -36,7 +36,7 @@ export default function SelectedWork() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="work" className="scroll-mt-24 bg-bone px-5 py-20 md:px-12 lg:py-[120px]">
+    <section id="work" className="scroll-mt-24 bg-bone gutter py-20 lg:py-[120px]">
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <h2 data-lines className="leading-[0.9]">
           <Line className="flex items-baseline gap-x-5 whitespace-nowrap">

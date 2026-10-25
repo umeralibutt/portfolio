@@ -56,6 +56,8 @@
 @utility gutter {
   padding-inline: 20px;
   @media (min-width: 768px) { padding-inline: 48px; }
+  /* Figma: 120px sides at 1440, easing down to 48px on smaller laptops. */
+  @media (min-width: 1024px) { padding-inline: clamp(48px, 8.333vw, 120px); }
 }
 @utility section-pad {
   padding-block: 80px;

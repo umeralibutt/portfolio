@@ -69,7 +69,7 @@ export default function MoreBangers() {
 
   return (
     <section className="overflow-hidden bg-ink py-20 text-bone lg:py-[140px]">
-      <div className="flex flex-col gap-6 px-5 sm:flex-row sm:items-end sm:justify-between md:px-12">
+      <div className="flex flex-col gap-6 gutter sm:flex-row lg:!pr-12 sm:items-end sm:justify-between">
         <h2 data-lines className="leading-[0.9]">
           <Line className="flex items-baseline gap-x-5 whitespace-nowrap">
             <span className="font-display" style={{ fontSize: fluid(140, 64) }}>MORE</span>
@@ -88,7 +88,7 @@ export default function MoreBangers() {
       <div
         ref={track}
         data-cursor="Drag"
-        className="no-scrollbar mt-10 flex gap-7 overflow-x-auto px-5 pb-4 pt-3 select-none md:px-12 lg:mt-14"
+        className="no-scrollbar mt-10 flex gap-7 overflow-x-auto gutter pb-4 pt-3 select-none lg:mt-14"
         onClickCapture={(e) => { if (dragged.current) { e.preventDefault(); e.stopPropagation(); dragged.current = false; } }}
         onDragStart={(e) => e.preventDefault()}
       >

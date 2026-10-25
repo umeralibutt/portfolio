@@ -34,13 +34,13 @@ export default function Footer() {
   const links = [...socialLinks].sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
 
   return (
-    <footer className="bg-ink px-5 py-20 text-bone md:px-12 lg:py-[140px]">
+    <footer className="bg-ink gutter py-20 text-bone lg:py-[140px]">
       <p className="text-[13px] font-semibold uppercase leading-[1.21] tracking-[0.12em] text-orange lg:text-[14px]">Got a product that needs fixing?</p>
       <Link href="/contact" data-cursor="Open" aria-label="Let’s talk — go to the contact page" className="group flex flex-wrap items-baseline gap-x-[clamp(16px,2.8vw,40px)] pb-10 pt-6">
-        <span className="font-display leading-[0.88]" style={{ fontSize: fluid(300, 96) }}>LET’S</span>
+        <span className="font-display leading-[0.88]" style={{ fontSize: fluid(200, 80) }}>LET’S</span>
         <span
           className="bg-[linear-gradient(90deg,var(--color-orange)_50%,var(--color-bone)_50%)] bg-[length:200%_100%] bg-[position:100%_0] bg-clip-text font-display leading-[0.88] text-transparent transition-[background-position] duration-700 ease-brand group-hover:bg-[position:0_0] group-focus-visible:bg-[position:0_0]"
-          style={{ fontSize: fluid(300, 96) }}
+          style={{ fontSize: fluid(200, 80) }}
         >
           TALK
         </span>
