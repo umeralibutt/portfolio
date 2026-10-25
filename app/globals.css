@@ -83,7 +83,8 @@ html.preload body { overflow: hidden; }
 
 /* ---------- Custom cursor (fine pointers only) ---------- */
 @media (pointer: fine) {
-  html.cursor-on, html.cursor-on a, html.cursor-on button, html.cursor-on [data-cursor] { cursor: none; }
+  /* Hide the system pointer everywhere (drag/grab cursors too); text fields get their caret back below. */
+  html.cursor-on, html.cursor-on * { cursor: none !important; }
 }
 
 /* ---------- Marquee / text helpers ---------- */
@@ -133,4 +134,4 @@ html.preload body { overflow: hidden; }
 @keyframes letter-up { from { transform: translateY(105%); } }
 
 /* Typing needs the normal text cursor even when the custom cursor is on. */
-html.cursor-on input, html.cursor-on textarea, html.cursor-on [contenteditable] { cursor: text; }
+html.cursor-on input, html.cursor-on textarea, html.cursor-on [contenteditable] { cursor: text !important; }

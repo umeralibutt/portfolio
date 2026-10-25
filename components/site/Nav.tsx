@@ -72,7 +72,7 @@ export default function Nav() {
 
         <div className="hidden items-center gap-4 lg:flex">
           <Socials />
-          <Link href="/contact" data-magnetic data-cursor="Open" className="inline-flex items-center gap-[5px] rounded-full bg-ink px-5 py-3 text-[14px] font-semibold leading-none text-bone transition-colors duration-300 hover:bg-orange hover:text-ink">
+          <Link href="/contact" data-magnetic className="inline-flex items-center gap-[5px] rounded-full bg-ink px-5 py-3 text-[14px] font-semibold leading-none text-bone transition-colors duration-300 hover:bg-orange hover:text-ink">
             Let’s talk <Arrow className="size-[13px]" />
           </Link>
         </div>
