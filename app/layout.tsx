@@ -6,6 +6,8 @@ import Footer from '@/components/site/Footer';
 import Effects from '@/components/site/Effects';
 import Cursor from '@/components/site/Cursor';
 import Preloader from '@/components/site/Preloader';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const anton = Anton({ subsets: ['latin'], weight: '400', variable: '--font-anton', display: 'swap' });
 const instrument = Instrument_Serif({ subsets: ['latin'], weight: '400', style: ['normal', 'italic'], variable: '--font-instrument', display: 'swap' });
@@ -47,6 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <Cursor />
         <Effects />
+        {/* Vercel Web Analytics + Speed Insights (enable both in the Vercel project to start collecting). */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
