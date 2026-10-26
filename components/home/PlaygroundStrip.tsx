@@ -31,7 +31,7 @@ export default function PlaygroundStrip() {
       style={{ '--r': `${s.rot}deg`, marginTop: s.y } as CSSProperties}
     >
       <span className="relative block aspect-[340/255] overflow-hidden rounded-[16px] border-[6px] border-white bg-white shadow-[0_20px_44px_rgb(0_0_0/0.16)] transition-shadow duration-500 group-hover/print:shadow-[0_30px_60px_rgb(0_0_0/0.22)]">
-        <Image src={`/home/play-${s.slug}.jpg`} alt="" fill sizes="340px" className="object-cover" />
+        <Image quality={90} src={`/home/play-${s.slug}.jpg`} alt="" fill sizes="340px" className="object-cover" />
       </span>
       <span className="flex items-center gap-2 leading-none">
         <span className="text-[15px] font-semibold transition-colors duration-300 group-hover/print:text-orange">{s.name}</span>

@@ -107,8 +107,8 @@ export default function WorkIndex() {
             {a.map(({ p, line, n }, i) => (
               <motion.li key={p.slug} {...card} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -10% 0px' }} transition={{ ...card.transition, delay: (i % 2) * 0.08 }}>
                 <Link href={`/work/${p.slug}`} data-cursor="View" className="group flex flex-col gap-[18px]">
-                  <span data-img-reveal data-img-parallax className="relative block aspect-[584/438] overflow-hidden rounded-[22px]">
-                    <Image src={p.cover} alt="" fill priority={n === '01' || n === '02'} sizes="(min-width: 768px) 584px, 100vw" className="object-cover transition-[scale] duration-700 ease-brand group-hover:scale-[1.04]" />
+                  <span data-img-reveal className="relative block aspect-[584/438] overflow-hidden rounded-[22px]">
+                    <Image quality={90} src={p.cover} alt="" fill priority={n === '01' || n === '02'} sizes="(min-width: 768px) 584px, 100vw" className="object-cover transition-[scale] duration-700 ease-brand group-hover:scale-[1.04]" />
                   </span>
                   <span className="flex items-center justify-between gap-4">
                     <span className="flex min-w-0 items-baseline gap-4 transition-colors duration-300 group-hover:text-orange">
@@ -147,7 +147,7 @@ export default function WorkIndex() {
                 <motion.li key={p.slug} {...card} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -10% 0px' }} transition={{ ...card.transition, delay: (i % 3) * 0.08 }}>
                   <Link href={`/work/${p.slug}`} data-cursor="View" className="group flex flex-col gap-3.5">
                     <span data-img-reveal className="relative block aspect-[381/286] overflow-hidden rounded-[18px]">
-                      <Image src={p.cover} alt="" fill sizes="(min-width: 1024px) 381px, (min-width: 640px) 50vw, 100vw" className="object-cover transition-[scale] duration-700 ease-brand group-hover:scale-[1.04]" />
+                      <Image quality={90} src={p.cover} alt="" fill sizes="(min-width: 1024px) 381px, (min-width: 640px) 50vw, 100vw" className="object-cover transition-[scale] duration-700 ease-brand group-hover:scale-[1.04]" />
                     </span>
                     <span className="flex items-center gap-2.5">
                       <span className="font-display text-[30px] leading-none transition-colors duration-300 group-hover:text-orange">{p.name}</span>

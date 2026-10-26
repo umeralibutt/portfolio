@@ -95,7 +95,7 @@ export default function MoreBangers() {
         {cards.map((c) => (
           <Link key={c.slug} href={`/work/${c.slug}`} data-skew className="group flex w-[min(440px,80vw)] shrink-0 flex-col gap-5" draggable={false}>
             <div className="relative aspect-[440/330] overflow-hidden rounded-[20px] transition-[rotate] duration-500 ease-brand group-hover:rotate-3 group-focus-visible:rotate-3">
-              <Image src={`/home/bangers-${c.slug}.jpg`} alt={`${c.name} cover`} fill sizes="(min-width:768px) 440px, 80vw" className="pointer-events-none object-cover" draggable={false} />
+              <Image quality={90} src={`/home/bangers-${c.slug}.jpg`} alt={`${c.name} cover`} fill sizes="(min-width:768px) 440px, 80vw" className="pointer-events-none object-cover" draggable={false} />
             </div>
             <div className="flex items-center justify-between">
               <div className="flex flex-col gap-1">

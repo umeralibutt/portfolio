@@ -80,7 +80,7 @@ export default function SelectedWork() {
               {/* Collapsed spine (desktop): small tilted shot + title and meta reading bottom-to-top. */}
               <div aria-hidden={isOpen} className={`absolute inset-0 hidden transition-opacity duration-300 lg:block ${isOpen ? 'pointer-events-none opacity-0' : 'opacity-100 delay-300'}`}>
                 <div className="absolute left-8 top-[84px] w-[180px] overflow-hidden rounded-[14px] border-4 border-bone/90 shadow-[0_30px_60px_rgb(0_0_0/0.35)]" style={{ rotate: `${p.tilt}deg` }}>
-                  <div className="relative aspect-[180/135]"><Image src={p.shot} alt="" fill sizes="180px" className="object-cover" /></div>
+                  <div className="relative aspect-[180/135]"><Image quality={90} src={p.shot} alt="" fill sizes="180px" className="object-cover" /></div>
                 </div>
                 <span className="absolute bottom-8 left-8 rotate-180 font-display text-[64px] uppercase leading-none whitespace-nowrap [writing-mode:vertical-rl]">{p.name}</span>
                 <span className={`absolute bottom-8 left-[100px] rotate-180 text-[13px] font-medium leading-none whitespace-nowrap [writing-mode:vertical-rl] ${onOrange ? 'text-ink/70' : 'text-bone/70'}`}>{p.meta}</span>
@@ -101,7 +101,7 @@ export default function SelectedWork() {
                   >
                     <div className="overflow-hidden rounded-[14px] border-4 border-bone/90 shadow-[0_30px_60px_rgb(0_0_0/0.35)] transition-[rotate] duration-700 ease-brand group-hover:rotate-0" style={{ rotate: '3deg' }}>
                       <div className="relative aspect-[354.667/266]">
-                        <Image src={p.shot} alt={`${p.name} screens`} fill sizes="(min-width:1024px) 360px, 90vw" className="object-cover transition-transform duration-700 ease-brand group-hover:scale-[1.04]" />
+                        <Image quality={90} src={p.shot} alt={`${p.name} screens`} fill sizes="(min-width:1024px) 360px, 90vw" className="object-cover transition-transform duration-700 ease-brand group-hover:scale-[1.04]" />
                       </div>
                     </div>
                   </Link>
