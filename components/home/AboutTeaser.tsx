@@ -18,7 +18,7 @@ export default function AboutTeaser() {
           {/* Polaroid: tucked beside the headline (Figma: 418px in, 21px above the column, +7°; it overlaps the Layers panel on purpose). */}
           <figure data-parallax="-0.2" className="relative w-[200px] rotate-[7deg] sm:absolute sm:left-[clamp(250px,29.06vw,418px)] sm:top-[-21px] sm:w-[clamp(170px,15.5vw,224px)] rounded-[6px] bg-white px-3 pb-4 pt-3 [filter:drop-shadow(0_16px_20px_rgb(0_0_0/0.15))] transition-[rotate,translate] duration-700 ease-brand hover:-translate-y-1 hover:rotate-0">
             <div className="relative aspect-[200/230] overflow-hidden rounded-[2px]">
-              <Image src="/home/polaroid-umar.png" alt="Umar Ali Butt" fill sizes="200px" className="object-cover" />
+              <Image quality={90} src="/home/polaroid-umar.png" alt="Umar Ali Butt" fill sizes="200px" className="object-cover" />
             </div>
             <figcaption className="mt-2.5 flex items-center gap-1.5 font-serif text-[clamp(14px,1.25vw,18px)] italic leading-none">that’s me, 2026 <ArrowUp className="size-[1em]" /></figcaption>
           </figure>

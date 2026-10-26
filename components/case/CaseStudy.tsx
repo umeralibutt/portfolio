@@ -41,8 +41,8 @@ export default function CaseStudy({ project: p }: { project: Project }) {
       </dl>
 
       <div className="gutter">
-        <div data-scale-in data-img-parallax className="relative aspect-[1200/893] overflow-hidden rounded-[clamp(16px,1.95vw,28px)]">
-          <Image src={p.cover} alt={`${p.name.toLowerCase()} cover`} fill priority sizes="(min-width: 1440px) 1200px, 100vw" className="object-cover" />
+        <div data-scale-in className="relative aspect-[1200/893] overflow-hidden rounded-[clamp(16px,1.95vw,28px)]">
+          <Image quality={90} src={p.cover} alt={`${p.name.toLowerCase()} cover`} fill priority sizes="(min-width: 1440px) 1200px, 100vw" className="object-cover" />
         </div>
       </div>
 
@@ -56,8 +56,8 @@ export default function CaseStudy({ project: p }: { project: Project }) {
           </Line>
         </h2>
         {p.screens.map((src, i) => (
-          <div key={src} data-img-reveal data-img-parallax className="relative aspect-[1200/723] overflow-hidden rounded-[clamp(16px,1.95vw,28px)]">
-            <Image src={src} alt={`${p.name.toLowerCase()} screens ${i + 1}`} fill sizes="(min-width: 1440px) 1200px, 100vw" className="object-cover" />
+          <div key={src} data-img-reveal className="relative aspect-[1200/723] overflow-hidden rounded-[clamp(16px,1.95vw,28px)]">
+            <Image quality={90} src={src} alt={`${p.name.toLowerCase()} screens ${i + 1}`} fill sizes="(min-width: 1440px) 1200px, 100vw" className="object-cover" />
           </div>
         ))}
       </section>
@@ -144,7 +144,7 @@ function NextUp({ from }: { from: Project }) {
           </span>
         </div>
         <div data-parallax="-0.15" className="relative aspect-[460/345] w-full max-w-[460px] shrink-0 -rotate-5 overflow-hidden rounded-[18px] border-[6px] border-white shadow-[0_30px_60px_rgb(0_0_0/0.3)] transition-[rotate,translate] duration-700 ease-brand group-hover:-translate-y-2 group-hover:rotate-0 lg:mx-[14px] lg:my-[19px]">
-          <Image src={n.cover} alt="" fill sizes="460px" className="object-cover" />
+          <Image quality={90} src={n.cover} alt="" fill sizes="460px" className="object-cover" />
         </div>
       </Link>
     </section>

@@ -39,7 +39,7 @@ export default function AboutHero() {
       <div className="relative mx-auto aspect-[500/620] w-full max-w-[500px] shrink-0 lg:mx-0" onPointerMove={tilt} onPointerLeave={reset}>
         <div ref={photo} className="absolute left-[6.9%] top-[1.2%] w-[92%] transition-transform duration-500 ease-brand">
           <div className="relative aspect-[460/560] -rotate-3 overflow-hidden rounded-[24px] border-8 border-white bg-white shadow-[0_24px_56px_rgb(0_0_0/0.2)]">
-            <Image src="/home/polaroid-umar.png" alt="Umar Ali Butt" fill priority sizes="(min-width: 1024px) 460px, 90vw" className="object-cover" />
+            <Image quality={90} src="/home/polaroid-umar.png" alt="Umar Ali Butt" fill priority sizes="(min-width: 1024px) 460px, 90vw" className="object-cover" />
           </div>
         </div>
         <p className="absolute left-[-7%] top-[84%] rotate-[8deg] whitespace-nowrap rounded-full bg-orange px-5 py-3 font-display leading-[1.21] tracking-[0.02em] text-ink" style={{ fontSize: fluid(22, 16) }}>

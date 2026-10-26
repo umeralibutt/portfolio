@@ -24,7 +24,7 @@ const ease = 'expo.out';
  * - data-slide-over           slides in from the right while scrolling (the case study "fix" panel)
  * - data-parallax / data-drift / data-drift-out   scrubbed vertical drift / sideways drift / hero pull-apart
  * - data-tilt-in / data-slide-in / data-scale-up  scrubbed entrances (3D tilt, from the side, grow)
- * - data-img-reveal / data-img-parallax          image wipe-in, and the image drifting inside its frame
+ * - data-img-reveal                             image wipes up out of its frame and settles from a zoom
  * - data-deal / data-curtain / data-skew         dealt cards, footer rising from under the page, speed lean
  * Reduced motion: no smooth scroll or pointer effects, and reveals become short fades.
  */
@@ -161,21 +161,10 @@ export default function Effects() {
         // Images wipe up out of their frame and settle from a zoom (once). The frame must clip.
         gsap.utils.toArray<HTMLElement>('[data-img-reveal]').forEach((el) => {
           const img = el.querySelector('img');
-          const base = el.hasAttribute('data-img-parallax') ? 1.15 : 1;
           const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
           tl.fromTo(el, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'expo.inOut', clearProps: 'clipPath' });
-          if (img) tl.fromTo(img, { scale: base + 0.3 }, { scale: base, duration: 1.6, ease }, 0);
-        });
-
-        // The image drifts inside its frame as the page scrolls (the frame must clip).
-        gsap.utils.toArray<HTMLElement>('[data-img-parallax]').forEach((el) => {
-          const img = el.querySelector('img');
-          if (!img) return;
-          gsap.set(img, { scale: 1.15 });
-          gsap.fromTo(img, { yPercent: -6 }, {
-            yPercent: 6, ease: 'none',
-            scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
-          });
+          // Clearing the transform afterwards lets the browser draw the image at full sharpness again.
+          if (img) tl.fromTo(img, { scale: 1.3 }, { scale: 1, duration: 1.6, ease, clearProps: 'transform' }, 0);
         });
 
         // Children land like dealt cards when the container scrolls in.
