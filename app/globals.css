@@ -55,24 +55,24 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
-/* The content column (see components/site/Container): 20px on phones, 48px on tablets, 120px sides from 1440 up.
-   Umar's call: content keeps spanning the full width on wide screens (no centred max-width). */
+/* The content column (see components/site/Container): 20px on phones, 48px on tablets, 120px sides at 1440.
+   Past 1440 the content stops at 1200px and centres (the extra space goes to the sides). */
 @utility container-site {
   width: 100%;
   padding-inline: 20px;
   @media (min-width: 768px) { padding-inline: 48px; }
-  @media (min-width: 1024px) { padding-inline: clamp(48px, 8.333vw, 120px); }
+  @media (min-width: 1024px) { padding-inline: max(clamp(48px, 8.333vw, 120px), calc((100% - 1200px) / 2)); }
 }
 /* Full-bleed rows (marquee, drag gallery) whose first item lines up with the content column. */
 @utility pl-edge {
   padding-left: 20px;
   @media (min-width: 768px) { padding-left: 48px; }
-  @media (min-width: 1024px) { padding-left: clamp(48px, 8.333vw, 120px); }
+  @media (min-width: 1024px) { padding-left: max(clamp(48px, 8.333vw, 120px), calc((100% - 1200px) / 2)); }
 }
 @utility pr-edge {
   padding-right: 20px;
   @media (min-width: 768px) { padding-right: 48px; }
-  @media (min-width: 1024px) { padding-right: clamp(48px, 8.333vw, 120px); }
+  @media (min-width: 1024px) { padding-right: max(clamp(48px, 8.333vw, 120px), calc((100% - 1200px) / 2)); }
 }
 @utility section-pad {
   padding-block: 80px;

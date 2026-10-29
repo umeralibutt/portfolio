@@ -50,9 +50,9 @@ export default function SelectedWork() {
         ScrollTrigger.create({ trigger: card, start: 'top 121px', onEnter: () => setActive(i), onLeaveBack: () => setActive(Math.max(0, i - 1)) });
         const next = items[i + 1];
         if (!next) return;
-        // Recede as the next card covers this one.
+        // Recede as the next card covers this one (scale only: dimming read as the card going black).
         gsap.to(card.firstElementChild, {
-          scale: 0.92, filter: 'brightness(0.7)', ease: 'none', transformOrigin: '50% 0%',
+          scale: 0.94, ease: 'none', transformOrigin: '50% 0%',
           scrollTrigger: { trigger: next, start: 'top bottom', end: 'top 120px', scrub: true },
         });
       });
@@ -78,8 +78,9 @@ export default function SelectedWork() {
           return (
             // The sticky wrapper pins; the article inside is what scales and dims.
             <div key={c.slug} data-card className="motion-safe:lg:sticky motion-safe:lg:top-[120px]">
-              <article className={`flex flex-col gap-8 overflow-hidden rounded-[32px] p-6 shadow-[0_-12px_20px_rgb(0_0_0/0.18)] sm:p-10 lg:h-[600px] lg:flex-row lg:items-center lg:gap-14 lg:py-12 lg:pl-14 lg:pr-12 ${t.card}`}>
-                <div className="flex flex-col items-start justify-between gap-8 lg:h-full lg:w-[500px] lg:shrink-0">
+              {/* Two flexible columns; the image fills its side so there is no empty gap on the right. */}
+              <article className={`flex flex-col gap-8 overflow-hidden rounded-[32px] p-6 shadow-[0_-12px_20px_rgb(0_0_0/0.18)] sm:p-10 lg:grid lg:h-[clamp(540px,41.67vw,600px)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-14 lg:py-12 lg:pl-14 lg:pr-12 ${t.card}`}>
+                <div className="flex flex-col items-start justify-between gap-8 lg:h-full">
                   <div className="flex flex-col items-start gap-[22px]">
                     <p className={`text-[13px] font-semibold leading-[1.21] tracking-[0.12em] ${t.num}`}>0{i + 1} / 03</p>
                     <h3 className="font-display leading-[0.92] lg:whitespace-nowrap" style={{ fontSize: fluid(c.size, 44) }}>{c.title}</h3>
@@ -97,8 +98,8 @@ export default function SelectedWork() {
                     </span>
                   </Link>
                 </div>
-                <Link href={`/work/${c.slug}`} data-cursor="View" tabIndex={-1} className="relative block aspect-[560/420] w-full overflow-hidden rounded-[20px] border-[5px] border-bone/90 lg:w-[560px] lg:shrink-0">
-                  <Image quality={90} src={c.shot} alt={`${c.name} screens`} fill sizes="(min-width: 1024px) 560px, 100vw" className="object-cover" />
+                <Link href={`/work/${c.slug}`} data-cursor="View" tabIndex={-1} className="relative block aspect-[560/420] w-full overflow-hidden rounded-[20px] border-[5px] border-bone/90 lg:aspect-auto lg:h-full">
+                  <Image quality={90} src={c.shot} alt={`${c.name} screens`} fill sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover" />
                 </Link>
               </article>
             </div>
