@@ -206,7 +206,7 @@ function SideQuest() {
     <section className="container-site flex flex-col gap-4 pb-20 pt-20 sm:flex-row sm:items-end sm:justify-between lg:pt-[110px]">
       <p className="font-serif italic leading-[1.21]" style={{ fontSize: fluid(64, 36) }}>a side quest, not a client brief.</p>
       <p className="text-[18px] font-medium leading-[1.4] text-mute sm:text-right">
-        No client, no deadline.<br />Just me exploring how this could feel.
+        No client, no deadline<br />just me exploring how this could feel.
       </p>
     </section>
   );
