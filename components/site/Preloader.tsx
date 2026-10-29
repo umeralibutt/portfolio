@@ -33,7 +33,7 @@ export default function Preloader() {
   }, []);
 
   return (
-    <div ref={panel} className="preloader fixed inset-0 z-[100] flex-col justify-between bg-ink p-5 text-bone md:p-12" aria-hidden="true">
+    <div ref={panel} className="preloader fixed inset-0 z-[100] flex-col justify-between bg-ink text-bone" aria-hidden="true">
       <p className="font-mono text-[13px] uppercase tracking-[0.2em] text-bone/60">Loading pixels…</p>
       <p className="display text-[clamp(120px,24vw,340px)] leading-[0.8]">
         {/* Fixed three-digit box so the "%" doesn't jump as the count grows (layout shift). */}
