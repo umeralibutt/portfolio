@@ -30,10 +30,14 @@ const tones = {
 } as const;
 
 /**
- * Figma "Work 1 — Featured spreads" 215:24: sticky stacking cards. Each card pins 120px from the top;
- * as the next one slides over, the one underneath scales to 0.92 and dims 30%. The pills follow along.
+ * Figma "Work 1 — Featured spreads" 215:24: sticky stacking cards. Card i pins at 120 + 36·i px; each card
+ * that slides over shrinks the ones underneath by 6% (top-anchored), so the stack ends as the Figma deck:
+ * every earlier card peeks 36px above the next, at 94% and 88% width. The pills follow along.
  * Phones and reduced motion get plain stacked cards (no pinning).
  */
+const PIN = 120;
+const PEEK = 36;
+
 export default function SelectedWork() {
   const stack = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
@@ -47,13 +51,13 @@ export default function SelectedWork() {
       const items = gsap.utils.toArray<HTMLElement>('[data-card]', el);
       items.forEach((card, i) => {
         // Which card is on top.
-        ScrollTrigger.create({ trigger: card, start: 'top 121px', onEnter: () => setActive(i), onLeaveBack: () => setActive(Math.max(0, i - 1)) });
-        const next = items[i + 1];
-        if (!next) return;
-        // Recede as the next card covers this one (scale only: dimming read as the card going black).
-        gsap.to(card.firstElementChild, {
-          scale: 0.94, ease: 'none', transformOrigin: '50% 0%',
-          scrollTrigger: { trigger: next, start: 'top bottom', end: 'top 120px', scrub: true },
+        ScrollTrigger.create({ trigger: card, start: `top ${PIN + PEEK * i + 1}px`, onEnter: () => setActive(i), onLeaveBack: () => setActive(Math.max(0, i - 1)) });
+        // Shrink one step for every later card that slides over this one.
+        items.slice(i + 1).forEach((next, k) => {
+          gsap.fromTo(card.firstElementChild, { scale: 1 - 0.06 * k }, {
+            scale: 1 - 0.06 * (k + 1), ease: 'none', transformOrigin: '50% 0%', immediateRender: k === 0,
+            scrollTrigger: { trigger: next, start: 'top bottom', end: `top ${PIN + PEEK * (i + k + 1)}px`, scrub: true },
+          });
         });
       });
     });
@@ -76,8 +80,8 @@ export default function SelectedWork() {
         {cards.map((c, i) => {
           const t = tones[c.tone];
           return (
-            // The sticky wrapper pins; the article inside is what scales and dims.
-            <div key={c.slug} data-card className="motion-safe:lg:sticky motion-safe:lg:top-[120px]">
+            // The sticky wrapper pins (top is ignored when it isn't sticky); the article inside is what scales.
+            <div key={c.slug} data-card className="motion-safe:lg:sticky" style={{ top: PIN + PEEK * i }}>
               {/* Two flexible columns; the image fills its side so there is no empty gap on the right. */}
               <article className={`flex flex-col gap-8 overflow-hidden rounded-[32px] p-6 shadow-[0_-12px_20px_rgb(0_0_0/0.18)] sm:p-10 lg:grid lg:h-[clamp(540px,41.67vw,600px)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-14 lg:py-12 lg:pl-14 lg:pr-12 ${t.card}`}>
                 <div className="flex flex-col items-start justify-between gap-8 lg:h-full">
