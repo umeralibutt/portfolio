@@ -85,10 +85,10 @@ export default function Effects() {
         });
       }
 
-      // List rows tick in one by one.
+      // List rows tick in one by one (data-rows="0.08" sets the gap between them, in seconds).
       gsap.utils.toArray<HTMLElement>('[data-rows]').forEach((list) => {
         gsap.from(list.children, {
-          opacity: 0, y: reduced ? 0 : 24, duration: reduced ? 0.4 : 0.7, stagger: 0.12, ease,
+          opacity: 0, y: reduced ? 0 : 24, duration: reduced ? 0.4 : 0.7, stagger: parseFloat(list.dataset.rows || '') || 0.12, ease,
           scrollTrigger: { trigger: list, start: 'top 85%', once: true },
         });
       });

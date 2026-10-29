@@ -104,6 +104,9 @@ html.preload body { overflow: hidden; }
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
+/* Umar Wrapped story mode: the current progress bar fills over 4s. */
+@keyframes story-fill { from { width: 0; } to { width: 100%; } }
+
 /* Torn receipt edges. */
 .torn-y {
   --z: 14px;

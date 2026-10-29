@@ -8,7 +8,9 @@ export const site = {
     upwork: 'https://www.upwork.com/freelancers/~01fbaab0f0eb29dd61',
     behance: 'https://www.behance.net/s325',
   },
-  // Linked from the About page's "Download my CV" button (Figma 235:82).
+  // "Download my CV" / "Grab my CV" buttons on Home and About.
   cv: '/umar-ali-butt-cv.pdf',
+  // TODO(Umar): Cal.com / Calendly link for "Book a 20-min call". Until then those buttons go to /contact.
+  cal: '',
   formspreeId: process.env.NEXT_PUBLIC_FORMSPREE_ID || '',
 };
