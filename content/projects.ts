@@ -77,7 +77,7 @@ export const caseStudies: CaseStudy[] = [
     tagline: 'Pakistan’s first profit-and-loss sharing brokerage. Invest, trade and grow on the PSX, with a partner that stands beside you.',
     teaser: 'Pakistan’s first profit-and-loss sharing brokerage.',
     meta: caseMeta('FinTech', 'iOS & Android'),
-    cover: '/case/youngs-capital/hero.png', screens: ['/case/youngs-capital/screens.png'],
+    ...img('youngs-capital', 1),
     receipts: { sub: LAUNCHED, rows: [
       { text: 'CDC-ranked broker within 4 months of launch', value: 'TOP 10' },
       { text: 'Average rating on the App Store', value: '4.8' },

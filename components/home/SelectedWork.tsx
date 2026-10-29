@@ -10,7 +10,7 @@ import { Arrow } from '../site/icons';
 
 const cards = [
   {
-    slug: 'youngs-capital', name: 'Youngs Capital', title: 'YOUNGS CAPITAL', size: 80, shot: '/home/shot-youngs-capital.png',
+    slug: 'youngs-capital', name: 'Youngs Capital', title: 'YOUNGS CAPITAL', size: 80, shot: '/home/shot-youngs-capital.jpg',
     line: 'Making Pakistan’s stock market feel less like a spreadsheet.', tags: ['Fintech', 'PSX brokerage', 'Mobile'], tone: 'ink',
   },
   {
