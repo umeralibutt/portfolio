@@ -15,6 +15,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'sw
 const unbounded = Unbounded({ subsets: ['latin'], weight: '700', variable: '--font-unbounded', display: 'swap' });
 const plex = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-plex', display: 'swap' });
 
+// TODO(Umar): once the custom domain is bought, set NEXT_PUBLIC_SITE_URL to it in Vercel.
 // Absolute base for Open Graph image URLs: an explicit site URL, else the Vercel deployment, else local dev.
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
   ?? (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'http://localhost:3000');

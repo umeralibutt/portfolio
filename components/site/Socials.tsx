@@ -1,5 +1,6 @@
 import { site } from '@/lib/data';
 
+// TODO(Umar): swap the Behance and Upwork marks for the official SVGs from their brand kits.
 // Brand marks exported from Figma (nav "Socials" 214:11311), all drawn on a 28px grid.
 // "fill" marks are the circle itself (their colour is the mark); the rest sit on a coloured circle.
 const marks = {
