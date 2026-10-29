@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Anton, IBM_Plex_Mono, Inter, Instrument_Serif, Unbounded } from 'next/font/google';
 import './globals.css';
 import Nav from '@/components/site/Nav';
@@ -22,20 +22,23 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   // Tab title and link-preview copy from Figma "Brand — Favicon & URL preview" (264:24).
-  title: 'Umar Ali Butt | Product Designer',
+  title: 'Umar Ali Butt, Senior Product Designer',
   description: 'I design (almost) everything: apps, platforms, dashboards & brands for Web3, fintech & AI.',
   openGraph: {
-    title: 'Umar Ali Butt | Senior Product Designer',
+    title: 'Umar Ali Butt, Senior Product Designer',
     description: 'I design (almost) everything: apps, platforms, dashboards & brands for Web3, fintech & AI.',
     siteName: 'Umar Ali Butt',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Umar Ali Butt | Senior Product Designer',
+    title: 'Umar Ali Butt, Senior Product Designer',
     description: 'I design (almost) everything: apps, platforms, dashboards & brands for Web3, fintech & AI.',
   },
 };
+
+// Browser chrome (mobile address bar) matches the ink nav.
+export const viewport: Viewport = { themeColor: '#0E0D0C' };
 
 // Runs before first paint: marks JS as available, and shows the preloader on the first visit of a session
 // (never with reduced motion). Everything still renders and reads fine if this never runs.
