@@ -39,7 +39,7 @@ export default function PlaygroundCanvas() {
 
   return (
     <>
-      <header className="gutter flex flex-col gap-6 pb-10 pt-[124px] lg:flex-row lg:items-end lg:justify-between lg:pt-[193px]">
+      <header className="container-site flex flex-col gap-6 pb-10 pt-[124px] lg:flex-row lg:items-end lg:justify-between lg:pt-[193px]">
         <h1 data-lines data-hero>
           <Line driftOut={-1} className="flex flex-wrap items-baseline gap-x-[18px] leading-[0.88] sm:flex-nowrap sm:whitespace-nowrap">
             <span className="font-display" style={{ fontSize: fluid(200, 76) }}>PLAY</span>
@@ -59,7 +59,7 @@ export default function PlaygroundCanvas() {
       </header>
 
       <div className="overflow-x-clip pb-20 lg:pb-[120px]">
-        <div className="gutter">
+        <div className="container-site">
           <div
             ref={canvas}
             data-deal

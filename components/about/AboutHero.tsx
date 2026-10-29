@@ -21,7 +21,7 @@ export default function AboutHero() {
   const reset = () => { if (photo.current) photo.current.style.transform = ''; };
 
   return (
-    <section className="gutter flex flex-col gap-16 pb-20 pt-[124px] lg:flex-row lg:items-center lg:justify-between lg:pb-[120px] lg:pt-[193px]">
+    <section className="container-site flex flex-col gap-16 pb-20 pt-[124px] lg:grid lg:grid-cols-[minmax(0,1fr)_500px] lg:items-center lg:gap-16 lg:pb-[120px] lg:pt-[193px]">
       <div className="flex flex-col items-start gap-8">
         <p className="text-[14px] font-semibold uppercase leading-[1.21] tracking-[0.12em] text-orange-deep">About</p>
         <h1 data-lines data-hero className="whitespace-nowrap">

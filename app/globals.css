@@ -55,11 +55,24 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
-@utility gutter {
+/* The content column (see components/site/Container): 20px on phones, 48px on tablets, 120px sides from 1440 up.
+   Umar's call: content keeps spanning the full width on wide screens (no centred max-width). */
+@utility container-site {
+  width: 100%;
   padding-inline: 20px;
   @media (min-width: 768px) { padding-inline: 48px; }
-  /* Figma: 120px sides at 1440, easing down to 48px on smaller laptops. */
   @media (min-width: 1024px) { padding-inline: clamp(48px, 8.333vw, 120px); }
+}
+/* Full-bleed rows (marquee, drag gallery) whose first item lines up with the content column. */
+@utility pl-edge {
+  padding-left: 20px;
+  @media (min-width: 768px) { padding-left: 48px; }
+  @media (min-width: 1024px) { padding-left: clamp(48px, 8.333vw, 120px); }
+}
+@utility pr-edge {
+  padding-right: 20px;
+  @media (min-width: 768px) { padding-right: 48px; }
+  @media (min-width: 1024px) { padding-right: clamp(48px, 8.333vw, 120px); }
 }
 @utility section-pad {
   padding-block: 80px;

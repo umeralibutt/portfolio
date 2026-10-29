@@ -20,7 +20,7 @@ export default function Receipt() {
   return (
     <section className="relative overflow-hidden bg-ink text-bone">
       <div className="dot-grid absolute inset-0" aria-hidden="true" />
-      <div className="relative flex flex-col items-center gap-16 gutter py-20 lg:flex-row lg:justify-between lg:py-[140px]">
+      <div className="relative flex flex-col items-center gap-16 container-site py-20 lg:flex-row lg:justify-between lg:py-[140px]">
         <div className="flex flex-col items-start gap-7 self-start lg:self-center">
           <p className="font-serif italic leading-none text-orange" style={{ fontSize: fluid(34, 26) }}>receipts, not vibes</p>
           <h2 data-lines className="font-display leading-[0.88] whitespace-nowrap" style={{ fontSize: fluid(150, 84) }}>

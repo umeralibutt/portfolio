@@ -7,6 +7,7 @@ import { site } from '@/lib/data';
 import { socialLinks } from './Socials';
 import { fluid } from './type';
 import { ArrowUp, ArrowUpRight } from './icons';
+import Container from './Container';
 
 /** Figma "Footer — Let’s talk" 213:191 — ink, 140 / 48 padding. TALK fills orange left → right on hover. */
 export default function Footer() {
@@ -48,58 +49,62 @@ export default function Footer() {
   // Contact already is the "let's talk" page, so it only gets the slim bar (Figma 235:606).
   if (path === '/contact') {
     return (
-      <footer className="flex flex-col gap-3 bg-ink gutter py-7 text-[14px] leading-[1.21] text-bone/55 md:flex-row md:items-start md:justify-between">
-        {base}
+      <footer className="bg-ink py-7 text-[14px] leading-[1.21] text-bone/55">
+        <Container className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+          {base}
+        </Container>
       </footer>
     );
   }
 
   return (
-    <footer className="overflow-x-clip bg-ink gutter py-20 text-bone lg:py-[140px]">
-      {/* The whole block rises out from under the page as the footer scrolls in. */}
-      <div data-curtain>
-      <p className="text-[13px] font-semibold uppercase leading-[1.21] tracking-[0.12em] text-orange lg:text-[14px]">Got a product that needs fixing?</p>
-      <Link href="/contact" data-cursor="Open" data-scale-up aria-label="Let’s talk: go to the contact page" className="group flex flex-wrap items-baseline gap-x-[clamp(16px,2.8vw,40px)] pb-10 pt-6">
-        <span className="font-display leading-[0.88]" style={{ fontSize: fluid(200, 80) }}>LET’S</span>
-        <span
-          className="bg-[linear-gradient(90deg,var(--color-orange)_50%,var(--color-bone)_50%)] bg-[length:200%_100%] bg-[position:100%_0] bg-clip-text font-display leading-[0.88] text-transparent transition-[background-position] duration-700 ease-brand group-hover:bg-[position:0_0] group-focus-visible:bg-[position:0_0]"
-          style={{ fontSize: fluid(200, 80) }}
-        >
-          TALK
-        </span>
-        <ArrowUpRight className="shrink-0 self-center text-orange transition-transform duration-500 ease-brand group-hover:translate-x-2 group-hover:-translate-y-2" style={{ width: fluid(111, 44), height: fluid(111, 44) }} strokeWidth={2.2} />
-      </Link>
-
-      <div className="flex flex-col gap-8 pb-16 lg:flex-row lg:items-center lg:justify-between lg:pb-24">
-        <div className="flex flex-wrap items-center gap-[18px]">
-          <button
-            type="button"
-            onClick={copy}
-            data-cursor="Copy"
-            className="text-left font-medium leading-[1.21] tracking-[-0.03em] underline decoration-[0.05em] underline-offset-[0.18em] transition-colors duration-300 hover:text-orange"
-            style={{ fontSize: fluid(44, 24) }}
+    <footer className="overflow-x-clip bg-ink py-20 text-bone lg:py-[140px]">
+      <Container>
+        {/* The whole block rises out from under the page as the footer scrolls in. */}
+        <div data-curtain>
+        <p className="text-[13px] font-semibold uppercase leading-[1.21] tracking-[0.12em] text-orange lg:text-[14px]">Got a product that needs fixing?</p>
+        <Link href="/contact" data-cursor="Open" data-scale-up aria-label="Let’s talk: go to the contact page" className="group flex flex-wrap items-baseline gap-x-[clamp(16px,2.8vw,40px)] pb-10 pt-6">
+          <span className="font-display leading-[0.88]" style={{ fontSize: fluid(200, 80) }}>LET’S</span>
+          <span
+            className="bg-[linear-gradient(90deg,var(--color-orange)_50%,var(--color-bone)_50%)] bg-[length:200%_100%] bg-[position:100%_0] bg-clip-text font-display leading-[0.88] text-transparent transition-[background-position] duration-700 ease-brand group-hover:bg-[position:0_0] group-focus-visible:bg-[position:0_0]"
+            style={{ fontSize: fluid(200, 80) }}
           >
-            {site.email}
-          </button>
-          <span role="status" className={`rounded-full bg-orange px-[18px] py-2.5 text-[14px] font-semibold leading-none text-ink transition-[opacity,translate] duration-500 ease-brand ${copied ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-2 opacity-0'}`}>
-            {copied ? 'Copied. Don’t be shy.' : ''}
+            TALK
           </span>
-        </div>
-        <ul className="flex flex-wrap gap-x-8 gap-y-3 text-[17px] font-medium leading-none">
-          {links.map((s) => (
-            <li key={s.key}>
-              <a href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 transition-colors duration-300 hover:text-orange">
-                {s.label} <ArrowUpRight className="size-4 transition-transform duration-300 ease-brand group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+          <ArrowUpRight className="shrink-0 self-center text-orange transition-transform duration-500 ease-brand group-hover:translate-x-2 group-hover:-translate-y-2" style={{ width: fluid(111, 44), height: fluid(111, 44) }} strokeWidth={2.2} />
+        </Link>
 
-      <div className="flex flex-col gap-3 border-t border-bone/15 pt-7 text-[14px] leading-[1.21] text-bone/55 md:flex-row md:items-start md:justify-between">
-        {base}
-      </div>
-      </div>
+        <div className="flex flex-col gap-8 pb-16 lg:flex-row lg:items-center lg:justify-between lg:pb-24">
+          <div className="flex flex-wrap items-center gap-[18px]">
+            <button
+              type="button"
+              onClick={copy}
+              data-cursor="Copy"
+              className="text-left font-medium leading-[1.21] tracking-[-0.03em] underline decoration-[0.05em] underline-offset-[0.18em] transition-colors duration-300 hover:text-orange"
+              style={{ fontSize: fluid(44, 24) }}
+            >
+              {site.email}
+            </button>
+            <span role="status" className={`rounded-full bg-orange px-[18px] py-2.5 text-[14px] font-semibold leading-none text-ink transition-[opacity,translate] duration-500 ease-brand ${copied ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-2 opacity-0'}`}>
+              {copied ? 'Copied. Don’t be shy.' : ''}
+            </span>
+          </div>
+          <ul className="flex flex-wrap gap-x-8 gap-y-3 text-[17px] font-medium leading-none">
+            {links.map((s) => (
+              <li key={s.key}>
+                <a href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 transition-colors duration-300 hover:text-orange">
+                  {s.label} <ArrowUpRight className="size-4 transition-transform duration-300 ease-brand group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="flex flex-col gap-3 border-t border-bone/15 pt-7 text-[14px] leading-[1.21] text-bone/55 md:flex-row md:items-start md:justify-between">
+          {base}
+        </div>
+        </div>
+      </Container>
     </footer>
   );
 }
