@@ -13,7 +13,7 @@ type Status = 'idle' | 'sending' | 'sent' | 'error';
 export default function ContactPage() {
   return (
     <div className="bg-bone">
-      <header className="gutter flex flex-col items-start gap-3 pb-12 pt-[124px] lg:pb-[72px] lg:pt-[193px]">
+      <header className="container-site flex flex-col items-start gap-3 pb-12 pt-[124px] lg:pb-[72px] lg:pt-[193px]">
         <h1 data-lines data-hero>
           <Line driftOut={-1} className="flex items-baseline gap-x-6 whitespace-nowrap">
             <span className="font-display leading-[0.86]" style={{ fontSize: fluid(200, 96) }}>SAY</span>
@@ -23,7 +23,7 @@ export default function ContactPage() {
         <p className="font-serif italic leading-[1.21] text-mute" style={{ fontSize: fluid(40, 28) }}>or don’t. (please do.)</p>
       </header>
 
-      <div className="gutter flex flex-col gap-16 pb-20 lg:flex-row lg:items-start lg:pb-[100px]">
+      <div className="container-site flex flex-col gap-16 pb-20 lg:flex-row lg:items-start lg:pb-[100px]">
         <ContactForm />
         <Info />
       </div>
@@ -176,7 +176,7 @@ function Info() {
     }
   };
 
-  const order = ['linkedin', 'dribbble', 'upwork', 'behance'];
+  const order = ['linkedin', 'dribbble', 'behance'];
   const links = [...socialLinks].sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
 
   return (

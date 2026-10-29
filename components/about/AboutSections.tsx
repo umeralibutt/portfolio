@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Line, fluid } from '../site/type';
 import { Arrow, ArrowUpRight } from '../site/icons';
+import Container from '../site/Container';
 
 /** Big two-part section title ("THE PLOT so far") with the grey aside on the right. */
 export function SectionHead({ bold, italic, aside, className = '' }: { bold: string; italic: string; aside: ReactNode; className?: string }) {
@@ -26,25 +27,27 @@ const plot = [
 /** Figma "The plot so far" 235:90 — each rule draws across as you scroll. */
 export function Plot() {
   return (
-    <section className="bg-beige gutter py-20 lg:py-[120px]">
-      <SectionHead bold="THE PLOT" italic="so far" aside={<>Abridged. The director’s cut<br />has way more Figma files.</>} className="pb-12 lg:pb-16" />
-      <ol>
-        {plot.map((p, i) => {
-          const now = i === plot.length - 1;
-          return (
-            <li key={p.when} data-slide-in={i % 2 ? 'right' : 'left'} className={`relative flex flex-col gap-3 py-9 md:flex-row md:items-center md:gap-12 ${now ? 'border-b border-ink/15' : ''}`}>
-              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-ink/15" />
-              <span aria-hidden="true" data-draw-line className="absolute inset-x-0 top-0 h-px origin-left bg-ink/40" />
-              <p className={`font-display leading-none md:w-[240px] md:shrink-0 ${now ? 'text-orange' : ''}`} style={{ fontSize: fluid(72, 48) }}>{p.when}</p>
-              <div className="flex min-w-0 flex-1 flex-col gap-2">
-                <p className="font-semibold leading-[1.21] tracking-[-0.02em]" style={{ fontSize: fluid(28, 21) }}>{p.title}</p>
-                <p className="text-[18px] leading-[1.4] text-mute">{p.sub}</p>
-              </div>
-              <span aria-hidden="true" className={`hidden size-4 shrink-0 rounded-full md:block ${now ? 'bg-orange' : 'bg-ink/20'}`} />
-            </li>
-          );
-        })}
-      </ol>
+    <section className="bg-beige py-20 lg:py-[120px]">
+      <Container>
+        <SectionHead bold="THE PLOT" italic="so far" aside={<>Abridged. The director’s cut<br />has way more Figma files.</>} className="pb-12 lg:pb-16" />
+        <ol>
+          {plot.map((p, i) => {
+            const now = i === plot.length - 1;
+            return (
+              <li key={p.when} data-slide-in={i % 2 ? 'right' : 'left'} className={`relative flex flex-col gap-3 py-9 md:flex-row md:items-center md:gap-12 ${now ? 'border-b border-ink/15' : ''}`}>
+                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-ink/15" />
+                <span aria-hidden="true" data-draw-line className="absolute inset-x-0 top-0 h-px origin-left bg-ink/40" />
+                <p className={`font-display leading-none md:w-[240px] md:shrink-0 ${now ? 'text-orange' : ''}`} style={{ fontSize: fluid(72, 48) }}>{p.when}</p>
+                <div className="flex min-w-0 flex-1 flex-col gap-2">
+                  <p className="font-semibold leading-[1.21] tracking-[-0.02em]" style={{ fontSize: fluid(28, 21) }}>{p.title}</p>
+                  <p className="text-[18px] leading-[1.4] text-mute">{p.sub}</p>
+                </div>
+                <span aria-hidden="true" className={`hidden size-4 shrink-0 rounded-full md:block ${now ? 'bg-orange' : 'bg-ink/20'}`} />
+              </li>
+            );
+          })}
+        </ol>
+      </Container>
     </section>
   );
 }
@@ -60,7 +63,7 @@ const skills = [
 /** Figma "What I’m good at" 235:120 — hovering a row sweeps it orange left → right. */
 export function GoodAt() {
   return (
-    <section className="gutter py-20 lg:py-[120px]">
+    <section className="container-site py-20 lg:py-[120px]">
       <SectionHead bold="GOOD" italic="at" aside={<>Things people actually<br />pay me for.</>} className="pb-12 lg:pb-14" />
       <ul>
         {skills.map((s, i) => (

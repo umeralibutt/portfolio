@@ -1,10 +1,12 @@
 import Hero from '@/components/home/Hero';
-import Marquee from '@/components/home/Marquee';
+import TrustStrip from '@/components/home/TrustStrip';
 import SelectedWork from '@/components/home/SelectedWork';
+import TwoWaysIn from '@/components/home/TwoWaysIn';
+import Marquee from '@/components/home/Marquee';
 import AboutTeaser from '@/components/home/AboutTeaser';
-import MoreBangers from '@/components/home/MoreBangers';
+import Wrapped from '@/components/home/Wrapped';
 import HowIWork from '@/components/home/HowIWork';
-import Receipt from '@/components/home/Receipt';
+import MoreBangers from '@/components/home/MoreBangers';
 import DesignCrimes from '@/components/home/DesignCrimes';
 import PlaygroundStrip from '@/components/home/PlaygroundStrip';
 
@@ -12,12 +14,14 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Marquee />
+      <TrustStrip />
       <SelectedWork />
+      <TwoWaysIn />
+      <Marquee />
       <AboutTeaser />
-      <MoreBangers />
+      <Wrapped />
       <HowIWork />
-      <Receipt />
+      <MoreBangers />
       <DesignCrimes />
       <PlaygroundStrip />
     </>

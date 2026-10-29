@@ -24,13 +24,18 @@ export default function RotatingWords() {
           aria-hidden="true"
           className={`relative inline-flex transition-colors duration-500 ease-brand ${i === active ? 'text-orange' : 'text-ink/30'}`}
         >
-          {i === active
-            ? w.split('').map((ch, j) => (
+          {/* The plain word always sets the width; the active word's sliding letters sit on top of it,
+              so the row never reflows when the highlight moves (no layout shift). */}
+          <span className={i === active ? 'invisible' : undefined}>{w}</span>
+          {i === active && (
+            <span className="absolute inset-x-0 top-0 flex">
+              {w.split('').map((ch, j) => (
                 <span key={`${active}-${j}`} className="inline-block overflow-clip pb-[0.06em]">
                   <span className="inline-block animate-[letter-up_0.6s_var(--ease-brand)_both]" style={{ animationDelay: `${j * 28}ms` }}>{ch}</span>
                 </span>
-              ))
-            : w}
+              ))}
+            </span>
+          )}
           {/* Underline as a bar: text-decoration doesn't reach the inline-block letters. */}
           <span className={`absolute inset-x-0 bottom-[0.02em] h-[0.07em] origin-left bg-orange transition-transform duration-500 ease-brand ${i === active ? 'scale-x-100' : 'scale-x-0'}`} />
         </span>

@@ -1,12 +1,12 @@
-import Link from 'next/link';
+import { site } from '@/lib/data';
 import RotatingWords from './RotatingWords';
 import { Line, fluid } from '../site/type';
 import { Arrow, ArrowDown } from '../site/icons';
 
-/** Figma "Hero" 221:24 — sits under the 97px nav; 72 top / 120 bottom padding, 120px sides. */
+/** Figma "Hero" 221:24: sits under the 97px nav; 72px top and bottom padding, 120px sides. */
 export default function Hero() {
   return (
-    <section className="bg-bone gutter pb-20 pt-[116px] lg:pb-[120px] lg:pt-[169px]">
+    <section className="bg-bone container-site pb-20 pt-[116px] lg:pb-[72px] lg:pt-[169px]">
       <ul className="flex justify-between gap-4 pb-8 text-[11px] font-medium uppercase leading-none tracking-[0.12em] text-mute md:text-[12px] lg:pb-10">
         <li>Senior Product Designer</li>
         <li className="hidden md:block">Web3 · Fintech · AI</li>
@@ -37,9 +37,9 @@ export default function Hero() {
             </span>
             See the work
           </a>
-          <Link href="/contact" className="group inline-flex items-center gap-1.5 text-[17px] font-medium leading-none text-ink/70 transition-colors hover:text-ink">
-            or just say hi <Arrow className="size-4 transition-transform duration-300 ease-brand group-hover:translate-x-1" />
-          </Link>
+          <a href={site.cv} download="Umar_Ali_Butt_CV.pdf" className="group inline-flex items-center gap-1.5 text-[17px] font-medium leading-none text-ink/70 transition-colors hover:text-ink">
+            Hiring? Grab my CV <Arrow className="size-4 transition-transform duration-300 ease-brand group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </section>

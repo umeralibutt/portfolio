@@ -85,13 +85,16 @@ export default function Effects() {
         });
       }
 
-      // List rows tick in one by one.
-      gsap.utils.toArray<HTMLElement>('[data-rows]').forEach((list) => {
-        gsap.from(list.children, {
-          opacity: 0, y: reduced ? 0 : 24, duration: reduced ? 0.4 : 0.7, stagger: 0.12, ease,
-          scrollTrigger: { trigger: list, start: 'top 85%', once: true },
+      // List rows tick in one by one (data-rows="0.08" sets the gap between them, in seconds).
+      // With reduced motion they're simply there: the staggered fade never fired there and left rows invisible.
+      if (!reduced) {
+        gsap.utils.toArray<HTMLElement>('[data-rows]').forEach((list) => {
+          gsap.from(list.children, {
+            opacity: 0, y: 24, duration: 0.7, stagger: parseFloat(list.dataset.rows || '') || 0.12, ease,
+            scrollTrigger: { trigger: list, start: 'top 85%', once: true },
+          });
         });
-      });
+      }
 
       // The fix panel slides over toward the problem panel.
       if (!reduced) {

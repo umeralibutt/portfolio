@@ -7,6 +7,7 @@ import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'motion/r
 import { getProject, type Project } from '@/content/projects';
 import { Line, fluid } from '../site/type';
 import { Arrow, ArrowUpRight } from '../site/icons';
+import Container from '../site/Container';
 
 type Filter = 'all' | 'fintech' | 'crypto' | 'ai' | 'concept';
 
@@ -64,7 +65,7 @@ export default function WorkIndex() {
 
   return (
     <div className="bg-bone">
-      <header className="gutter flex flex-col gap-6 pb-12 pt-[124px] lg:flex-row lg:items-end lg:justify-between lg:pt-[193px]">
+      <header className="container-site flex flex-col gap-6 pb-12 pt-[124px] lg:flex-row lg:items-end lg:justify-between lg:pt-[193px]">
         <h1 data-lines data-hero>
           <Line driftOut={-1} className="flex items-baseline gap-x-5 whitespace-nowrap leading-[0.88]">
             <span className="font-display" style={{ fontSize: fluid(200, 88) }}>ALL</span>
@@ -77,7 +78,7 @@ export default function WorkIndex() {
         </p>
       </header>
 
-      <div className="gutter flex flex-col gap-5 pb-14 md:flex-row md:items-center md:justify-between">
+      <div className="container-site flex flex-col gap-5 pb-14 md:flex-row md:items-center md:justify-between">
         <LayoutGroup id="work-filters">
           <div role="group" aria-label="Filter projects" className="flex flex-wrap gap-2">
             {filters.map((f) => {
@@ -102,7 +103,7 @@ export default function WorkIndex() {
       </div>
 
       {a.length > 0 && (
-        <motion.ul layout={!reduced} className="gutter grid gap-x-8 gap-y-14 pb-20 md:grid-cols-2 lg:gap-y-20 lg:pb-[120px]">
+        <motion.ul layout={!reduced} className="container-site grid gap-x-8 gap-y-14 pb-20 md:grid-cols-2 lg:gap-y-20 lg:pb-[120px]">
           <AnimatePresence mode="popLayout">
             {a.map(({ p, line, n }, i) => (
               <motion.li key={p.slug} {...card} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -10% 0px' }} transition={{ ...card.transition, delay: (i % 2) * 0.08 }}>
@@ -130,7 +131,7 @@ export default function WorkIndex() {
 
       {b.length > 0 && (
         <>
-          <div className="gutter flex flex-col gap-4 pb-12 lg:flex-row lg:items-end lg:justify-between">
+          <div className="container-site flex flex-col gap-4 pb-12 lg:flex-row lg:items-end lg:justify-between">
             <h2 data-lines>
               <Line drift={1} className="flex flex-wrap items-baseline gap-x-4 leading-[0.9]">
                 <span className="font-display" style={{ fontSize: fluid(110, 60) }}>CONCEPTS</span>
@@ -141,7 +142,7 @@ export default function WorkIndex() {
               Unpaid. Unsupervised.<br />Unreasonably fun.
             </p>
           </div>
-          <motion.ul layout={!reduced} className="gutter grid gap-x-7 gap-y-14 pb-20 sm:grid-cols-2 lg:grid-cols-3 lg:pb-[140px]">
+          <motion.ul layout={!reduced} className="container-site grid gap-x-7 gap-y-14 pb-20 sm:grid-cols-2 lg:grid-cols-3 lg:pb-[140px]">
             <AnimatePresence mode="popLayout">
               {b.map(({ p }, i) => (
                 <motion.li key={p.slug} {...card} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -10% 0px' }} transition={{ ...card.transition, delay: (i % 3) * 0.08 }}>
@@ -161,14 +162,16 @@ export default function WorkIndex() {
         </>
       )}
 
-      <section className="flex flex-col gap-10 bg-beige gutter py-20 lg:flex-row lg:items-center lg:justify-between lg:py-[100px]">
-        <h2 data-lines>
-          <Line drift={-1} className="font-display leading-[0.92]" style={{ fontSize: fluid(84, 48) }}>DIDN’T SEE YOUR INDUSTRY?</Line>
-          <Line drift={1} className="font-serif italic leading-none text-orange" style={{ fontSize: fluid(72, 42) }}>Good. I learn fast.</Line>
-        </h2>
-        <Link href="/contact" data-magnetic className="group inline-flex shrink-0 items-center gap-2.5 self-start rounded-full bg-ink py-3.5 pl-6 pr-[22px] text-[16px] font-semibold leading-none text-bone transition-colors duration-300 hover:bg-ink-2 lg:self-auto">
-          Start a project <Arrow className="size-4 transition-transform duration-300 ease-brand group-hover:translate-x-1" />
-        </Link>
+      <section className="bg-beige py-20 lg:py-[100px]">
+        <Container className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+          <h2 data-lines>
+            <Line drift={-1} className="font-display leading-[0.92]" style={{ fontSize: fluid(84, 48) }}>DIDN’T SEE YOUR INDUSTRY?</Line>
+            <Line drift={1} className="font-serif italic leading-none text-orange" style={{ fontSize: fluid(72, 42) }}>Good. I learn fast.</Line>
+          </h2>
+          <Link href="/contact" data-magnetic className="group inline-flex shrink-0 items-center gap-2.5 self-start rounded-full bg-ink py-3.5 pl-6 pr-[22px] text-[16px] font-semibold leading-none text-bone transition-colors duration-300 hover:bg-ink-2 lg:self-auto">
+            Start a project <Arrow className="size-4 transition-transform duration-300 ease-brand group-hover:translate-x-1" />
+          </Link>
+        </Container>
       </section>
     </div>
   );

@@ -20,15 +20,47 @@ const cards = [
  * Figma "Work 2 — More work" 215:83 — 440 × 330 cards, 28px apart, bleeding off the right edge.
  * A native horizontal scroller (touch, trackpad, Tab and the arrow buttons all work); with a mouse
  * you can also grab-drag it and it glides on with inertia. The hovered card tilts 3°.
+ * It drifts left on its own in an endless loop (the cards render twice and it wraps after the first set);
+ * hovering, focusing or scrolling it pauses the drift, and reduced motion turns it off.
  */
 export default function MoreBangers() {
   const track = useRef<HTMLDivElement>(null);
   const dragged = useRef(false);
+  const nudgeRef = useRef(() => {});
 
   useEffect(() => {
     const el = track.current;
     if (!el) return;
     let down = false, startX = 0, startLeft = 0, lastX = 0, lastT = 0, v = 0, raf = 0;
+
+    // Auto drift: 40px a second; holds while hovered, focused, dragged or offscreen, and for 2s after a manual scroll.
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let hover = false, pauseUntil = 0, pos = el.scrollLeft, prev = 0, tick = 0;
+    const drift = (t: number) => {
+      const dt = prev ? Math.min(t - prev, 50) : 0;
+      prev = t;
+      const kids = el.children as HTMLCollectionOf<HTMLElement>;
+      const half = kids[cards.length].offsetLeft - kids[0].offsetLeft;
+      if (hover || down || raf || t < pauseUntil || el.contains(document.activeElement)) pos = el.scrollLeft;
+      else pos += dt * 0.04;
+      if (pos >= half) pos -= half;
+      else if (pos <= 0) pos += half;
+      if (Math.abs(el.scrollLeft - pos) >= 0.5) el.scrollLeft = pos;
+      tick = requestAnimationFrame(drift);
+    };
+    const nudge = () => { pauseUntil = performance.now() + 2000; };
+    nudgeRef.current = nudge;
+    const io = new IntersectionObserver(([e]) => {
+      cancelAnimationFrame(tick);
+      if (e.isIntersecting && !reduced) { prev = 0; tick = requestAnimationFrame(drift); }
+    });
+    io.observe(el);
+    const enter = () => { hover = true; };
+    const leave = () => { hover = false; };
+    el.addEventListener('mouseenter', enter);
+    el.addEventListener('mouseleave', leave);
+    el.addEventListener('wheel', nudge, { passive: true });
+    el.addEventListener('touchstart', nudge, { passive: true });
     const glide = () => {
       v *= 0.94;
       el.scrollLeft -= v;
@@ -59,17 +91,23 @@ export default function MoreBangers() {
     window.addEventListener('pointerup', onUp);
     return () => {
       cancelAnimationFrame(raf);
+      cancelAnimationFrame(tick);
+      io.disconnect();
+      el.removeEventListener('mouseenter', enter);
+      el.removeEventListener('mouseleave', leave);
+      el.removeEventListener('wheel', nudge);
+      el.removeEventListener('touchstart', nudge);
       el.removeEventListener('pointerdown', onDown);
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerup', onUp);
     };
   }, []);
 
-  const step = (dir: 1 | -1) => track.current?.scrollBy({ left: dir * 468, behavior: 'smooth' });
+  const step = (dir: 1 | -1) => { nudgeRef.current(); track.current?.scrollBy({ left: dir * 468, behavior: 'smooth' }); };
 
   return (
     <section className="overflow-hidden bg-ink py-20 text-bone lg:py-[140px]">
-      <div className="flex flex-col gap-6 gutter sm:flex-row lg:!pr-12 sm:items-end sm:justify-between">
+      <div className="flex flex-col gap-6 container-site sm:flex-row sm:items-end sm:justify-between">
         <h2 data-lines className="leading-[0.9]">
           <Line drift={1} className="flex items-baseline gap-x-5 whitespace-nowrap">
             <span className="font-display" style={{ fontSize: fluid(140, 64) }}>MORE</span>
@@ -88,12 +126,13 @@ export default function MoreBangers() {
       <div
         ref={track}
         data-cursor="Drag"
-        className="no-scrollbar mt-10 flex gap-7 overflow-x-auto gutter pb-4 pt-3 select-none lg:mt-14"
+        className="no-scrollbar mt-10 flex gap-7 overflow-x-auto pl-edge pr-edge pb-4 pt-3 select-none lg:mt-14"
         onClickCapture={(e) => { if (dragged.current) { e.preventDefault(); e.stopPropagation(); dragged.current = false; } }}
         onDragStart={(e) => e.preventDefault()}
       >
-        {cards.map((c) => (
-          <Link key={c.slug} href={`/work/${c.slug}`} data-skew className="group flex w-[min(440px,80vw)] shrink-0 flex-col gap-5" draggable={false}>
+        {/* Rendered twice for the endless loop; the copy is hidden from screen readers and the Tab order. */}
+        {[...cards, ...cards].map((c, i) => (
+          <Link key={i} href={`/work/${c.slug}`} data-skew className="group flex w-[min(440px,80vw)] shrink-0 flex-col gap-5" draggable={false} {...(i >= cards.length ? { 'aria-hidden': true, tabIndex: -1 } : {})}>
             <div className="relative aspect-[440/330] overflow-hidden rounded-[20px] transition-[rotate] duration-500 ease-brand group-hover:rotate-3 group-focus-visible:rotate-3">
               <Image quality={90} src={`/home/bangers-${c.slug}.jpg`} alt={`${c.name} cover`} fill sizes="(min-width:768px) 440px, 80vw" className="pointer-events-none object-cover" draggable={false} />
             </div>
