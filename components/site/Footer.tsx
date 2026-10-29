@@ -32,8 +32,8 @@ export default function Footer() {
     else window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Footer links follow Figma's order: LinkedIn, Dribbble, Upwork, Behance.
-  const order = ['linkedin', 'dribbble', 'upwork', 'behance'];
+  // Footer links follow Figma's order: LinkedIn, Dribbble, Behance.
+  const order = ['linkedin', 'dribbble', 'behance'];
   const links = [...socialLinks].sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
 
   const base = (

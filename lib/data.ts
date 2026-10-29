@@ -5,7 +5,6 @@ export const site = {
   links: {
     dribbble: 'https://dribbble.com/umar__ali__butt',
     linkedin: 'https://www.linkedin.com/in/umar-ali-butt-7213a7224/',
-    upwork: 'https://www.upwork.com/freelancers/~01fbaab0f0eb29dd61',
     behance: 'https://www.behance.net/s325',
   },
   // "Download my CV" / "Grab my CV" buttons on Home and About.
