@@ -173,7 +173,7 @@ function StoryMode({ start, onClose }: { start: number; onClose: () => void }) {
       aria-modal="true"
       aria-label="Umar Wrapped, full story"
       tabIndex={-1}
-      className="fixed inset-0 z-[95] grid place-items-center bg-ink/95 outline-none backdrop-blur-sm [--u:min(1.6px,calc((100dvh-140px)/500))]"
+      className="fixed inset-0 z-[85] grid place-items-center bg-ink/95 outline-none backdrop-blur-sm [--u:min(1.6px,calc((100dvh-140px)/500))]"
       onPointerDown={(e) => { downY.current = e.clientY; }}
       onPointerUp={(e) => {
         const dy = downY.current === null ? 0 : e.clientY - downY.current;
