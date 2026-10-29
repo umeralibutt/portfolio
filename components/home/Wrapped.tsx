@@ -17,7 +17,7 @@ const stories: { label: string; value: string; word?: boolean; caption: string; 
 ];
 
 const tones: Record<Tone, { card: string; bar: string; barOff: string; logo: string; label: string }> = {
-  orange: { card: 'bg-orange text-ink', bar: 'bg-ink/90', barOff: 'bg-ink/25', logo: 'bg-ink text-orange', label: 'text-ink/75' },
+  orange: { card: 'bg-orange text-ink', bar: 'bg-ink/90', barOff: 'bg-ink/25', logo: 'bg-ink text-orange', label: 'text-ink/85' },
   bone: { card: 'bg-bone text-ink', bar: 'bg-ink/90', barOff: 'bg-ink/25', logo: 'bg-ink text-bone', label: 'text-ink/75' },
   dark: { card: 'bg-[#21201e] text-bone', bar: 'bg-bone/90', barOff: 'bg-bone/25', logo: 'bg-bone text-[#21201e]', label: 'text-bone/75' },
 };

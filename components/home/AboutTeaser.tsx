@@ -74,7 +74,7 @@ export default function AboutTeaser() {
         </div>
 
         <div className="flex min-w-0 flex-1 flex-col items-start gap-10">
-          <p className="text-[14px] font-semibold leading-[1.21] tracking-[0.14em] text-orange">About</p>
+          <p className="text-[14px] font-semibold leading-[1.21] tracking-[0.14em] text-orange-deep">About</p>
           <p data-statement className="font-medium leading-[1.28] tracking-[-0.03em]" style={{ fontSize: 'clamp(28px, 3.06vw, 44px)' }}>
             {statement.flat().map(({ w, orange }, i) => (
               <Fragment key={i}>
