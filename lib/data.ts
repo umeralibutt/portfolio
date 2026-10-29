@@ -10,7 +10,7 @@ export const site = {
   },
   // "Download my CV" / "Grab my CV" buttons on Home and About.
   cv: '/umar-ali-butt-cv.pdf',
-  // TODO(Umar): Cal.com / Calendly link for "Book a 20-min call". Until then those buttons go to /contact.
-  cal: '',
+  // "Book a 20-min call" buttons (Two ways in). Empty falls back to /contact.
+  cal: 'https://calendly.com/ub1894497/30min',
   formspreeId: process.env.NEXT_PUBLIC_FORMSPREE_ID || '',
 };
