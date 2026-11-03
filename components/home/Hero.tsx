@@ -14,21 +14,13 @@ export default function Hero() {
         <li>Est. 2021</li>
       </ul>
 
-      {/* One reveal group: the subline slides up 60ms after the headline's last line. */}
-      <div data-lines data-hero>
-        <h1 className="whitespace-nowrap leading-[0.88]">
-          <Line driftOut={-1} className="flex flex-wrap items-baseline gap-x-[0.14em]" style={{ fontSize: fluid(200, 60) }}>
-            <span className="font-display tracking-[-0.01em]">I DESIGN</span>
-            <span className="font-serif italic tracking-[-0.02em] text-orange" style={{ fontSize: '0.68em' }}>(almost)</span>
-          </Line>
-          <Line driftOut={1} className="font-display tracking-[-0.01em]" style={{ fontSize: fluid(200, 60) }}>EVERYTHING.</Line>
-        </h1>
-        <p className="mt-4 lg:mt-5">
-          <Line className="font-medium leading-[1.3] tracking-[-0.02em]" style={{ fontSize: fluid(28, 20) }}>
-            Senior Product Designer for <span className="text-orange">fintech, Web3 &amp; AI</span> teams.
-          </Line>
-        </p>
-      </div>
+      <h1 data-lines data-hero className="whitespace-nowrap leading-[0.88]">
+        <Line driftOut={-1} className="flex flex-wrap items-baseline gap-x-[0.14em]" style={{ fontSize: fluid(200, 60) }}>
+          <span className="font-display tracking-[-0.01em]">I DESIGN</span>
+          <span className="font-serif italic tracking-[-0.02em] text-orange" style={{ fontSize: '0.68em' }}>(almost)</span>
+        </Line>
+        <Line driftOut={1} className="font-display tracking-[-0.01em]" style={{ fontSize: fluid(200, 60) }}>EVERYTHING.</Line>
+      </h1>
 
       <div className="pb-12 pt-6 lg:pb-[72px] lg:pt-9">
         <RotatingWords />
