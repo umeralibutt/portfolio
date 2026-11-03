@@ -1,6 +1,6 @@
 export const site = {
   name: 'Umar Ali Butt',
-  email: 'ub1894497@gmail.com',
+  email: 'umarbutt.design@gmail.com',
   location: 'Islamabad, PK',
   links: {
     dribbble: 'https://dribbble.com/umar__ali__butt',
